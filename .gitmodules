@@ -7,3 +7,6 @@
 [submodule "deps/THST"]
 	path = deps/THST
 	url = https://github.com/tuxalin/THST
+[submodule "deps/phtree-cpp"]
+	path = deps/phtree-cpp
+	url = https://github.com/tzaeschke/phtree-cpp
