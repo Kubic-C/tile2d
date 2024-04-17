@@ -10,3 +10,9 @@
 [submodule "deps/phtree-cpp"]
 	path = deps/phtree-cpp
 	url = https://github.com/tzaeschke/phtree-cpp
+[submodule "deps/parallel-hashmap"]
+	path = deps/parallel-hashmap
+	url = https://github.com/greg7mdp/parallel-hashmap
+[submodule "deps/oneTBB"]
+	path = deps/oneTBB
+	url = https://github.com/oneapi-src/oneTBB
