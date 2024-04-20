@@ -8,11 +8,6 @@
 
 T2D_NAMESPACE_BEGIN
 
-static constexpr Float tileWidth = 5.0f;
-static constexpr Float tileHeight = 5.0f;
-static constexpr vec2 tileSize = vec2(tileWidth, tileHeight);
-static constexpr Float tileRadi = sqrt<Float>(tileWidth * tileWidth + tileHeight * tileHeight) * 0.5f;
-
 template<typename T>
 struct TileProperties {
 
@@ -98,6 +93,7 @@ public:
 		auto& props = m_tiles.find(pos)->second;
 
 		if (props.isMultiTile) {
+			assert(props.isMainTile);
 			return { props.mutliTile.width, props.mutliTile.height };
 		}
 
@@ -116,7 +112,7 @@ public:
 
 public:
 	struct Iterator {
-		using ContainerIterator = typename boost::container::flat_map<glm::i32vec2, TileProperties<TileType>>::iterator;
+		using ContainerIterator = typename FlatMap<glm::i32vec2, TileProperties<TileType>>::iterator;
 	private:
 		ContainerIterator m_it;
 	public:
@@ -151,8 +147,8 @@ protected:
 	}
 
 protected:
-	boost::container::flat_map<glm::i32vec2, TileProperties<TileType>> m_tiles;
-	boost::container::flat_map<glm::i32vec2, PhysicsTileProperties> m_physicsTiles;
+	FlatMap<glm::i32vec2, TileProperties<TileType>> m_tiles;
+	FlatMap<glm::i32vec2, PhysicsTileProperties> m_physicsTiles;
 
 private:
 	TileBody<TileType>* m_body;
@@ -161,11 +157,6 @@ private:
 template<typename TileType>
 class TileBody : public Body {
 	friend class TileMap<TileType>;
-
-	static constexpr size_t chunkWidth = 4;
-	static constexpr size_t chunkHeight = 4;
-	static constexpr Float tcW = (Float)tileWidth * (Float)chunkWidth;
-	static constexpr Float tcH = (Float)tileHeight * (Float)chunkHeight;
 public:
 	struct SpatialIndex {
 		SpatialIndex() = default;
@@ -245,10 +236,14 @@ public: /* Tiles! */
 	}
 
 	inline TOBB getTileWorldOBB(const glm::i32vec2& iPos) const {
+		return getTileWorldOBBOffset(iPos, vec2(0.0f));
+	}
+
+	inline TOBB getTileWorldOBBOffset(const glm::i32vec2& iPos, const vec2& worldOffset) const {
 		TOBB tileOBB;
 
 		tileOBB.extent = m_tileMap.getRealTileDimensions(iPos) * Float(0.5);
-		tileOBB.transform.pos = getTileWorldPoint(iPos);
+		tileOBB.transform.pos = getTileWorldPoint(iPos) + worldOffset;
 		tileOBB.transform.rot = m_transform.rot;
 		tileOBB.transform.sincos = m_transform.sincos;
 
@@ -270,8 +265,8 @@ public: /* Tiles! */
 public:
 	template<typename OutIt>
 	inline void queryChunks(const AABB<Float>& intersectBox, OutIt chunks) const {
-		glm::i32vec2 minChunk = getChunk((glm::i32vec2)(glm::floor(intersectBox.min()) / tileSize));
-		glm::i32vec2 maxChunk = getChunk((glm::i32vec2)(glm::ceil(intersectBox.max()) / tileSize));
+		const glm::i32vec2 minChunk = getChunkCoords(intersectBox.min());
+		const glm::i32vec2 maxChunk = getChunkCoords(intersectBox.max());
 
 		assert(minChunk.x <= maxChunk.x);
 		assert(minChunk.y <= maxChunk.y);
@@ -290,8 +285,8 @@ public:
 
 	template<typename OutIt>
 	inline void queryTiles(const AABB<Float>& intersectBox, OutIt tiles) const {
-		glm::i32vec2 minTiles = (glm::i32vec2)(glm::floor(intersectBox.min()) / tileSize);
-		glm::i32vec2 maxTiles = (glm::i32vec2)(glm::ceil(intersectBox.max()) / tileSize);
+		glm::i32vec2 minTiles = getTileCoords(intersectBox.min());
+		glm::i32vec2 maxTiles = getTileCoords(intersectBox.max());
 
 		assert(minTiles.x <= maxTiles.x);
 		assert(minTiles.y <= maxTiles.y);
@@ -311,6 +306,14 @@ public:
 		}
 	}
 
+	glm::i32vec2 getChunkCoords(const vec2& coords) const {
+		return (glm::i32vec2)glm::floor(coords / (tileSize * vec2(chunkWidth, chunkHeight)));
+	}
+
+	glm::i32vec2 getTileCoords(const vec2& coords) const {
+		return (glm::i32vec2)glm::floor(coords / (tileSize));
+	}
+
 	inline void insertIntoChunk(const glm::i32vec2& tile) {
 		glm::i32vec2 chunk = getChunk(tile);
 
@@ -322,7 +325,16 @@ public:
 	inline AABB<Float> getChunkAABB(const glm::i32vec2& chunk) const {
 		constexpr vec2 chunkDim((Float)(tileWidth * chunkWidth), (Float)(tileHeight * chunkHeight));
 
-		return AABB((vec2)chunk * chunkDim + chunkDim * Float(0.5f) - tileSize * Float(0.5), chunkDim.x * Float(0.5), chunkDim.y * Float(0.5));
+		return AABB((vec2)chunk * chunkDim + chunkDim * Float(0.5f), chunkDim.x * Float(0.5), chunkDim.y * Float(0.5));
+	}
+
+	inline glm::i32vec2 getChunk(const vec2& localPos) const {
+		glm::i32vec2 chunk = {
+			localPos.x / (chunkWidth * tileWidth),
+			localPos.y / (chunkHeight * tileHeight)
+		};
+
+		return chunk;
 	}
 
 	inline glm::i32vec2 getChunk(const glm::i32vec2& tile) const {
@@ -332,6 +344,19 @@ public:
 		};
 
 		return chunk;
+	}
+
+	std::array<vec2, 4> getLocalAABBWorldVertices(const AABB<Float>& localAABB) {
+		std::array<vec2, 4> vertices = {};
+		vec2 min = localAABB.min();
+		vec2 max = localAABB.max();
+
+		vertices[0] = getWorldPoint(min);
+		vertices[1] = getWorldPoint({ min.x, max.y });
+		vertices[2] = getWorldPoint(max);
+		vertices[3] = getWorldPoint({ max.x, min.y });
+
+		return vertices;
 	}
 
 protected:
@@ -346,7 +371,7 @@ protected:
 			auto tileDimensions = m_tileMap.getTileDimensions(pair.first);
 			m_I += parallelAxisTheorem(pair.second.getMomentOfInertia<uint16_t>(tileDimensions), pair.second.getMass(tileDimensions), glm::length2(getTileLocalPoint(pair.first) - m_centroid));
 		}
-		if (m_I != 0.0f)
+		if (m_I != 0.0f && !m_flags[IS_STATIC])
 			m_inverseI = 1.0f / m_I;
 		else
 			m_inverseI = 0.0f;
@@ -377,7 +402,7 @@ protected:
 			m_I += parallelAxisTheorem(pair.second.getMomentOfInertia<uint16_t>(tileDimensions), pair.second.getMass(tileDimensions), glm::length2(getTileLocalPoint(tilePos) - m_centroid));
 		}
 
-		if (m_I != 0.0f)
+		if (m_I != 0.0f && !m_flags[IS_STATIC])
 			m_inverseI = 1.0f / m_I;
 		else
 			m_inverseI = 0.0f;
@@ -397,7 +422,8 @@ protected: /* For use within the Tile Map Class*/
 		}
 
 		m_mass += tileMass;
-		m_inverseMass = 1.0f / m_mass;
+		if(!m_flags[IS_STATIC])
+			m_inverseMass = 1.0f / m_mass;
 		m_unweightedCom += tileMass * pos;
 		m_com = m_unweightedCom * m_inverseMass;
 
@@ -432,7 +458,7 @@ protected: /* For use within the Tile Map Class*/
 		const Float tileMass = physicsProperties.getMass<uint16_t>(tileDimensions);
 
 		m_mass -= tileMass;
-		if (m_mass != 0.0f)
+		if (m_mass != 0.0f && !m_flags[IS_STATIC])
 			m_inverseMass = 1.0f / m_mass;
 		else
 			m_inverseMass = 0.0f;
@@ -494,7 +520,7 @@ bool TileMap<TileType>::addTile(const glm::i32vec2& pos, const TileProperties<Ti
 			pos.y + props.mutliTile.height
 		};
 
-		TileProperties bufferTileProperties = props;
+		TileProperties<TileType> bufferTileProperties = props;
 		bufferTileProperties.isMainTile = false;
 		bufferTileProperties.mainTilePos = pos;
 

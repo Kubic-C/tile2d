@@ -20,6 +20,23 @@ constexpr std::array<NormalFaces, 4> faces = {
 };
 
 struct CollisionManifold {
+	CollisionManifold() {}
+
+	CollisionManifold(const CollisionManifold& other) {
+		normal = other.normal;
+		depth = other.depth;
+
+		count = other.count;
+		for (size_t i = 0; i < other.count; i++) {
+			points[i] = other.points[i];
+		}
+
+		staticFriction = other.staticFriction;
+		dynamicFriction = other.dynamicFriction;
+		restitution = other.restitution;
+
+	}
+
 	vec2 normal = { Float(0.0), Float(0.0) };
 	Float depth = std::numeric_limits<Float>::max();
 
@@ -34,6 +51,16 @@ struct CollisionManifold {
 		return !glm::isnan(normal).x && !std::isnan(depth) && count <= 2;
 	}
 };
+
+namespace debug {
+	struct CollideInfo {
+		std::vector<CollisionManifold> manifolds;
+		std::vector<std::array<vec2, 4>> tileAABBs;
+		std::vector<std::array<vec2, 4>> chunkAABBs;
+	};
+
+	std::vector<CollideInfo> collideInfos;
+}
 
 // _1_2, 2_3
 
@@ -127,7 +154,7 @@ inline void computeBoxManifold(const Container& points1, const Container& points
 		const vec2 edge = p2 - p1;
 		const vec2 normal = { -edge.y, edge.x };
 
-		const Float dot = glm::dot(normal, manifold.normal);
+		const Float dot = glm::dot(normal, -manifold.normal);
 		if (dot > max) {
 			max = dot;
 			edge1[0] = p1;
@@ -143,7 +170,7 @@ inline void computeBoxManifold(const Container& points1, const Container& points
 		const vec2 edge = p2 - p1;
 		const vec2 normal = { -edge.y, edge.x };
 
-		const Float dot = glm::dot(normal, -manifold.normal);
+		const Float dot = glm::dot(normal, manifold.normal);
 		if (dot > max) {
 			max = dot;
 			edge2[0] = p1;
@@ -153,12 +180,14 @@ inline void computeBoxManifold(const Container& points1, const Container& points
 
 	Float minDist = std::numeric_limits<Float>::max();
 	findClosestPoint(manifold.points[0], manifold.points[1], manifold.count, minDist, edge1, edge2);
+
+	assert(manifold.count >= 1);
 }
 
 template<class TileData>
-bool detectNarrowCollision(TileBody<TileData>& body1, glm::i32vec2 tilePos1, TileBody<TileData>& body2, glm::i32vec2 tilePos2, CollisionManifold& manifold) {
-	auto tileObb1 = body1.getTileWorldOBB(tilePos1).getVertices();
-	auto tileObb2 = body2.getTileWorldOBB(tilePos2).getVertices();
+bool detectNarrowCollision(const TileBody<TileData>& body1, glm::i32vec2 tilePos1, vec2 body1Offset, const TileBody<TileData>& body2, glm::i32vec2 tilePos2, vec2 body2Offset, CollisionManifold& manifold) {
+	auto tileObb1 = body1.getTileWorldOBBOffset(tilePos1, body1Offset).getVertices();
+	auto tileObb2 = body2.getTileWorldOBBOffset(tilePos2, body2Offset).getVertices();
 
 	{
 		auto normals1 = body1.normals();
@@ -169,6 +198,9 @@ bool detectNarrowCollision(TileBody<TileData>& body1, glm::i32vec2 tilePos1, Til
 		if (!satBoxTest(tileObb1, tileObb2, normals2, manifold))
 			return false;
 	}
+
+	if (manifold.depth == 0.0f)
+		return false;
 
 	computeBoxManifold(tileObb1, tileObb2, manifold);
 
@@ -194,7 +226,13 @@ struct TileBodyCache {
 
 // Detect and resolve a tilebody collision
 template<class TileData>
-void detectAndResolveTileBodyCollision(TileBody<TileData>& body1, TileBody<TileData>& body2, TileBodyCache<TileData>& cache) {
+void detectTileBodyCollision(
+	const TileBody<TileData>& body1, 
+	const TileBody<TileData>& body2, 
+	TileBodyCache<TileData>& cache, 
+	std::vector<CollisionManifold>& manifolds,
+	vec2& body1Offset,
+	vec2& body2Offset) {
 	AABB<Float> approxAreaOfBody1Local = computeAABBCollisionArea(body1.getLocalAABB(), body2.getAABB(body1.transform(), body1.com()));
 	if (std::isnan(approxAreaOfBody1Local.min().x))
 		return;
@@ -210,6 +248,15 @@ void detectAndResolveTileBodyCollision(TileBody<TileData>& body1, TileBody<TileD
 	body1.queryChunks(approxAreaOfBody1Local, std::back_inserter(cache.results1));
 	body2.queryChunks(approxAreaOfBody2Local, std::back_inserter(cache.results2));
 
+#ifndef NDEBUG
+	debug::CollideInfo collideInfo;
+	for (auto& r1 : cache.results1)
+		collideInfo.chunkAABBs.push_back(body1.getLocalAABBWorldVertices(r1.aabb));
+
+	for (auto& r2 : cache.results2)
+		collideInfo.chunkAABBs.push_back(body2.getLocalAABBWorldVertices(r2.aabb));
+#endif
+
 	for (auto& chunk1 : cache.results1) {
 		for (auto& chunk2 : cache.results2) {
 			AABB<Float> approxAreaOfChunk1Local = computeAABBCollisionArea(chunk1.aabb, body2.getAABB(chunk2.aabb, body1.transform(), body1.com()));
@@ -224,7 +271,6 @@ void detectAndResolveTileBodyCollision(TileBody<TileData>& body1, TileBody<TileD
 		}
 	}
 
-	CollisionManifold manifold;
 	for (const auto& approxArea : cache.approxAreas) {
 		cache.results1.clear();
 		cache.results2.clear();
@@ -232,17 +278,73 @@ void detectAndResolveTileBodyCollision(TileBody<TileData>& body1, TileBody<TileD
 		body1.queryTiles(approxArea.first, std::back_inserter(cache.results1));
 		body2.queryTiles(approxArea.second, std::back_inserter(cache.results2));
 
+#ifndef NDEBUG
+		for (auto& r1 : cache.results1)
+			collideInfo.tileAABBs.push_back(body1.getLocalAABBWorldVertices(body1.getTileLocalAABB(r1.pos)));
+
+		for (auto& r2 : cache.results2)
+			collideInfo.tileAABBs.push_back(body2.getLocalAABBWorldVertices(body2.getTileLocalAABB(r2.pos)));
+#endif
+
+
 		for (auto& tile1 : cache.results1) {
 			for (auto& tile2 : cache.results2) {
-				if (detectNarrowCollision(body1, tile1.pos, body2, tile2.pos, manifold)) {
-					ResolveMethods::impulseMethod(body1, body2, manifold);
+				CollisionManifold manifold;
 
-					body1.moveBy(-manifold.normal * manifold.depth * Float(0.5));
-					body2.moveBy(manifold.normal * manifold.depth * Float(0.5));
+				if (detectNarrowCollision(body1, tile1.pos, body1Offset, body2, tile2.pos, body2Offset, manifold)) {
+					Float body1Mass = body1.mass() * (Float)!body1.isStatic();
+					Float body2Mass = body2.mass() * (Float)!body2.isStatic();
+					Float totalMass = body1Mass + body2Mass;
+					Float body1Depth = (body1Mass / totalMass) * manifold.depth;
+					Float body2Depth = (body2Mass / totalMass) * manifold.depth;
+
+					body1Offset -= manifold.normal * body1Depth * Float(0.5);
+					body2Offset += manifold.normal * body2Depth * Float(0.5);
+
+					manifolds.emplace_back(manifold);
+#ifndef NDEBUG
+					collideInfo.manifolds.emplace_back(manifold);
+#endif
 				}
 			}
 		}
 	}
+
+#ifndef NDEBUG
+	debug::collideInfos.emplace_back(std::move(collideInfo));
+#endif
+}
+
+template<class TileData>
+void detectAndResolveTileBodyCollisionON2(TileBody<TileData>& body1, TileBody<TileData>& body2, TileBodyCache<TileData>& cache) {
+#ifndef NDEBUG
+	debug::CollideInfo collideInfo;
+#endif
+
+	for (auto tile1 : body1.tileMap()) {
+		if (body1.tileMap().getTileProperties(tile1).isMultiTile && !body1.tileMap().getTileProperties(tile1).isMainTile)
+			continue;
+
+		for (auto tile2 : body2.tileMap()) {
+			if (body2.tileMap().getTileProperties(tile2).isMultiTile && !body2.tileMap().getTileProperties(tile2).isMainTile)
+				continue;
+
+			CollisionManifold manifold;
+
+			if (detectNarrowCollision(body1, tile1, body2, tile2, manifold)) {
+				ResolveMethods::impulseMethod(body1, body2, manifold);
+
+#ifndef NDEBUG
+				collideInfo.manifolds.emplace_back(manifold);
+#endif
+
+			}
+		}
+	}
+
+#ifndef NDEBUG
+	debug::collideInfos.emplace_back(std::move(collideInfo));
+#endif
 }
 
 struct ResolveMethods {

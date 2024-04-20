@@ -18,8 +18,15 @@ struct std::less<glm::i32vec2> {
 };
 
 template<>
+struct std::less<glm::vec<2, int32_t, glm::packed_lowp>> {
+	bool operator()(const glm::vec<2, int32_t, glm::packed_lowp>& lhs, const glm::vec<2, int32_t, glm::packed_lowp>& rhs) const {
+		return (lhs.x < rhs.x) || ((lhs.x == rhs.x) && (lhs.y < rhs.y));
+	}
+};
+
+template<>
 struct std::hash<glm::i32vec2> {
-	bool operator()(const glm::i32vec2& vec) const {
+	int32_t operator()(const glm::i32vec2& vec) const {
 		const int32_t p1 = 73856093;
 		const int32_t p2 = 19349663;
 
@@ -27,23 +34,35 @@ struct std::hash<glm::i32vec2> {
 	}
 };
 
+template<>
+struct boost::hash<glm::vec<2, int32_t, glm::packed_lowp>> {
+	int32_t operator()(const glm::vec<2, int32_t, glm::packed_lowp>& vec) const {
+		const int32_t p1 = 73856093;
+		const int32_t p2 = 19349663;
+
+		return vec.x * p1 ^ vec.y * p2;
+	}
+};
+
+template<>
+struct boost::hash<glm::i32vec2> {
+	int32_t operator()(const glm::i32vec2& vec) const {
+		const int32_t p1 = 73856093;
+		const int32_t p2 = 19349663;
+
+		return vec.x * p1 ^ vec.y * p2;
+	}
+};
+
+template<>
+struct std::equal_to<glm::i32vec2> {
+	inline bool operator()(const glm::i32vec2& _1, const glm::i32vec2& _2) const {
+		return _1 == _2;
+	}
+};
+
+
 T2D_NAMESPACE_BEGIN
-
-template<typename T>
-T constexpr sqrtNewtonRaphson(T x, T curr, T prev)
-{
-	return curr == prev
-		? curr
-		: sqrtNewtonRaphson<T>(x, (T)0.5 * (curr + x / curr), curr);
-}
-
-template<typename T>
-T constexpr sqrt(T x)
-{
-	return x >= 0 && x < std::numeric_limits<T>::infinity()
-		? sqrtNewtonRaphson<T>(x, x, 0)
-		: std::numeric_limits<T>::quiet_NaN();
-}
 
 template<typename T>
 T constexpr square(T x) {
@@ -174,6 +193,7 @@ Float sideOf(const vec2& p, const vec2& a, const vec2& b) {
 
 template<typename T = Float, glm::qualifier Prec = glm::packed_lowp>
 struct AABB {
+	using TAABB = AABB<T, Prec>;
 public:
 	using vec2 = glm::vec<2, T, Prec>;
 
@@ -191,25 +211,33 @@ public:
 	AABB(vec2 halfDim)
 		: m_min(-halfDim.x, -halfDim.y), m_max(halfDim.x, halfDim.y) {}
 
-	AABB& operator+=(const vec2& off) {
+	TAABB& operator+=(const vec2& off) {
 		m_min += off;
 		m_max += off;
 
 		return *this;
 	}
 
-	AABB operator+(const vec2& off) const {
-		AABB newAABB = *this;
+	TAABB operator+(const vec2& off) const {
+		TAABB newAABB = *this;
 		newAABB.m_min += off;
 		newAABB.m_max += off;
 
 		return newAABB;
 	}
 
-	AABB operator-(const vec2& off) const {
-		AABB newAABB = *this;
+	TAABB operator-(const vec2& off) const {
+		TAABB newAABB = *this;
 		newAABB.m_min -= off;
 		newAABB.m_max -= off;
+
+		return newAABB;
+	}
+
+	TAABB operator*(T off) const {
+		TAABB newAABB = *this;
+		newAABB.m_min *= off;
+		newAABB.m_max *= off;
 
 		return newAABB;
 	}
@@ -289,10 +317,6 @@ public:
 			});
 
 		return area;
-	}
-
-	phtree::PhBoxF<2> phbox() {
-		return { {m_min.x, m_min.y}, {m_max.x, m_max.y} };
 	}
 
 	// When T is an integer type, rotation will be unstable.
@@ -395,22 +419,6 @@ inline bool nearlyEqual(vec2 a, vec2 b, Float max = 0.0001f) {
 
 inline Float sqaure(Float value) {
 	return value * value;
-}
-
-float invSqrt(float number) {
-	union {
-		float f;
-		uint32_t i;
-	} conv;
-
-	float x2;
-	const float threehalfs = 1.5F;
-
-	x2 = number * 0.5F;
-	conv.f = number;
-	conv.i = 0x5f3759df - (conv.i >> 1);
-	conv.f = conv.f * (threehalfs - (x2 * conv.f * conv.f));
-	return conv.f;
 }
 
 inline Float pointSegmentDistance(vec2 p, vec2 v1, vec2 v2, vec2& cp) {
@@ -558,5 +566,11 @@ inline T fastInverseSqrt(T x) {
 //	normal.y *= invSqrtMag;
 //	return normal;
 //}
+
+template<typename Int, typename Float>
+inline Int floor(Float x) {
+	Int i = (Int)x;
+	return i - (i > x);
+}
 
 T2D_NAMESPACE_END
