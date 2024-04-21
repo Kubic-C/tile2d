@@ -81,18 +81,20 @@ bool satBoxTest(const BoxVertexContainer& vertices1, const BoxVertexContainer& v
 			// they are not colliding
 			return false;
 		}
+		else {
+			Float newDepth = std::max(Float(0.0), std::min(proj1.second, proj2.second) - std::max(proj1.first, proj2.first));
+			if (newDepth <= manifold.depth) {
+				manifold.normal = normal;
+				manifold.depth = newDepth;
 
-		Float newDepth = std::max(Float(0.0), std::min(proj1.second, proj2.second) - std::max(proj1.first, proj2.first));
-		if (newDepth <= manifold.depth) {
-			manifold.normal = normal;
-			manifold.depth = newDepth;
-
-			// we check to see if this value is on the left or right side of proj1
-			Float direction = proj1.second - proj2.second;
-			if (direction > 0) {
-				manifold.normal *= -1.0f;
+				// we check to see if this value is on the left or right side of proj1
+				Float direction = proj1.second - proj2.second;
+				if (direction > 0) {
+					manifold.normal *= -1.0f;
+				}
 			}
 		}
+
 	}
 
 	return true;
@@ -184,10 +186,13 @@ inline void computeBoxManifold(const Container& points1, const Container& points
 	assert(manifold.count >= 1);
 }
 
+inline std::array<vec2, 4> tileObb1 = {};
+inline std::array<vec2, 4> tileObb2 = {};
+
 template<class TileData>
 bool detectNarrowCollision(const TileBody<TileData>& body1, glm::i32vec2 tilePos1, vec2 body1Offset, const TileBody<TileData>& body2, glm::i32vec2 tilePos2, vec2 body2Offset, CollisionManifold& manifold) {
-	auto tileObb1 = body1.getTileWorldOBBOffset(tilePos1, body1Offset).getVertices();
-	auto tileObb2 = body2.getTileWorldOBBOffset(tilePos2, body2Offset).getVertices();
+	tileObb1 = body1.getTileWorldOBBOffsetVertices(tilePos1, body1Offset);
+	tileObb2 = body2.getTileWorldOBBOffsetVertices(tilePos2, body2Offset);
 
 	{
 		auto normals1 = body1.normals();

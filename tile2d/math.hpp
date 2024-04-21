@@ -379,7 +379,6 @@ T parallelAxisTheorem(T Icm, T mass, T sqDistance) {
 	return Icm + mass * sqDistance;
 }
 
-// Tile OBB, designed specifically for collision detection
 struct TOBB {
 	Transform transform;
 	vec2 extent;
@@ -388,7 +387,6 @@ struct TOBB {
 		const vec2 wExt = rotate({ extent.x, extent.y }, transform.sincos);
 		const vec2 blExt = rotate({ extent.x, -extent.y }, transform.sincos);
 		const vec2 trExt = -blExt;
-
 
 		return {
 			 transform.pos - wExt,
@@ -449,7 +447,6 @@ using MinMax = std::pair<Float, Float>;
 
 template<class Container>
 MinMax projectBoxOnNormal(const Container& vertices, const vec2& normal) {
-	using float_t_prop = std::numeric_limits<Float>;
 	Float firstDot = glm::dot(vertices[0], normal);
 	MinMax minMax = { firstDot, firstDot };
 

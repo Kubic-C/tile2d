@@ -166,11 +166,11 @@ int main() {
 
 		world.setGravity({ 0.0f, 9.81 });
 
-		size_t testBodyCount = 200;
+		size_t testBodyCount = 400;
 		size_t testBodyWidth = 2;
 		size_t testBodyHeight = 2;
 		float cursorX = -1000.0f;
-		float cursorY = 0.0f;
+		float cursorY = -100.0f;
 		for (int i = 0; i < testBodyCount; i++) {
 			if (cursorX > 4000.0f) {
 				cursorY += t2d::tileHeight * testBodyHeight + 10.0f;
@@ -181,12 +181,15 @@ int main() {
 
 			auto tileMap = t2d::createTileMap<TileData>(tileMapPool, world);
 			t2d::TileProperties<TileData> props;
-			props.isMultiTile = true;
+			/*props.isMultiTile = true;
 			props.isMainTile = true;
 			props.mutliTile.width = testBodyWidth;
-			props.mutliTile.height = testBodyHeight;
+			props.mutliTile.height = testBodyHeight;*/
 			props.userData.renderId = 0;
 			tileMap.first->addTile({ 0, 0 }, props);
+			tileMap.first->addTile({ 0, 1 }, props);
+			tileMap.first->addTile({ 1, 0 }, props);
+			tileMap.first->addTile({ 1, 1 }, props);
 			tileMap.second->setPos({ cursorX, cursorY });
 			//tileMap.second->addLinearVel({ rand() % 10, rand() % 10 });
 			tileMaps.emplace_back(tileMap.first);
@@ -211,7 +214,7 @@ int main() {
 				for (int x = -radius; x <= radius; x++)
 					playerTileMap.first->addTile({ x, y }, props, physicalProps);
 			playerTileMap.first->endBulkInsert();
-			playerTileMap.second->setPos({ 400.0f, -100.0f });
+			playerTileMap.second->setPos({ 400.0f, -200.0f });
 			tileMaps.emplace_back(playerTileMap.first);
 			world.insertIntoTree(playerTileMap.second);
 		}
@@ -319,7 +322,7 @@ int main() {
 						if (tileMap->getTileProperties(tile).isMultiTile && !tileMap->getTileProperties(tile).isMainTile)
 							continue;
 
-						auto vertices = body.getTileWorldOBB(tile).getVertices();
+						auto vertices = body.getTileWorldOBBOffsetVertices(tile, { 0.0f, 0.0f });
 						TileRenderData& renderData = tileRenderData[tileMap->getTileProperties(tile).userData.renderId];
 
 						va.append({ convert(vertices[0]), renderData.color, renderData.textureCoords[0] });

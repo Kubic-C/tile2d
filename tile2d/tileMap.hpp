@@ -250,6 +250,21 @@ public: /* Tiles! */
 		return tileOBB;
 	}
 
+	inline std::array<vec2, 4> getTileWorldOBBOffsetVertices(const glm::i32vec2& iPos, const vec2& worldOffset) const {
+		vec2 extent = m_tileMap.getRealTileDimensions(iPos) * Float(0.5);
+		vec2 worldPos = getTileWorldPoint(iPos) + worldOffset;
+		const vec2 wExt = rotate({ extent.x, extent.y }, m_transform.sincos);
+		const vec2 blExt = rotate({ extent.x, -extent.y }, m_transform.sincos);
+		const vec2 trExt = -blExt;
+
+		return {
+			 worldPos - wExt,
+			{worldPos.x + blExt.x, worldPos.y + blExt.y},
+			 worldPos + wExt,
+			{worldPos.x + trExt.x, worldPos.y + trExt.y}
+		};
+	}
+
 	inline AABB<Float> getTileWorldAABB(const glm::i32vec2& iPos) const {
 		vec2 tileDim = m_tileMap.getRealTileDimensions(iPos);
 
