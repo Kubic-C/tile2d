@@ -63,7 +63,7 @@ class TileBody;
 template<typename TileType>
 class TileMap {
 	friend class TileBody<TileType>;
-	template<class TileType, class TileMapAllocator, class PhysicsWorld>
+	template<class ATileType, class TileMapAllocator, class PhysicsWorld>
 	friend class CreateTileMap;
 
 protected:
@@ -361,7 +361,7 @@ public:
 		return chunk;
 	}
 
-	std::array<vec2, 4> getLocalAABBWorldVertices(const AABB<Float>& localAABB) {
+	std::array<vec2, 4> getLocalAABBWorldVertices(const AABB<Float>& localAABB) const {
 		std::array<vec2, 4> vertices = {};
 		vec2 min = localAABB.min();
 		vec2 max = localAABB.max();
@@ -384,7 +384,10 @@ protected:
 		m_I = 0.0f;
 		for (const auto& pair : m_tileMap.m_physicsTiles) {
 			auto tileDimensions = m_tileMap.getTileDimensions(pair.first);
-			m_I += parallelAxisTheorem(pair.second.getMomentOfInertia<uint16_t>(tileDimensions), pair.second.getMass(tileDimensions), glm::length2(getTileLocalPoint(pair.first) - m_centroid));
+			m_I += parallelAxisTheorem<Float>(
+				pair.second.template getMomentOfInertia<uint16_t>(tileDimensions), 
+				pair.second.template getMass<uint16_t>(tileDimensions), 
+				glm::length2(getTileLocalPoint(pair.first) - m_centroid));
 		}
 		if (m_I != 0.0f && !m_flags[IS_STATIC])
 			m_inverseI = 1.0f / m_I;
@@ -414,7 +417,10 @@ protected:
 				max.y = tilePos.y + (tileDimensions.y - 1);
 			}
 
-			m_I += parallelAxisTheorem(pair.second.getMomentOfInertia<uint16_t>(tileDimensions), pair.second.getMass(tileDimensions), glm::length2(getTileLocalPoint(tilePos) - m_centroid));
+			m_I += parallelAxisTheorem<Float>(
+				pair.second.template getMomentOfInertia<uint16_t>(tileDimensions), 
+				pair.second.template getMass<uint16_t>(tileDimensions), 
+				glm::length2(getTileLocalPoint(tilePos) - m_centroid));
 		}
 
 		if (m_I != 0.0f && !m_flags[IS_STATIC])
@@ -572,7 +578,7 @@ void TileMap<TileType>::removeTile(const glm::i32vec2& pos) noexcept {
 	m_body->removeTile(pos);
 	m_physicsTiles.erase(pos);
 
-	TileProperties& tileProperties = m_tiles.at(pos);
+	TileProperties<TileType>& tileProperties = m_tiles.at(pos);
 	if (tileProperties.isMultiTile) {
 		if (!tileProperties.isMainTile)
 			throw "Attempt to remove multi tile that isn't the main tile\n";
@@ -626,7 +632,7 @@ TileBody<TileType>& TileMap<TileType>::body() {
 template<class TileType, class TileMapAllocator, class PhysicsWorld>
 struct CreateTileMap {
 	std::pair<TileMap<TileType>*, Body*> operator()(TileMapAllocator& tileMapAllocator, PhysicsWorld& physicsWorld) {
-		TileMap<TileType>* tileMap = tileMapAllocator.construct<_CreateTileMap>(_CreateTileMap());
+		TileMap<TileType>* tileMap = tileMapAllocator.template construct<_CreateTileMap>(_CreateTileMap());
 		Body* tileBody = physicsWorld.createTileBody(*tileMap);
 
 		return { tileMap, tileBody };

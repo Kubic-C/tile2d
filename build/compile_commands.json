@@ -1,0 +1,507 @@
+[
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/System/CMakeFiles/sfml-system.dir/Clock.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/System/Clock.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/System/Clock.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/System/CMakeFiles/sfml-system.dir/Err.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/System/Err.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/System/Err.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/System/CMakeFiles/sfml-system.dir/Sleep.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/System/Sleep.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/System/Sleep.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/System/CMakeFiles/sfml-system.dir/String.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/System/String.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/System/String.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/System/CMakeFiles/sfml-system.dir/Utils.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/System/Utils.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/System/Utils.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/System/CMakeFiles/sfml-system.dir/Vector2.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/System/Vector2.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/System/Vector2.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/System/CMakeFiles/sfml-system.dir/Vector3.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/System/Vector3.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/System/Vector3.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/System/CMakeFiles/sfml-system.dir/FileInputStream.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/System/FileInputStream.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/System/FileInputStream.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/System/CMakeFiles/sfml-system.dir/MemoryInputStream.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/System/MemoryInputStream.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/System/MemoryInputStream.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/System/CMakeFiles/sfml-system.dir/Unix/SleepImpl.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/System/Unix/SleepImpl.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/System/Unix/SleepImpl.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/glad/include -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/vulkan -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Window/CMakeFiles/sfml-window.dir/Clipboard.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Window/Clipboard.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Window/Clipboard.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/glad/include -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/vulkan -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Window/CMakeFiles/sfml-window.dir/Context.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Window/Context.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Window/Context.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/glad/include -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/vulkan -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Window/CMakeFiles/sfml-window.dir/Cursor.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Window/Cursor.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Window/Cursor.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/glad/include -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/vulkan -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Window/CMakeFiles/sfml-window.dir/GlContext.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Window/GlContext.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Window/GlContext.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/glad/include -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/vulkan -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Window/CMakeFiles/sfml-window.dir/GlResource.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Window/GlResource.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Window/GlResource.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/glad/include -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/vulkan -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Window/CMakeFiles/sfml-window.dir/Joystick.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Window/Joystick.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Window/Joystick.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/glad/include -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/vulkan -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Window/CMakeFiles/sfml-window.dir/JoystickManager.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Window/JoystickManager.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Window/JoystickManager.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/glad/include -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/vulkan -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Window/CMakeFiles/sfml-window.dir/Keyboard.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Window/Keyboard.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Window/Keyboard.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/glad/include -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/vulkan -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Window/CMakeFiles/sfml-window.dir/Mouse.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Window/Mouse.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Window/Mouse.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/glad/include -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/vulkan -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Window/CMakeFiles/sfml-window.dir/Touch.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Window/Touch.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Window/Touch.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/glad/include -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/vulkan -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Window/CMakeFiles/sfml-window.dir/Sensor.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Window/Sensor.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Window/Sensor.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/glad/include -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/vulkan -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Window/CMakeFiles/sfml-window.dir/SensorManager.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Window/SensorManager.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Window/SensorManager.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/glad/include -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/vulkan -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Window/CMakeFiles/sfml-window.dir/VideoMode.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Window/VideoMode.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Window/VideoMode.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/glad/include -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/vulkan -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Window/CMakeFiles/sfml-window.dir/Vulkan.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Window/Vulkan.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Window/Vulkan.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/glad/include -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/vulkan -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Window/CMakeFiles/sfml-window.dir/Window.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Window/Window.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Window/Window.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/glad/include -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/vulkan -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Window/CMakeFiles/sfml-window.dir/WindowBase.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Window/WindowBase.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Window/WindowBase.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/glad/include -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/vulkan -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Window/CMakeFiles/sfml-window.dir/WindowImpl.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Window/WindowImpl.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Window/WindowImpl.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/glad/include -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/vulkan -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Window/CMakeFiles/sfml-window.dir/Unix/CursorImpl.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Window/Unix/CursorImpl.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Window/Unix/CursorImpl.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/glad/include -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/vulkan -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Window/CMakeFiles/sfml-window.dir/Unix/ClipboardImpl.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Window/Unix/ClipboardImpl.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Window/Unix/ClipboardImpl.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/glad/include -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/vulkan -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Window/CMakeFiles/sfml-window.dir/Unix/InputImpl.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Window/Unix/InputImpl.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Window/Unix/InputImpl.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/glad/include -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/vulkan -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Window/CMakeFiles/sfml-window.dir/Unix/KeyboardImpl.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Window/Unix/KeyboardImpl.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Window/Unix/KeyboardImpl.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/glad/include -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/vulkan -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Window/CMakeFiles/sfml-window.dir/Unix/KeySymToKeyMapping.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Window/Unix/KeySymToKeyMapping.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Window/Unix/KeySymToKeyMapping.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/glad/include -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/vulkan -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Window/CMakeFiles/sfml-window.dir/Unix/KeySymToUnicodeMapping.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Window/Unix/KeySymToUnicodeMapping.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Window/Unix/KeySymToUnicodeMapping.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/glad/include -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/vulkan -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Window/CMakeFiles/sfml-window.dir/Unix/SensorImpl.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Window/Unix/SensorImpl.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Window/Unix/SensorImpl.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/glad/include -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/vulkan -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Window/CMakeFiles/sfml-window.dir/Unix/Display.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Window/Unix/Display.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Window/Unix/Display.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/glad/include -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/vulkan -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Window/CMakeFiles/sfml-window.dir/Unix/VideoModeImpl.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Window/Unix/VideoModeImpl.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Window/Unix/VideoModeImpl.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/glad/include -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/vulkan -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Window/CMakeFiles/sfml-window.dir/Unix/VulkanImplX11.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Window/Unix/VulkanImplX11.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Window/Unix/VulkanImplX11.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/glad/include -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/vulkan -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Window/CMakeFiles/sfml-window.dir/Unix/WindowImplX11.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Window/Unix/WindowImplX11.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Window/Unix/WindowImplX11.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/glad/include -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/vulkan -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Window/CMakeFiles/sfml-window.dir/Unix/GlxContext.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Window/Unix/GlxContext.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Window/Unix/GlxContext.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/glad/include -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/vulkan -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Window/CMakeFiles/sfml-window.dir/Unix/JoystickImpl.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Window/Unix/JoystickImpl.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Window/Unix/JoystickImpl.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Network/CMakeFiles/sfml-network.dir/Ftp.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Network/Ftp.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Network/Ftp.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Network/CMakeFiles/sfml-network.dir/Http.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Network/Http.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Network/Http.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Network/CMakeFiles/sfml-network.dir/IpAddress.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Network/IpAddress.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Network/IpAddress.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Network/CMakeFiles/sfml-network.dir/Packet.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Network/Packet.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Network/Packet.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Network/CMakeFiles/sfml-network.dir/Socket.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Network/Socket.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Network/Socket.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Network/CMakeFiles/sfml-network.dir/SocketSelector.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Network/SocketSelector.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Network/SocketSelector.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Network/CMakeFiles/sfml-network.dir/TcpListener.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Network/TcpListener.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Network/TcpListener.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Network/CMakeFiles/sfml-network.dir/TcpSocket.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Network/TcpSocket.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Network/TcpSocket.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Network/CMakeFiles/sfml-network.dir/UdpSocket.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Network/UdpSocket.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Network/UdpSocket.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Network/CMakeFiles/sfml-network.dir/Unix/SocketImpl.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Network/Unix/SocketImpl.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Network/Unix/SocketImpl.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -DSTBI_FAILURE_USERMSG -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/stb_image -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/glad/include -isystem /usr/include/freetype2 -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/BlendMode.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Graphics/BlendMode.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Graphics/BlendMode.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -DSTBI_FAILURE_USERMSG -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/stb_image -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/glad/include -isystem /usr/include/freetype2 -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Font.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Graphics/Font.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Graphics/Font.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -DSTBI_FAILURE_USERMSG -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/stb_image -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/glad/include -isystem /usr/include/freetype2 -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Glsl.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Graphics/Glsl.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Graphics/Glsl.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -DSTBI_FAILURE_USERMSG -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/stb_image -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/glad/include -isystem /usr/include/freetype2 -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/GLCheck.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Graphics/GLCheck.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Graphics/GLCheck.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -DSTBI_FAILURE_USERMSG -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/stb_image -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/glad/include -isystem /usr/include/freetype2 -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/GLExtensions.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Graphics/GLExtensions.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Graphics/GLExtensions.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -DSTBI_FAILURE_USERMSG -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/stb_image -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/glad/include -isystem /usr/include/freetype2 -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -fno-strict-aliasing -o deps/SFML/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Image.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Graphics/Image.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Graphics/Image.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -DSTBI_FAILURE_USERMSG -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/stb_image -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/glad/include -isystem /usr/include/freetype2 -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderStates.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Graphics/RenderStates.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Graphics/RenderStates.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -DSTBI_FAILURE_USERMSG -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/stb_image -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/glad/include -isystem /usr/include/freetype2 -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderTexture.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Graphics/RenderTexture.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Graphics/RenderTexture.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -DSTBI_FAILURE_USERMSG -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/stb_image -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/glad/include -isystem /usr/include/freetype2 -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderTarget.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Graphics/RenderTarget.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Graphics/RenderTarget.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -DSTBI_FAILURE_USERMSG -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/stb_image -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/glad/include -isystem /usr/include/freetype2 -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderWindow.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Graphics/RenderWindow.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Graphics/RenderWindow.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -DSTBI_FAILURE_USERMSG -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/stb_image -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/glad/include -isystem /usr/include/freetype2 -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Shader.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Graphics/Shader.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Graphics/Shader.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -DSTBI_FAILURE_USERMSG -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/stb_image -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/glad/include -isystem /usr/include/freetype2 -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/StencilMode.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Graphics/StencilMode.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Graphics/StencilMode.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -DSTBI_FAILURE_USERMSG -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/stb_image -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/glad/include -isystem /usr/include/freetype2 -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Texture.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Graphics/Texture.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Graphics/Texture.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -DSTBI_FAILURE_USERMSG -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/stb_image -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/glad/include -isystem /usr/include/freetype2 -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/TextureSaver.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Graphics/TextureSaver.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Graphics/TextureSaver.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -DSTBI_FAILURE_USERMSG -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/stb_image -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/glad/include -isystem /usr/include/freetype2 -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Transform.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Graphics/Transform.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Graphics/Transform.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -DSTBI_FAILURE_USERMSG -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/stb_image -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/glad/include -isystem /usr/include/freetype2 -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Transformable.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Graphics/Transformable.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Graphics/Transformable.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -DSTBI_FAILURE_USERMSG -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/stb_image -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/glad/include -isystem /usr/include/freetype2 -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/View.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Graphics/View.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Graphics/View.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -DSTBI_FAILURE_USERMSG -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/stb_image -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/glad/include -isystem /usr/include/freetype2 -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Shape.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Graphics/Shape.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Graphics/Shape.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -DSTBI_FAILURE_USERMSG -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/stb_image -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/glad/include -isystem /usr/include/freetype2 -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/CircleShape.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Graphics/CircleShape.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Graphics/CircleShape.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -DSTBI_FAILURE_USERMSG -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/stb_image -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/glad/include -isystem /usr/include/freetype2 -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RectangleShape.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Graphics/RectangleShape.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Graphics/RectangleShape.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -DSTBI_FAILURE_USERMSG -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/stb_image -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/glad/include -isystem /usr/include/freetype2 -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/ConvexShape.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Graphics/ConvexShape.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Graphics/ConvexShape.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -DSTBI_FAILURE_USERMSG -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/stb_image -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/glad/include -isystem /usr/include/freetype2 -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Sprite.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Graphics/Sprite.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Graphics/Sprite.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -DSTBI_FAILURE_USERMSG -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/stb_image -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/glad/include -isystem /usr/include/freetype2 -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Text.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Graphics/Text.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Graphics/Text.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -DSTBI_FAILURE_USERMSG -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/stb_image -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/glad/include -isystem /usr/include/freetype2 -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/VertexArray.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Graphics/VertexArray.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Graphics/VertexArray.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -DSTBI_FAILURE_USERMSG -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/stb_image -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/glad/include -isystem /usr/include/freetype2 -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/VertexBuffer.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Graphics/VertexBuffer.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Graphics/VertexBuffer.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -DSTBI_FAILURE_USERMSG -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/stb_image -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/glad/include -isystem /usr/include/freetype2 -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderTextureImplFBO.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Graphics/RenderTextureImplFBO.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Graphics/RenderTextureImplFBO.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -DSTBI_FAILURE_USERMSG -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/stb_image -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/glad/include -isystem /usr/include/freetype2 -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderTextureImplDefault.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Graphics/RenderTextureImplDefault.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Graphics/RenderTextureImplDefault.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DFLAC__NO_DLL -DOV_EXCLUDE_STATIC_CALLBACKS -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/minimp3 -isystem /usr/include/AL -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Audio/CMakeFiles/sfml-audio.dir/ALCheck.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Audio/ALCheck.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Audio/ALCheck.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DFLAC__NO_DLL -DOV_EXCLUDE_STATIC_CALLBACKS -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/minimp3 -isystem /usr/include/AL -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Audio/CMakeFiles/sfml-audio.dir/AlResource.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Audio/AlResource.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Audio/AlResource.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DFLAC__NO_DLL -DOV_EXCLUDE_STATIC_CALLBACKS -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/minimp3 -isystem /usr/include/AL -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Audio/CMakeFiles/sfml-audio.dir/AudioDevice.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Audio/AudioDevice.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Audio/AudioDevice.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DFLAC__NO_DLL -DOV_EXCLUDE_STATIC_CALLBACKS -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/minimp3 -isystem /usr/include/AL -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Audio/CMakeFiles/sfml-audio.dir/Listener.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Audio/Listener.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Audio/Listener.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DFLAC__NO_DLL -DOV_EXCLUDE_STATIC_CALLBACKS -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/minimp3 -isystem /usr/include/AL -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Audio/CMakeFiles/sfml-audio.dir/Music.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Audio/Music.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Audio/Music.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DFLAC__NO_DLL -DOV_EXCLUDE_STATIC_CALLBACKS -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/minimp3 -isystem /usr/include/AL -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Audio/CMakeFiles/sfml-audio.dir/Sound.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Audio/Sound.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Audio/Sound.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DFLAC__NO_DLL -DOV_EXCLUDE_STATIC_CALLBACKS -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/minimp3 -isystem /usr/include/AL -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Audio/CMakeFiles/sfml-audio.dir/SoundBuffer.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Audio/SoundBuffer.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Audio/SoundBuffer.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DFLAC__NO_DLL -DOV_EXCLUDE_STATIC_CALLBACKS -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/minimp3 -isystem /usr/include/AL -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Audio/CMakeFiles/sfml-audio.dir/SoundBufferRecorder.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Audio/SoundBufferRecorder.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Audio/SoundBufferRecorder.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DFLAC__NO_DLL -DOV_EXCLUDE_STATIC_CALLBACKS -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/minimp3 -isystem /usr/include/AL -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Audio/CMakeFiles/sfml-audio.dir/InputSoundFile.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Audio/InputSoundFile.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Audio/InputSoundFile.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DFLAC__NO_DLL -DOV_EXCLUDE_STATIC_CALLBACKS -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/minimp3 -isystem /usr/include/AL -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Audio/CMakeFiles/sfml-audio.dir/OutputSoundFile.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Audio/OutputSoundFile.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Audio/OutputSoundFile.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DFLAC__NO_DLL -DOV_EXCLUDE_STATIC_CALLBACKS -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/minimp3 -isystem /usr/include/AL -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Audio/CMakeFiles/sfml-audio.dir/SoundRecorder.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Audio/SoundRecorder.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Audio/SoundRecorder.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DFLAC__NO_DLL -DOV_EXCLUDE_STATIC_CALLBACKS -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/minimp3 -isystem /usr/include/AL -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Audio/CMakeFiles/sfml-audio.dir/SoundSource.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Audio/SoundSource.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Audio/SoundSource.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DFLAC__NO_DLL -DOV_EXCLUDE_STATIC_CALLBACKS -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/minimp3 -isystem /usr/include/AL -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Audio/CMakeFiles/sfml-audio.dir/SoundStream.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Audio/SoundStream.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Audio/SoundStream.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DFLAC__NO_DLL -DOV_EXCLUDE_STATIC_CALLBACKS -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/minimp3 -isystem /usr/include/AL -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Audio/CMakeFiles/sfml-audio.dir/SoundFileFactory.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Audio/SoundFileFactory.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Audio/SoundFileFactory.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DFLAC__NO_DLL -DOV_EXCLUDE_STATIC_CALLBACKS -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/minimp3 -isystem /usr/include/AL -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Audio/CMakeFiles/sfml-audio.dir/SoundFileReaderFlac.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Audio/SoundFileReaderFlac.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Audio/SoundFileReaderFlac.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DFLAC__NO_DLL -DOV_EXCLUDE_STATIC_CALLBACKS -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/minimp3 -isystem /usr/include/AL -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Audio/CMakeFiles/sfml-audio.dir/SoundFileReaderMp3.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Audio/SoundFileReaderMp3.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Audio/SoundFileReaderMp3.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DFLAC__NO_DLL -DOV_EXCLUDE_STATIC_CALLBACKS -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/minimp3 -isystem /usr/include/AL -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Audio/CMakeFiles/sfml-audio.dir/SoundFileReaderOgg.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Audio/SoundFileReaderOgg.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Audio/SoundFileReaderOgg.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DFLAC__NO_DLL -DOV_EXCLUDE_STATIC_CALLBACKS -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/minimp3 -isystem /usr/include/AL -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Audio/CMakeFiles/sfml-audio.dir/SoundFileReaderWav.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Audio/SoundFileReaderWav.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Audio/SoundFileReaderWav.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DFLAC__NO_DLL -DOV_EXCLUDE_STATIC_CALLBACKS -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/minimp3 -isystem /usr/include/AL -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Audio/CMakeFiles/sfml-audio.dir/SoundFileWriterFlac.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Audio/SoundFileWriterFlac.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Audio/SoundFileWriterFlac.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DFLAC__NO_DLL -DOV_EXCLUDE_STATIC_CALLBACKS -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/minimp3 -isystem /usr/include/AL -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Audio/CMakeFiles/sfml-audio.dir/SoundFileWriterOgg.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Audio/SoundFileWriterOgg.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Audio/SoundFileWriterOgg.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DFLAC__NO_DLL -DOV_EXCLUDE_STATIC_CALLBACKS -DSFML_STATIC -I/home/sawyer/dev/tile2d/deps/SFML/include -I/home/sawyer/dev/tile2d/deps/SFML/src -isystem /home/sawyer/dev/tile2d/deps/SFML/extlibs/headers/minimp3 -isystem /usr/include/AL -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wimplicit-fallthrough -Wsuggest-override -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o deps/SFML/src/SFML/Audio/CMakeFiles/sfml-audio.dir/SoundFileWriterWav.cpp.o -c /home/sawyer/dev/tile2d/deps/SFML/src/SFML/Audio/SoundFileWriterWav.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/SFML/src/SFML/Audio/SoundFileWriterWav.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -I/home/sawyer/dev/tile2d/deps/glm -o deps/glm/glm/CMakeFiles/glm.dir/detail/glm.cpp.o -c /home/sawyer/dev/tile2d/deps/glm/glm/detail/glm.cpp",
+  "file": "/home/sawyer/dev/tile2d/deps/glm/glm/detail/glm.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -I/home/sawyer/dev/tile2d/tile2d/.. -I/home/sawyer/dev/tile2d/deps/glm -isystem /home/sawyer/Downloads/boost_1_85_0 -o tile2d/CMakeFiles/tile2d.dir/base.cpp.o -c /home/sawyer/dev/tile2d/tile2d/base.cpp",
+  "file": "/home/sawyer/dev/tile2d/tile2d/base.cpp"
+},
+{
+  "directory": "/home/sawyer/dev/tile2d/build",
+  "command": "/usr/bin/g++ -DSFML_STATIC -I/home/sawyer/dev/tile2d/tile2d/.. -I/home/sawyer/dev/tile2d/deps/glm -I/home/sawyer/dev/tile2d/deps/SFML/include -isystem /home/sawyer/Downloads/boost_1_85_0 -o src/CMakeFiles/testField.dir/main.cpp.o -c /home/sawyer/dev/tile2d/src/main.cpp",
+  "file": "/home/sawyer/dev/tile2d/src/main.cpp"
+}
+]

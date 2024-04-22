@@ -89,6 +89,8 @@ private:
 
 class Body : public WorldBody {
 	friend class ResolveMethods;
+	template<class TileData>
+	friend class World;
 
 public:
 	Body(uint32_t id, BodyType type)

@@ -224,7 +224,7 @@ public:
 		uint32_t newId = m_bodies.insert();
 
 		BodyElement& bodyElement = m_bodies[newId];
-		bodyElement.body = m_tileBodyPool.construct<TileMapT&, uint32_t>(tileMap, newId);
+		bodyElement.body = m_tileBodyPool.template construct<TileMapT&, uint32_t>(tileMap, newId);
 		if (!bodyElement.body)
 			return nullptr;
 
@@ -243,10 +243,10 @@ public:
 		m_grid.erase(bodyElement->element);
 	}
 
-	void destroyBody(Body* body) {
-		switch (body->m_type) {
+	void destroyBody(WorldBody* body) {
+		switch (body->m_bodyType) {
 		case BodyType::Tile: {
-			m_tileBodyPool.destroy(dynamic_cast<TileBody*>(body));
+			m_tileBodyPool.destroy(dynamic_cast<TileBody<TileData>*>(body));
 		} break;
 
 		default:
@@ -347,7 +347,7 @@ public:
 		Cache& cache = m_threadCache.find(boost::this_thread::get_id())->second;
 		cache.shouldMove.clear();
 
-		BodyList::Iterator i = m_bodyList.begin();
+		typename BodyList::Iterator i = m_bodyList.begin();
 		for (size_t index = 0; index < end; index++, ++i) {
 			if (index < start)
 				continue;
@@ -376,7 +376,7 @@ public:
 		Cache& cache = m_threadCache.find(boost::this_thread::get_id())->second;
 		cache.couldCollide.clear();
 
-		BodyList::Iterator i = m_bodyList.begin();
+		typename BodyList::Iterator i = m_bodyList.begin();
 		for (size_t index = 0; index < end; index++, ++i) {
 			if (index < start)
 				continue;

@@ -211,7 +211,7 @@ public:
 	}
 
 	// Erases an element. After calling this, the idx will no longer be valid
-	inline bool erase(uint16_t idx) {
+	inline void erase(uint16_t idx) {
 		GridElement& element = m_elementList.get(idx);
 		const ivec2& min = getCellCoords(element.aabb.min());
 		const ivec2& max = getCellCoords(element.aabb.max());

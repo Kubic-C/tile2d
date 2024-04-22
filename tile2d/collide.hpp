@@ -320,38 +320,6 @@ void detectTileBodyCollision(
 #endif
 }
 
-template<class TileData>
-void detectAndResolveTileBodyCollisionON2(TileBody<TileData>& body1, TileBody<TileData>& body2, TileBodyCache<TileData>& cache) {
-#ifndef NDEBUG
-	debug::CollideInfo collideInfo;
-#endif
-
-	for (auto tile1 : body1.tileMap()) {
-		if (body1.tileMap().getTileProperties(tile1).isMultiTile && !body1.tileMap().getTileProperties(tile1).isMainTile)
-			continue;
-
-		for (auto tile2 : body2.tileMap()) {
-			if (body2.tileMap().getTileProperties(tile2).isMultiTile && !body2.tileMap().getTileProperties(tile2).isMainTile)
-				continue;
-
-			CollisionManifold manifold;
-
-			if (detectNarrowCollision(body1, tile1, body2, tile2, manifold)) {
-				ResolveMethods::impulseMethod(body1, body2, manifold);
-
-#ifndef NDEBUG
-				collideInfo.manifolds.emplace_back(manifold);
-#endif
-
-			}
-		}
-	}
-
-#ifndef NDEBUG
-	debug::collideInfos.emplace_back(std::move(collideInfo));
-#endif
-}
-
 struct ResolveMethods {
 	struct Impulse {
 		vec2 r1 = {Float(0.0), Float(0.0)};

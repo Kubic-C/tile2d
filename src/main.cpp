@@ -5,7 +5,6 @@
 #include <functional>
 #include <chrono>
 #include "tile2d/world.hpp"
-#include <Windows.h>
 
 using namespace std::chrono;
 
