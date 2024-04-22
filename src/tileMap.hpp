@@ -2,8 +2,21 @@
 
 #include "body.hpp"
 
+/**
+ * @file tileMap.hpp
+ *
+ * @brief Defines TileMap<> and TileBody<>
+ */
+
 T2D_NAMESPACE_BEGIN
 
+/**
+ * @class TileProperties
+ * 
+ * @brief Contains the data of a tile or multi tile
+ * 
+ * @tparam T the user data type of the tile
+ */
 template<typename T>
 struct TileProperties {
 
@@ -24,8 +37,17 @@ struct TileProperties {
 	T userData;
 };
 
+/**
+ * @class PhysicsTileProperties
+ *
+ * @brief Contains the physical properties of a tile, such as elasticity
+ */
 struct PhysicsTileProperties {
-	// returns moment of inertia as a scalar
+	/**
+	 * @brief Returns the rotational inertia of this tile
+	 *
+	 * @param tileDimensions The tileDimensions from which the area of this tile will be calculated
+	 */
 	template<typename Integer>
 	Float getMomentOfInertia(const glm::vec<2, Integer>& tileDimensions) const {
 		// MOI scalar of a rectangle
@@ -36,7 +58,11 @@ struct PhysicsTileProperties {
 		return one_twelfth * getMass(tileDimensions) * (sqaure(tileWidth * tileDimensions.x) + sqaure(tileHeight * tileDimensions.y));
 	}
 
-	// returns the mass of this tile
+	/**
+	 * @brief Returns the mass of this tile with using the area calculated from @p tileDimensions
+	 * 
+	 * @param tileDimensions The tileDimensions from which the area of this tile will be calculated
+	 */
 	template<typename Integer>
 	Float getMass(const glm::vec<2, Integer>& tileDimensions) const {
 		// area = width * height
@@ -51,9 +77,11 @@ struct PhysicsTileProperties {
 	uint8_t restitution = 0;// [0 - 255] -> [0.0 = 1.0]
 };
 
+/* Forward Declaration */
 template<typename TileType>
 class TileBody;
 
+/* Used for construction of a TileMap */
 struct _CreateTileMap {};
 
 template<typename TileType>
@@ -63,25 +91,85 @@ class TileMap {
 	friend class CreateTileMap;
 
 public:
+	/**
+	 * @brief Do not call directly, to construct a tileMap use createTileMap()
+	 */
 	TileMap(_CreateTileMap) {};
+
 	virtual ~TileMap() {}
 
+	/**
+	 * @brief Returns the physical properties of a tile located at @p tilePos
+	 *
+	 * @param tilePos The position of some tile to get the physical properties of 
+	 * 
+	 * @return The physical properties of a tile located at @p tilePos
+	 */
 	inline const PhysicsTileProperties& getPhysicsTileProperties(const glm::i32vec2& tilePos) const {
 		return m_physicsTiles.find(tilePos)->second;
 	}
 
+	/**
+	 * @brief Returns the properties of a tile located at @p tilePos
+	 *
+	 * @param tilePos The position of some tile to get the properties of
+	 *
+	 * @return The reference properties of a tile located at @p tilePos
+	 */
 	inline TileProperties<TileType>& getTileProperties(const glm::i32vec2& tilePos) {
 		return m_tiles.find(tilePos)->second;
 	}
 
+	/**
+	 * @brief Used to speed up the insert of a large amount of tiles. To use for speed up, call before inserting a large amount of tiles. Once the wanted amount of tiles has been inserted, endBulkInsert() MUST be called
+	 */
 	void beginBulkInsert();
+
+	/**
+	 * @brief Used to speed up the insert of a large amount of tiles. To use for speed up, call after inserting a large amount of tiles. Before the wanted amount of tiles has been inserted, beginBulkInsert() MUST be called
+	 */
 	void endBulkInsert();
+
+	/**
+	 * @brief Used to speed up the erasure of a large amount of tiles. To use for speed up, call before erasing a large amount of tiles. After the wanted amount of tiles has been inserted, endBulkErase() MUST be called
+	 */
 	void beginBulkErase();
+
+	/**
+	 * @brief Used to speed up the erasure of a large amount of tiles. To use for speed up, call after erasing a large amount of tiles. Before the wanted amount of tiles has been inserted, beginBulkErase() MUST be called
+	 */
 	void endBulkErase();
 
+	/**
+	 * @brief Adds a tile at @p pos with the properties of @p props and the physics properties set to @p physicsProperties.
+	 * If a tile already exists in that position, no change will be made.
+	 * 
+	 * @param pos The position of the tile to add
+	 * @pararm props The tile properties of the tile
+	 * @param physicsProperties The physicsProperties of the tile. 
+	 * 
+	 * @return True if the tile could be added.
+	 */
 	bool addTile(const glm::i32vec2& pos, const TileProperties<TileType>& props, const PhysicsTileProperties& physicsProperties = {});
-	void removeTile(const glm::i32vec2& pos) noexcept;
 
+	/**
+	 * @brief Removes a tile at @p pos.
+	 *
+	 * @param pos The position of the tile to remove
+	 *
+	 * @return True if the tile could be removed.
+	 */
+	bool removeTile(const glm::i32vec2& pos) noexcept;
+
+	/**
+	 * @brief Returns the tile dimensions of the tile located at @p pos
+	 *
+	 * @details The tile must exist before calling this function
+	 * 
+	 * @param pos The position of the tile to get the dimensions of
+	 *
+	 * @return The tile dimensions
+	 */
 	inline glm::u16vec2 getTileDimensions(const glm::i32vec2& pos) const {
 		auto& props = m_tiles.find(pos)->second;
 
@@ -93,17 +181,41 @@ public:
 		return { 1, 1 };
 	}
 
+	/**
+	 * @brief Returns the REAL tile dimensions, meaning world dimensions, of the tile located at @p pos
+	 *
+	 * @details The tile must exist before calling this function
+	 *
+	 * @param pos The position of the tile to get the dimensions of
+	 *
+	 * @return The real tile dimensions
+	 */
 	inline vec2 getRealTileDimensions(const glm::i32vec2& pos) const {
 		return (vec2)getTileDimensions(pos) * tileSize;
 	}
 
+	/**
+	 * @brief Returns the amount of tiles, including the sub-tiles of multi-tiles.
+	 *
+	 * @return The amount of tiles
+	 */
 	size_t count() const {
 		return m_tiles.size();
 	}
 
+	/**
+	 * @brief Returns the rigid body attached to this tile map
+	 *
+	 * @return The rigid body attached to this tile map
+	 */
 	TileBody<TileType>& body();
 
 public:
+	/**
+	 * @class Iterator 
+	 * 
+	 * @brief Allows iteration of tiles with for loops/
+	 */
 	struct Iterator {
 		using ContainerIterator = typename FlatMap<glm::i32vec2, TileProperties<TileType>>::iterator;
 	private:
@@ -135,6 +247,9 @@ public:
 	Iterator end() { return Iterator(m_tiles.end()); }
 
 protected:
+	/**
+	 * SHOULD only be called while the tile map is being created.
+	 */
 	void setTileBody(TileBody<TileType>* body) {
 		m_body = body;
 	}
@@ -147,10 +262,20 @@ private:
 	TileBody<TileType>* m_body;
 };
 
+/**
+ * @class TileBody
+ * 
+ * @brief For use with a TileMap<>, allows collisions with other rigid bodies inside World<>
+ */
 template<typename TileType>
 class TileBody : public Body {
 	friend class TileMap<TileType>;
 public:
+	/**
+	 * @class SpatialIndex
+	 * 
+	 * @brief A spatial index where pos may point towards a chunk or tile
+	 */
 	struct SpatialIndex {
 		SpatialIndex() = default;
 		SpatialIndex(const glm::i32vec2& pos)
@@ -171,6 +296,9 @@ public:
 	};
 
 public:
+	/**
+	 * @brief Do not call directly, to construct a TileBody use createTileMap()
+	 */
 	TileBody(TileMap<TileType>& tileMap, uint32_t id)
 		: Body(id, BodyType::Tile), m_tileMap(tileMap) {
 		clear();
@@ -178,18 +306,28 @@ public:
 		tileMap.setTileBody(this);
 	}
 
-	inline TileMap<TileType>& tileMap() const {
-		return m_tileMap;
-	}
-
 	inline virtual void integrate(Float dt) override {
 		Body::integrate(dt);
 	}
 
 	inline virtual AABB<Float> getAABB() const override {
-		return getAABB(Transform());
+		return getAABB(getLocalAABB(), Transform());
 	}
 
+	/**
+	 * @brief Returns the tile map attached to this rigid body
+	 *
+	 * @return The tile map attached to this rigid body
+	 */
+	inline TileMap<TileType>& tileMap() const {
+		return m_tileMap;
+	}
+
+	/**
+	 * @brief Returns the normals of this body. Can be used for all tiles of this body
+	 *
+	 * @return The normals of this body
+	 */
 	inline std::array<vec2, 2> normals() const {
 		const SinCos& sincos = m_transform.sincos;
 
@@ -197,41 +335,48 @@ public:
 		return { vec2(sincos.cos, sincos.sin), vec2(-sincos.sin, sincos.cos) };
 	}
 
-	// get the local AABB of this object
-	inline AABB<Float> getLocalAABB() const {
-		const vec2 halfDim = {
-			(Float)corners.width() * tileWidth * Float(0.5f) + tileWidth * Float(0.5f),
-			(Float)corners.height() * tileHeight * Float(0.5f) + tileHeight * Float(0.5f)
-		};
-		return AABB(halfDim) + getTileLocalPointNoDim(corners.min()) + halfDim;
-	}
-
-	// get the local AABB (of the entire object) in the localSpace of spaceTransform
-	inline AABB<Float> getAABB(const Transform& spaceTransform, const vec2& localOffset = { Float(0.5f), Float(0.5f) }) const {
-		return getAABB(getLocalAABB(), spaceTransform, localOffset);
-	}
-
-	// get the some local AABB in the localSpace of spaceTransform
-	inline AABB<Float> getAABB(const AABB<Float>& localAABB, const Transform& spaceTransform, const vec2& localOffset = { Float(0.5f), Float(0.5f) }) const {
-		vec2 relPos = spaceTransform.getLocalPoint(getWorldPoint(localAABB.midpoint()), localOffset);
-		return AABB(relPos, localAABB.width() * 0.5f, localAABB.height() * 0.5f).rotate(spaceTransform.sincos - m_transform.sincos);
-	}
-
 public: /* Tiles! */
-	// get the local position of a tile
+	/**
+	 * @brief Returns the local center of the tile located at @p iPos.
+ 	 *
+	 * @param iPos The tile position of the tile to get the local center of
+	 *
+	 * @return The local center of the tile located at @p iPos.
+	 */
 	inline vec2 getTileLocalPoint(const glm::i32vec2& iPos) const {
 		return (vec2)iPos * vec2(tileWidth, tileHeight) + m_tileMap.getRealTileDimensions(iPos) * Float(0.5f);
 	}
 
-	// get the world position of a tile
+	/**
+	 * @brief Returns the world center of the tile located at @p iPos.
+	 *
+	 * @param iPos The tile position of the tile to get the world center of
+	 *
+	 * @return The world center of the tile located at @p iPos.
+	 */
 	inline vec2 getTileWorldPoint(const glm::i32vec2& iPos) const {
 		return getWorldPoint(getTileLocalPoint(iPos));
 	}
 
+	/**
+	 * @brief Returns the world oriented bounding box of the tile located at @p iPos.
+	 *
+	 * @param iPos The tile position of the tile to get the world oriented bounding box of
+	 *
+	 * @return The world oriented bounding box of the tile located at @p iPos.
+	 */
 	inline TOBB getTileWorldOBB(const glm::i32vec2& iPos) const {
 		return getTileWorldOBBOffset(iPos, vec2(0.0f));
 	}
 
+	/**
+	 * @brief Returns the world oriented bounding box of the tile located at @p iPos. with an added offset
+	 *
+	 * @param iPos The tile position of the tile to get the world oriented bounding box of
+	 * @param worldOffset The world offset to add to the position of TOBB
+	 * 
+	 * @return The world oriented bounding box of the tile located at @p iPos.
+	 */
 	inline TOBB getTileWorldOBBOffset(const glm::i32vec2& iPos, const vec2& worldOffset) const {
 		TOBB tileOBB;
 
@@ -243,6 +388,14 @@ public: /* Tiles! */
 		return tileOBB;
 	}
 
+	/**
+	 * @brief Returns the world vertices of the tile located at @p iPos. with an added offset
+	 *
+	 * @param iPos The tile position of the tile to get the world vertices of
+	 * @param worldOffset The world offset to add to the position of the world vertices
+	 *
+	 * @return The world vertices of the tile located at @p iPos.
+	 */
 	inline std::array<vec2, 4> getTileWorldOBBOffsetVertices(const glm::i32vec2& iPos, const vec2& worldOffset) const {
 		vec2 extent = m_tileMap.getRealTileDimensions(iPos) * Float(0.5);
 		vec2 worldPos = getTileWorldPoint(iPos) + worldOffset;
@@ -258,27 +411,26 @@ public: /* Tiles! */
 		};
 	}
 
-	inline void getTileWorldOBBOffsetVertices(const glm::i32vec2& iPos, const vec2& worldOffset, std::array<vec2, 4>& vertices) const {
-		vec2 extent = m_tileMap.getRealTileDimensions(iPos) * Float(0.5);
-		vec2 worldPos = getTileWorldPoint(iPos) + worldOffset;
-		const vec2 wExt = rotate({ extent.x, extent.y }, m_transform.sincos);
-		const vec2 blExt = rotate({ extent.x, -extent.y }, m_transform.sincos);
-		const vec2 trExt = -blExt;
-
-		vertices = {
-			 worldPos - wExt,
-			{worldPos.x + blExt.x, worldPos.y + blExt.y},
-			 worldPos + wExt,
-			{worldPos.x + trExt.x, worldPos.y + trExt.y}
-		};
-	}
-
+	/**
+	 * @brief Returns the world AABB of a tile located at @p iPos
+	 *
+	 * @param iPos The tile position of the tile to get the world AABB of
+	 *
+	 * @return The world AABB of a tile located at @p iPos
+	 */
 	inline AABB<Float> getTileWorldAABB(const glm::i32vec2& iPos) const {
 		vec2 tileDim = m_tileMap.getRealTileDimensions(iPos);
 
 		return AABB(getTileWorldPoint(iPos), tileDim.x * Float(0.5), tileDim.y * Float(0.5)).rotate(m_transform.sincos);
 	}
 
+	/**
+	 * @brief Returns the local AABB of a tile located at @p iPos
+	 *
+	 * @param iPos The tile position of the tile to get the local AABB of
+	 *
+	 * @return The local AABB of a tile located at @p iPos
+	 */
 	inline AABB<Float> getTileLocalAABB(const glm::i32vec2& iPos) const {
 		vec2 tileDim = m_tileMap.getRealTileDimensions(iPos);
 
@@ -286,6 +438,14 @@ public: /* Tiles! */
 	}
 
 public:
+	/**
+	 * @brief Will get the list of chunks that intersect @p intersectBox, along with their AABBS
+	 * 
+	 * @param intersectBox An AABB that will be used to recieve a list of chunks that intersect it
+	 * @param chunks An inserter object used to recieve the list of chunks intersectBox
+	 * 
+	 * @tparam OutIt The type of the inserter object, See @p chunks
+	 */
 	template<typename OutIt>
 	inline void queryChunks(const AABB<Float>& intersectBox, OutIt chunks) const {
 		const glm::i32vec2 minChunk = getChunkCoords(intersectBox.min());
@@ -306,6 +466,14 @@ public:
 		}
 	}
 
+	/**
+	 * @brief Will get the list of tiles that intersect @p intersectBox
+	 *
+	 * @param intersectBox An AABB that will be used to recieve a list of tiles that intersect it
+	 * @param tiles An inserter object used to recieve the list of tiles that intersect intersectBox
+	 *
+	 * @tparam OutIt The type of the inserter object, See @p tiles
+	 */
 	template<typename OutIt>
 	inline void queryTiles(const AABB<Float>& intersectBox, OutIt tiles) const {
 		glm::i32vec2 minTiles = getTileCoords(intersectBox.min());
@@ -329,14 +497,58 @@ public:
 		}
 	}
 
-	glm::i32vec2 getChunkCoords(const vec2& coords) const {
-		return (glm::i32vec2)glm::floor(coords / (tileSize * vec2(chunkWidth, chunkHeight)));
+	/**
+	 * @brief Get the chunk that contains localCoords. Chunk may or may not exist
+	 *
+	 * @param localCoords A local position
+	 *
+	 * @return The chunk position
+	 */
+	glm::i32vec2 getChunkCoords(const vec2& localCoords) const {
+		return (glm::i32vec2)glm::floor(localCoords / (tileSize * vec2(chunkWidth, chunkHeight)));
 	}
 
-	glm::i32vec2 getTileCoords(const vec2& coords) const {
-		return (glm::i32vec2)glm::floor(coords / (tileSize));
+	/**
+	 * @brief Get the chunk that contains tileCoords. Chunk may or may not exist
+	 *
+	 * @param tileCoords A tile position
+	 *
+	 * @return The chunk position
+	 */
+	inline glm::i32vec2 getChunkCoords(const glm::i32vec2& tileCoords) const {
+		glm::i32vec2 chunk = {
+			tileCoords.x / chunkWidth,
+			tileCoords.y / chunkHeight
+		};
+
+		return chunk;
 	}
 
+	/**
+	 * @brief Get the tile that contains localCoords. Tile may or may not exist
+	 *
+	 * @param localCoords A local position
+	 *
+	 * @return The tile position
+	 */
+	glm::i32vec2 getTileCoords(const vec2& localCoords) const {
+		return (glm::i32vec2)glm::floor(localCoords / (tileSize));
+	}
+
+	/**
+	 * @brief Get the AABB of the chunk located at @p chunk
+	 *
+	 * @param chunk The chunk position
+	 *
+	 * @return The chunk AABB
+	 */
+	inline AABB<Float> getChunkAABB(const glm::i32vec2& chunk) const {
+		constexpr vec2 chunkDim((Float)(tileWidth * chunkWidth), (Float)(tileHeight * chunkHeight));
+
+		return AABB((vec2)chunk * chunkDim + chunkDim * Float(0.5f), chunkDim.x * Float(0.5), chunkDim.y * Float(0.5));
+	}
+
+protected:
 	inline void insertIntoChunk(const glm::i32vec2& tile) {
 		glm::i32vec2 chunk = getChunk(tile);
 
@@ -345,44 +557,15 @@ public:
 		}
 	}
 
-	inline AABB<Float> getChunkAABB(const glm::i32vec2& chunk) const {
-		constexpr vec2 chunkDim((Float)(tileWidth * chunkWidth), (Float)(tileHeight * chunkHeight));
-
-		return AABB((vec2)chunk * chunkDim + chunkDim * Float(0.5f), chunkDim.x * Float(0.5), chunkDim.y * Float(0.5));
-	}
-
-	inline glm::i32vec2 getChunk(const vec2& localPos) const {
-		glm::i32vec2 chunk = {
-			localPos.x / (chunkWidth * tileWidth),
-			localPos.y / (chunkHeight * tileHeight)
+	// gets the local AABB of this object
+	inline AABB<Float> getLocalAABB() const {
+		const vec2 halfDim = {
+			(Float)corners.width() * tileWidth * Float(0.5f) + tileWidth * Float(0.5f),
+			(Float)corners.height() * tileHeight * Float(0.5f) + tileHeight * Float(0.5f)
 		};
-
-		return chunk;
+		return AABB(halfDim) + getTileLocalPointNoDim(corners.min()) + halfDim;
 	}
 
-	inline glm::i32vec2 getChunk(const glm::i32vec2& tile) const {
-		glm::i32vec2 chunk = {
-			tile.x / chunkWidth,
-			tile.y / chunkHeight
-		};
-
-		return chunk;
-	}
-
-	std::array<vec2, 4> getLocalAABBWorldVertices(const AABB<Float>& localAABB) const {
-		std::array<vec2, 4> vertices = {};
-		vec2 min = localAABB.min();
-		vec2 max = localAABB.max();
-
-		vertices[0] = getWorldPoint(min);
-		vertices[1] = getWorldPoint({ min.x, max.y });
-		vertices[2] = getWorldPoint(max);
-		vertices[3] = getWorldPoint({ max.x, min.y });
-
-		return vertices;
-	}
-
-protected:
 	// get the local position of a tile without accounting for the tiles actual dimensions
 	inline vec2 getTileLocalPointNoDim(const glm::i32vec2& iPos) const {
 		return (vec2)iPos * vec2(tileWidth, tileHeight);
@@ -577,11 +760,11 @@ bool TileMap<TileType>::addTile(const glm::i32vec2& pos, const TileProperties<Ti
 }
 
 template<typename TileType>
-void TileMap<TileType>::removeTile(const glm::i32vec2& pos) noexcept {
+bool TileMap<TileType>::removeTile(const glm::i32vec2& pos) noexcept {
 	assert(m_body);
 
 	if (!m_tiles.contains(pos))
-		throw "Tile does not exist";
+		return false;
 
 	m_body->removeTile(pos);
 	m_physicsTiles.erase(pos);
@@ -606,6 +789,8 @@ void TileMap<TileType>::removeTile(const glm::i32vec2& pos) noexcept {
 	}
 
 	m_tiles.erase(pos);
+
+	return true;
 }
 
 template<typename TileType>
@@ -647,6 +832,14 @@ struct CreateTileMap {
 	}
 };
 
+/**
+ * @brief Creates a tile map and a tile body using @p tileMapAllocator for the tileMap and the @p physicsWorld for the tile body
+ * 
+ * @param tileMapAllocator An allocator used to create the tile map, MUST have a construct<>() method defined
+ * @param physicsWorld A physicsWorld used to create the tile body, MUST be t2d::World<>
+ * 
+ * @return A pair pointing towards the tile map and tile body. Check if nullptr.
+ */
 template<class TileType, class TileMapAllocator, class PhysicsWorld>
 std::pair<TileMap<TileType>*, WorldBody*> createTileMap(TileMapAllocator& tileMapAllocator, PhysicsWorld& physicsWorld) {
 	return CreateTileMap<TileType, TileMapAllocator, PhysicsWorld>()(tileMapAllocator, physicsWorld);

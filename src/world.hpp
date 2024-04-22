@@ -3,6 +3,12 @@
 #include "collide.hpp"
 #include "spatial.hpp"
 
+/**
+ * @file world.hpp
+ *
+ * @brief Head include file
+ */
+
 T2D_NAMESPACE_BEGIN
 
 template<typename Int>
@@ -173,6 +179,11 @@ void LinkedListHeader<T, Access, Int>::pop_back() {
 	m_size--;
 }
 
+/**
+ * @class World
+ * 
+ * @brief Allows collisions between different bodies to occur. 
+ */
 template<class TileData>
 class World {
 protected:
@@ -188,7 +199,7 @@ protected:
 		Cache() {}
 
 		std::vector<SpatialIndex> results;
-		::t2d::TileBodyCache<TileData> detectionCache;
+		::t2d::TileBodyCollisionCache<TileData> detectionCache;
 
 		std::vector<std::pair<uint16_t, AABB<Float>>> shouldMove;
 		std::vector<std::pair<uint32_t, uint32_t>> couldCollide;
@@ -204,6 +215,11 @@ public:
 
 	using BodyList = LinkedListHeader<BodyElement, FreeList<BodyElement, uint32_t>, uint32_t>;
 public:
+	/**
+	 * @brief Constructs a physics world
+	 * 
+	 * @param threadCount The amount of threads to create to allow for additional speed up, may be 0.
+	 */
 	World(size_t threadCount)
 		: m_bodyList(m_bodies), m_grid(tileWidth * 20), ioServiceWork(ioService) {
 		threadCount = std::min(threadCount, (size_t)boost::thread::hardware_concurrency());
@@ -226,6 +242,9 @@ public:
 		threadPool.join_all();
 	}
 
+	/**
+	 * @brief Do not use. See createTileMap()
+	 */
 	WorldBody* createTileBody(TileMapT& tileMap) {
 		uint32_t newId = m_bodies.insert();
 
@@ -241,6 +260,14 @@ public:
 		return bodyElement.body;
 	}
 
+	/**
+	 * @brief NOT YET IMPLEMENTED. Creates a bullet body.
+	 * 
+	 * @param radius The radius of the bullet
+	 * @param initialLinearVelocity The initial linear velocity of the body
+	 * 
+	 * @return The new bullet body
+	 */
 	WorldBody* createBulletBody(Float radius, const vec2& initialLinearVelocity) {
 		return nullptr; // to be implemented
 
@@ -260,6 +287,11 @@ public:
 		return bodyElement.body;
 	}
 
+	/**
+	 * @brief Destroys a body, must be a type of a bullet or a tile body.
+	 * 
+	 * @param body The body to destroy
+	 */
 	void destroyBody(WorldBody* body) {
 		switch (body->m_bodyType) {
 		case BodyType::Tile:
@@ -279,6 +311,12 @@ public:
 		m_bodies.erase(body->m_id);
 	}
 
+	/**
+	 * @brief Updates the body by @p dt
+	 *
+	 * @param dt The amount of time to simulate
+	 * @param steps Essentialy, the quality of the simulation. Higher steps means higher quality but is slower to process. Recommended amount is 6 if its called 60 times a second
+	 */
 	void update(const Float dt, size_t steps) {
 		auto start = std::chrono::steady_clock::now();
 
@@ -338,6 +376,11 @@ public:
 		m_executionTimeAvgCount++;
 	}
 
+	/**
+	 * @brief Returns the average speed of update. The stats will reset after call.
+	 * 
+	 * @return The average time it takes for update() to proccess
+	 */
 	Float getExecutionTimeAvg() {
 		Float avg = m_executionTimeAvgTotal / m_executionTimeAvgCount;
 
@@ -346,15 +389,30 @@ public:
 		return avg;
 	}
 
+	/**
+	 * @brief Returns the gravity of the world
+	 *
+	 * @return The gravity of the world
+	 */
 	vec2 gravity() const {
 		return m_worldForces.gravity;
 	}
 
+	/**
+	 * @brief Set the gravity of the world
+	 *
+	 * @param gravity The new gravity
+	 */
 	void setGravity(const vec2& gravity) {
 		m_worldForces.gravity = gravity;
 	}
 
-	auto& grid() {
+	/**
+	 * @brief Returns a grid refence, may be used for queries or insertions.
+	 * 
+	 * @return The world's grid
+	 */
+	Grid<SpatialIndex>& grid() {
 		return m_grid;
 	}
 

@@ -2,6 +2,12 @@
 
 #include "math.hpp"
 
+/**
+ * @file grid.hpp
+ *
+ * @brief Contains a grid that is used for spatial indexing
+ */
+
 T2D_NAMESPACE_BEGIN
 
 template<typename Type, typename Int>
@@ -103,6 +109,11 @@ private:
 	std::vector<Node> m_elements;
 };
 
+/**
+ * @class Grid
+ * 
+ * @brief Used for spatial indexing
+ */
 template<class T, typename Int = int32_t>
 class Grid {
 	static inline const boost::thread::id mainThreadId = boost::this_thread::get_id();
@@ -127,13 +138,23 @@ public:
 
 	using GridMap = boost::unordered_flat_map<ivec2, ParentCell>;
 public:
+	/**
+	 * @brief Constructs a new Grid
+	 * 
+	 * @parram cellSize the side length of a cell within this grid
+	 */
 	Grid(Float cellSize = (Float)tcW)
 		: m_cellSize(cellSize), m_invCellSize(1.0f / cellSize) {
 	}
 
-	~Grid() {
-	}
-
+	/**
+	 * @brief Inserts a new element into the grid
+	 * 
+	 * @param aabb The AABB of the element
+	 * @param data The user data of the element
+	 * 
+	 * @return The id of the element
+	 */
 	inline uint16_t insert(const AABB<Float>& aabb, const T& data) {
 		uint16_t idx = m_elementList.insert();
 		GridElement& element = m_elementList.get(idx);
@@ -152,7 +173,14 @@ public:
 		return idx;
 	}
 
-	inline bool relocate(uint16_t idx, const AABB<Float>& newAABB) {
+
+	/**
+	 * @brief Relocates an already existing element within the grid.
+	 *
+	 * @param idx The id of the element
+	 * @param newAABB The new AABB of the element
+	 */
+	inline void relocate(uint16_t idx, const AABB<Float>& newAABB) {
 		GridElement& element = m_elementList.get(idx);
 
 		const ivec2& oldMin = getCellCoords(element.aabb.min());
@@ -182,11 +210,13 @@ public:
 		}
 
 		element.aabb = newAABB;
-
-		return true;
 	}
 
-	// Erases an element. After calling this, the idx will no longer be valid
+	/**
+	 * @brief Erases an element
+	 *
+	 * @param idx The id of the element to remove
+	 */
 	inline void erase(uint16_t idx) {
 		GridElement& element = m_elementList.get(idx);
 		const ivec2& min = getCellCoords(element.aabb.min());
@@ -225,6 +255,9 @@ public:
 		}
 	}
 
+	/**
+	 * @brief Removes empty cells, if any.
+	 */
 	void cleanup() {
 		for (const ivec2& coord : m_possiblyEmptyCells) {
 			if (m_cells[coord].elements.size() == 0) {
@@ -235,6 +268,11 @@ public:
 		m_possiblyEmptyCells.clear();
 	}
 
+	/**
+	 * @brief Returns the map of all cells
+	 * 
+	 * @return the map of all cells
+	 */
 	GridMap& gridMap() {
 		return m_cells;
 	}

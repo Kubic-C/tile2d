@@ -2,23 +2,21 @@
 
 #include "tileMap.hpp"
 
+/**
+ * @file collide.hpp
+ *
+ * @brief Contains different types of collision detection and resolve functions
+ */
+
 T2D_NAMESPACE_BEGIN
 
-enum NormalFaces : uint8_t {
-	_0_1,
-	_1_2,
-	_2_3,
-	_3_0,
-	invalid,
-};
-
-constexpr std::array<NormalFaces, 4> faces = {
-	_1_2,  //  |
-	_2_3, //  -
-	_3_0, // |
-	_0_1, //  _
-};
-
+/**
+ * @class CollisionManifold
+ * 
+ * @brief Defines the relevant collision information generated
+ * by detectNarrowColllision() to both resolve the collision through its
+ * normals and impulse.
+ */
 struct CollisionManifold {
 	CollisionManifold() {}
 
@@ -47,8 +45,19 @@ struct CollisionManifold {
 	Float dynamicFriction = Float(1.0);
 	Float restitution = Float(0.0);
 
+	/**
+	 * @brief If any members are NaN, normal is not normalized, or the contact count is more then 2, the collision manifold is not valid.
+	 * 
+	 * @return True if valid
+	 */
 	bool isValid() const {
-		return !glm::isnan(normal).x && !std::isnan(depth) && count <= 2;
+		return !isNaN(normal) && 
+			   !isNaN(depth) && 
+			   !isNaN(count) && 
+			   count <= 2 && 
+			   !isNaN(staticFriction) &&
+			   !isNaN(dynamicFriction) &&
+			   !isNaN(restitution);
 	}
 };
 
@@ -62,8 +71,20 @@ namespace debug {
 	std::vector<CollideInfo> collideInfos;
 }
 
-// _1_2, 2_3
-
+/**
+ * @brief Returns the normal and depth of two polygons defined by the vertices
+ * @p vertices1 and @p vertices2 by using @p normals inside of the @p manifold
+ * 
+ * @details The size of vertices1 and vertices2 must be 4. The size of normals
+ * must be 2.
+ * 
+ * @param[in] vertices1 The first set of vertices that define a convex polygon
+ * @param[in] vertices2 The second set of vertices that define a convex polygon
+ * @param[out] manifold If satBoxTest() returns true, it will contain the normal and depth
+ * of penetration between vertices1 and vertices2 inside of its members, 'normal' and 'depth'
+ * 
+ * @return Will return true if there was a collision detected, false otherwise
+ */
 template<class BoxVertexContainer, class NormalContainer>
 bool satBoxTest(const BoxVertexContainer& vertices1, const BoxVertexContainer& vertices2, const NormalContainer& normals, CollisionManifold& manifold) {
 	assert(normals.size() == 2);
@@ -100,7 +121,20 @@ bool satBoxTest(const BoxVertexContainer& vertices1, const BoxVertexContainer& v
 	return true;
 };
 
-// finds the closest point on points1 to one of points2's edges
+
+/**
+ * @brief Finds the closest point between points1 and the faces defined by points2
+ *
+ * @details The size of vertices1 and vertices2 must be 4. The size of normals
+ * must be 2.
+ *
+ * @param[in, out] cp1 The first closest point between points1 and points2
+ * @param[in, out] cp2 The second closest point between points1 and points2, may not exist
+ * @param[in, out] count The count of closest points between points1 and points2
+ * @param[in, out] distance1 Contains the minimum distance between points1 and faces defined by points2
+ * @param[in] points1 The set of points used to find the closest point in the faces defined by points2
+ * @param[in] points2 The set of points that define faces that points1 will check against
+ */
 template<typename Container, typename Integer>
 inline void findClosestPoint(vec2& cp1, vec2& cp2, Integer& count, Float& distance1,
 	const Container& points1, const Container& points2) {
@@ -129,22 +163,18 @@ inline void findClosestPoint(vec2& cp1, vec2& cp2, Integer& count, Float& distan
 	}
 }
 
-// computes the collision manifold between two OBBs
+/**
+ * @brief Finds the closest point between points1 and the faces defined by points2
+ *
+ * @details The size of vertices1 and vertices2 must be 4. The size of normals
+ * must be 2.
+ *
+ * @param[in] points1 The set of points used to find the closest point in the faces defined by points2
+ * @param[in] points2 The set of points that define faces that points1 will check against
+ * @param[in, out] manifold The normal and depth must be already calculated within manifold. The contact points betweeen the shapes defined by points1 and points2 will be written inside of manifold
+ */
 template<typename Container>
 inline void computeBoxManifold(const Container& points1, const Container& points2, CollisionManifold& manifold) {
-	/**
-	 * Finding contact points happens to be extremely slow, but I have a
-	 * gut feeling there is a better way to do this; so note to self
-	 * optimize finding contact points
-	 */
-
-	//Float min_distance = std::numeric_limits<Float>::max();
-
-	//findClosestPoint(manifold.points[0], manifold.points[1], manifold.count, min_distance, points1, points2);
-	//findClosestPoint(manifold.points[0], manifold.points[1], manifold.count, min_distance, points2, points1);
-
-	//assert(manifold.count != 0);
-
 	std::array<vec2, 2> edge1;
 	std::array<vec2, 2> edge2;
 
@@ -186,13 +216,33 @@ inline void computeBoxManifold(const Container& points1, const Container& points
 	assert(manifold.count >= 1);
 }
 
-inline std::array<vec2, 4> tileObb1 = {};
-inline std::array<vec2, 4> tileObb2 = {};
-
+/**
+ * @brief Detects the collision between the tile in @p tilePos1 of @p body1 and the tile @p tilePos2 of body2
+ *
+ * @details In order to not modify body1 and body2, detectTileBodyCollision() uses offsets that are applied to body1 and body2 that would correctly resolve the collision between the two bodies. The offsets after each call to detectNarrowCollision() will have "normal * depth" added to them.
+ * 
+ * @param[in] body1 The first body to grab the tile data defined by @p tilePos1
+ * @param[in] tilePos1 The tile position of @p body1 to check against @p tilePos2
+ * @param[in] body1Offset A world offset to apply to the OBB of the tile defined by @p tilePos1 of @p body1
+ * @param[in] body2 The second body to grab the tile data defined by @p tilePos2
+ * @param[in] tilePos2 The tile position of @p body2 to check against @p tilePos1
+ * @param[in] body2Offset A world offset to apply to the OBB of the tile defined by @p tilePos2 of @p body2
+ * @param[out] manifold If detectNarrowCollision() returns true, Will contain a set of contact points and the normal and depth that may be
+ * applied to body1 and body2 to resolve the collision of the tiles defined by tilePos1 and tilePos2
+ * 
+ * @return If true, the collision between the tile of tilePos1 of body1 and the tile of tilePos2 of body2 is occuring. 
+ */
 template<class TileData>
-bool detectNarrowCollision(const TileBody<TileData>& body1, glm::i32vec2 tilePos1, vec2 body1Offset, const TileBody<TileData>& body2, glm::i32vec2 tilePos2, vec2 body2Offset, CollisionManifold& manifold) {
-	body1.getTileWorldOBBOffsetVertices(tilePos1, body1Offset, tileObb1);
-	body2.getTileWorldOBBOffsetVertices(tilePos2, body2Offset, tileObb2);
+bool detectNarrowCollision(
+	const TileBody<TileData>& body1, 
+	const glm::i32vec2& tilePos1, 
+	const vec2& body1Offset, 
+	const TileBody<TileData>& body2, 
+	const glm::i32vec2& tilePos2, 
+	const vec2& body2Offset, 
+	CollisionManifold& manifold) {
+	std::array<vec2, 4> tileObb1 = body1.getTileWorldOBBOffsetVertices(tilePos1, body1Offset, tileObb1);
+	std::array<vec2, 4> tileObb2 = body2.getTileWorldOBBOffsetVertices(tilePos2, body2Offset, tileObb2);
 
 	{
 		auto normals1 = body1.normals();
@@ -220,8 +270,12 @@ bool detectNarrowCollision(const TileBody<TileData>& body1, glm::i32vec2 tilePos
 	return true;
 }
 
+/**
+ * @class TileBodyCollisionCache
+ * @brief Used to speed up the collision detection between two tile bodies
+ */
 template<class TileData>
-struct TileBodyCache {
+struct TileBodyCollisionCache {
 	using SpatialIndex = typename ::t2d::TileBody<TileData>::SpatialIndex;
 
 	std::vector<SpatialIndex> results1;
@@ -229,12 +283,23 @@ struct TileBodyCache {
 	std::vector<std::pair<AABB<Float>, AABB<Float>>> approxAreas;
 };
 
-// Detect and resolve a tilebody collision
+/**
+ * @brief Detects the collision between the tiles bodies, body1 and body2.
+ *
+ * @details Uses chunking as a broad phase to speed up the collision of extremely large tile bodies
+ *
+ * @param[in] body1 The first tile body
+ * @param[in] body2 The second tile body
+ * @param[in, out] cache In order to speed up collisions, a cache is used to lessen calls to malloc() and free()
+ * @param[out] manifolds the contact manifolds between the tiles of body1 and body2
+ * @param[out] body1Offset A world offset to apply to body1 to resolve the collision
+ * @param[out] body2Offset A world offset to apply to body2 to resolve the collision
+ */
 template<class TileData>
 void detectTileBodyCollision(
 	const TileBody<TileData>& body1, 
 	const TileBody<TileData>& body2, 
-	TileBodyCache<TileData>& cache, 
+	TileBodyCollisionCache<TileData>& cache, 
 	std::vector<CollisionManifold>& manifolds,
 	vec2& body1Offset,
 	vec2& body2Offset) {
@@ -320,7 +385,16 @@ void detectTileBodyCollision(
 #endif
 }
 
-struct ResolveMethods {
+/**
+ * @class ImpulseMethod
+ *
+ * @brief Resolves the collision between two bodies using the impulse method
+ *
+ * @param[out] body1 The first tbody to resolve
+ * @param[out] body2 The second body to resolve
+ * @param[in] manifolds Must contain the depth, normal, and collision points between body1 and body2.
+ */
+struct ImpulseMethod {
 	struct Impulse {
 		vec2 r1 = {Float(0.0), Float(0.0)};
 		vec2 r2 = {Float(0.0), Float(0.0)};
@@ -329,7 +403,7 @@ struct ResolveMethods {
 	};
 
 	// solve for new velocties for two bodies given a collision manifold
-	static inline void impulseMethod(Body& body1, Body& body2, const CollisionManifold& manifold) {
+	void operator()(Body& body1, Body& body2, const CollisionManifold& manifold) {
 		Impulse impulse;
 		vec2 average = manifold.points[0];
 

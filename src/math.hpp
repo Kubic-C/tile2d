@@ -2,13 +2,11 @@
 
 #include "base.hpp"
 
-#define GLM_ENABLE_EXPERIMENTAL
-#include <glm/gtx/rotate_vector.hpp>
-#include <glm/gtc/type_ptr.hpp>
-#include <glm/gtx/norm.hpp>
-#include <glm/gtx/vector_angle.hpp>
-
-#include <iostream>
+/**
+ * @file math.hpp
+ * @brief contains various functions and classes that are used
+ * for both convience and/or functionality that may not be fit to be in other files
+ */
 
 template<>
 struct std::less<glm::i32vec2> {
@@ -64,11 +62,21 @@ struct std::equal_to<glm::i32vec2> {
 
 T2D_NAMESPACE_BEGIN
 
+/**
+ * @brief Returns the sqaure of @p x
+ * @param x The value to get the sqaure of
+ * @return The sqaure of @p x
+ */
 template<typename T>
 T constexpr square(T x) {
 	return x * x;
 }
 
+/**
+ * @class SinCos
+ * 
+ * @brief Used to simplify the use of precalculated values for sine and cosine.
+ */
 struct SinCos {
 	SinCos()
 		: sin(0.0f), cos(1.0f) {}
