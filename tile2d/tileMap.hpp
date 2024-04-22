@@ -639,9 +639,9 @@ TileBody<TileType>& TileMap<TileType>::body() {
 
 template<class TileType, class TileMapAllocator, class PhysicsWorld>
 struct CreateTileMap {
-	std::pair<TileMap<TileType>*, WorldBody*> operator()(TileMapAllocator& tileMapAllocator, PhysicsWorld& physicsWorld) {
-		TileMap<TileType>* tileMap = tileMapAllocator.template construct<_CreateTileMap>(_CreateTileMap());
-		WorldBody* tileBody = physicsWorld.createTileBody(*tileMap);
+	std::pair<TileMap<TileType>*, Body*> operator()(TileMapAllocator& tileMapAllocator, PhysicsWorld& physicsWorld) {
+		TileMap<TileType>* tileMap = tileMapAllocator.construct<_CreateTileMap>(_CreateTileMap());
+		Body* tileBody = physicsWorld.createTileBody(*tileMap);
 
 		return { tileMap, tileBody };
 	}
