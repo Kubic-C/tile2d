@@ -182,29 +182,35 @@ protected:
 		bool operator==(const SpatialIndex& other) const {
 			return id == other.id;
 		}
-
-		struct Hash {
-			uint32_t operator()(const SpatialIndex& index) const noexcept {
-				return index.id;
-			}
-		};
 	};
 
+	struct Cache {
+		Cache() {}
+
+		std::vector<SpatialIndex> results;
+		::t2d::TileBodyCache<TileData> detectionCache;
+
+		std::vector<std::pair<uint16_t, AABB<Float>>> shouldMove;
+		std::vector<std::pair<uint32_t, uint32_t>> couldCollide;
+	};
+
+	struct BodyElement : public LinkedListElement<uint32_t> {
+		uint16_t element = std::numeric_limits<uint16_t>::max();
+		WorldBody* body = nullptr;
+	};
 public:
 	using TileMapT = TileMap<TileData>;
 	using TileBodyT = TileBody<TileData>;
 
-	struct BodyElement : public LinkedListElement<uint32_t> {
-		uint16_t element = std::numeric_limits<uint16_t>::max();
-		Body* body = nullptr;
-	};
-
 	using BodyList = LinkedListHeader<BodyElement, FreeList<BodyElement, uint32_t>, uint32_t>;
 public:
-
 	World(size_t threadCount)
 		: m_bodyList(m_bodies), m_grid(tileWidth * 20), ioServiceWork(ioService) {
 		threadCount = std::min(threadCount, (size_t)boost::thread::hardware_concurrency());
+
+		std::pair<boost::thread::id, Cache> pair;
+		pair.first = boost::this_thread::get_id();
+		m_threadCache.insert(pair);
 
 		for (size_t i = 0; i < threadCount; i++) {
 			boost::thread* thread = threadPool.create_thread(boost::bind(&boost::asio::io_service::run, &ioService));
@@ -220,34 +226,49 @@ public:
 		threadPool.join_all();
 	}
 
-	Body* createTileBody(TileMapT& tileMap) {
+	WorldBody* createTileBody(TileMapT& tileMap) {
 		uint32_t newId = m_bodies.insert();
 
 		BodyElement& bodyElement = m_bodies[newId];
-		bodyElement.body = m_tileBodyPool.construct<TileMapT&, uint32_t>(tileMap, newId);
+		bodyElement.body = m_tileBodyPool.template construct<TileMapT&, uint32_t>(tileMap, newId);
 		if (!bodyElement.body)
 			return nullptr;
 
 		m_bodyList.push_back(bodyElement.body->m_id);
 
+		insertIntoTree(bodyElement.body);
+
 		return bodyElement.body;
 	}
 
-	void insertIntoTree(Body* body) {
-		BodyElement& bodyElement = m_bodies[body->id()];
-		bodyElement.element = m_grid.insert(body->getAABB(), SpatialIndex{ body->id() });
+	WorldBody* createBulletBody(Float radius, const vec2& initialLinearVelocity) {
+		return nullptr; // to be implemented
+
+		uint32_t newId = m_bodies.insert();
+
+		BodyElement& bodyElement = m_bodies[newId];
+		bodyElement.body = m_bulletBodyPool.template construct<uint32_t, Float>(newId, radius);
+		if (!bodyElement.body)
+			return nullptr;
+
+		m_bodyList.push_back(bodyElement.body->m_id);
+
+		bodyElement.body->addLinearVelocity(initialLinearVelocity);
+
+		insertIntoTree(bodyElement.body);
+
+		return bodyElement.body;
 	}
 
-	void eraseFromTree(Body* body) {
-		BodyElement& bodyElement = m_bodies[body->id()];
-		m_grid.erase(bodyElement->element);
-	}
+	void destroyBody(WorldBody* body) {
+		switch (body->m_bodyType) {
+		case BodyType::Tile:
+			m_tileBodyPool.destroy(dynamic_cast<TileBody<TileData>*>(body));
+			break;
 
-	void destroyBody(Body* body) {
-		switch (body->m_type) {
-		case BodyType::Tile: {
-			m_tileBodyPool.destroy(dynamic_cast<TileBody*>(body));
-		} break;
+		case BodyType::Bullet:
+			m_bulletBodyPool.destroy(dynamic_cast<BulletBody*>(body)); 
+			break;
 
 		default:
 			assert(false);
@@ -275,8 +296,8 @@ public:
 			std::vector<CollisionManifold> manifolds;
 			Cache& mainThreadCache = m_threadCache[boost::this_thread::get_id()];
 			for (const std::pair<uint32_t, uint32_t>& collidingPair : m_possibleCollisions) {
-				Body* body = m_bodies[collidingPair.first].body;
-				Body* otherBody = m_bodies[collidingPair.second].body;
+				WorldBody* body = m_bodies[collidingPair.first].body;
+				WorldBody* otherBody = m_bodies[collidingPair.second].body;
 
 				vec2 body1Offset(0.0);
 				vec2 body2Offset(0.0);
@@ -301,7 +322,7 @@ public:
 				}
 
 				for (CollisionManifold& manifold : manifolds) {
-					ResolveMethods::impulseMethod(*body, *otherBody, manifold);
+					ResolveMethods::impulseMethod(*(Body*)body, *(Body*)otherBody, manifold);
 				}
 
 				body->moveBy(body1Offset);
@@ -325,20 +346,35 @@ public:
 		return avg;
 	}
 
-public:
+	vec2 gravity() const {
+		return m_worldForces.gravity;
+	}
+
+	void setGravity(const vec2& gravity) {
+		m_worldForces.gravity = gravity;
+	}
+
+	auto& grid() {
+		return m_grid;
+	}
+
+protected:
 	template<class Func>
 	void executeOnBodies(Float timePerStep, Func&& func) {
 		jobsDone = 0;
-		size_t threadPoolSize = threadPool.size(); // .size() uses a lock_gaurd, so best to save it in a var
+		size_t threadPoolSize = threadPool.size() + 1; // +1 includes main thread
 		size_t bodiesPerThread = m_bodyList.size() / threadPoolSize;
 		for (size_t i = 0; i < threadPoolSize; i++) {
 			size_t bodyStart = i * bodiesPerThread;
 			size_t bodyEnd = bodyStart + bodiesPerThread;
+			/* Once all threads have been assigned the task,
+			   give the main thread the task as well */
 			if (i + 1 == threadPoolSize) {
 				bodyEnd = m_bodyList.size();
+				(this->*func)(timePerStep, bodyStart, bodyEnd);
+			} else {
+				ioService.post(boost::bind(func, this, timePerStep, bodyStart, bodyEnd));
 			}
-
-			ioService.post(boost::bind(func, this, timePerStep, bodyStart, bodyEnd));
 		}
 		while (jobsDone < threadPoolSize) {}
 	}
@@ -347,12 +383,12 @@ public:
 		Cache& cache = m_threadCache.find(boost::this_thread::get_id())->second;
 		cache.shouldMove.clear();
 
-		BodyList::Iterator i = m_bodyList.begin();
+		typename BodyList::Iterator i = m_bodyList.begin();
 		for (size_t index = 0; index < end; index++, ++i) {
 			if (index < start)
 				continue;
 
-			Body* body = i->body;
+			WorldBody* body = i->body;
 
 			body->addLinearVel(m_worldForces.gravity * timePerStep);
 			body->integrate(timePerStep);
@@ -376,12 +412,12 @@ public:
 		Cache& cache = m_threadCache.find(boost::this_thread::get_id())->second;
 		cache.couldCollide.clear();
 
-		BodyList::Iterator i = m_bodyList.begin();
+		typename BodyList::Iterator i = m_bodyList.begin();
 		for (size_t index = 0; index < end; index++, ++i) {
 			if (index < start)
 				continue;
 
-			Body* body = i->body;
+			WorldBody* body = i->body;
 			AABB<Float> bodyAABB = body->getAABB();
 			m_grid.queryIntersects(bodyAABB, [&](const SpatialIndex& spatialIndex) {
 				if (spatialIndex.id == body->id())
@@ -400,35 +436,24 @@ public:
 		jobsDone++;
 	}
 
-	vec2 gravity() const {
-		return m_worldForces.gravity;
+	void insertIntoTree(WorldBody* body) {
+		BodyElement& bodyElement = m_bodies[body->id()];
+		bodyElement.element = m_grid.insert(body->getAABB(), SpatialIndex{ body->id() });
 	}
 
-	void setGravity(const vec2& gravity) {
-		m_worldForces.gravity = gravity;
-	}
-
-	auto& grid() {
-		return m_grid;
+	void eraseFromTree(WorldBody* body) {
+		BodyElement& bodyElement = m_bodies[body->id()];
+		m_grid.erase(bodyElement->element);
 	}
 
 private:
-	struct Cache {
-		Cache() {}
-
-		std::vector<SpatialIndex> results;
-		::t2d::TileBodyCache<TileData> detectionCache;
-
-		std::vector<std::pair<uint16_t, AABB<Float>>> shouldMove;
-		std::vector<std::pair<uint32_t, uint32_t>> couldCollide;
-	};
-
 	FlatMap<boost::thread::id, Cache> m_threadCache;
 
 	BodyList m_bodyList;
 	FreeList<BodyElement, uint32_t> m_bodies;
 	boost::object_pool<TileBodyT> m_tileBodyPool;
-	
+	boost::object_pool<BulletBody> m_bulletBodyPool;
+
 	boost::mutex m_gridLock;
 	Grid<SpatialIndex> m_grid;
 	boost::mutex m_collisionListLock;

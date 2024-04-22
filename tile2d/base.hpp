@@ -5,32 +5,26 @@
 #include <cassert>
 #include <array>
 #include <set>
+#include <bitset>
+#include <stack>
+
+#include <glm/glm.hpp>
 
 #include <boost/unordered/unordered_flat_map.hpp>
 #include <boost/unordered/unordered_flat_set.hpp>
-
-#include <boost/container/flat_set.hpp>
-#include <boost/container/flat_map.hpp>
-#include <boost/container/flat_set.hpp>
 #include <boost/pool/object_pool.hpp>
-#include <glm/glm.hpp>
-
 #include <boost/asio/io_service.hpp>
-#include <boost/bind.hpp>
+#include <boost/bind/bind.hpp>
 #include <boost/thread/thread.hpp>
 #include <boost/thread/locks.hpp>
-
-#include <bitset>
-
-#include <stack>
 
 #define T2D_NAMESPACE_BEGIN namespace t2d {
 #define T2D_NAMESPACE_END }
 
+T2D_NAMESPACE_BEGIN
+
 using Float = float;
 using vec2 = glm::vec<2, Float, glm::packed_lowp>;
-
-T2D_NAMESPACE_BEGIN
 
 namespace debug {
 

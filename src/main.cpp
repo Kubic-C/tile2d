@@ -5,7 +5,9 @@
 #include <functional>
 #include <chrono>
 #include "tile2d/world.hpp"
-#include <Windows.h>
+
+using t2d::Float;
+using t2d::vec2;
 
 using namespace std::chrono;
 
@@ -112,6 +114,15 @@ struct TileRenderData {
 	sf::Color color = sf::Color::White;
 };
 
+std::array<sf::Vector2f, 4> getTextureCoords(float x, float y, float size) {
+	return {
+		sf::Vector2f(x * size       , y * size),
+		sf::Vector2f(x * size       , y * size+ size),
+		sf::Vector2f(x * size + size, y * size+ size),
+		sf::Vector2f(x * size + size, y * size)
+	};
+}
+
 int main() {
 	size_t prev = 0;
 	t2d::FreeList<int, int> list;
@@ -140,22 +151,17 @@ int main() {
 		std::cout << "failed to load!\n";
 		return false;
 	}
-	std::array<TileRenderData, 2> tileRenderData;
-	tileRenderData[0].textureCoords = {
-		sf::Vector2f(0.0f, 0.0f),
-		sf::Vector2f(0.0f, 16.0f),
-		sf::Vector2f(16.0f, 16.0f),
-		sf::Vector2f(16.0f, 0.0f)
-	};
-	float tileSize = 16.0f;
-	float tileX = 3.0f;
-	float tileY = 9.0f;
-	tileRenderData[1].textureCoords = {
-		sf::Vector2f(tileX * tileSize           , tileY * tileSize),
-		sf::Vector2f(tileX * tileSize           , tileY * tileSize + tileSize),
-		sf::Vector2f(tileX * tileSize + tileSize, tileY * tileSize + tileSize),
-		sf::Vector2f(tileX * tileSize + tileSize, tileY * tileSize )
-	};
+	std::array<TileRenderData, 10> tileRenderData;
+	tileRenderData[0].textureCoords = getTextureCoords(0.0f, 0.0f, 16.0f);
+	tileRenderData[1].textureCoords = getTextureCoords(1.0f, 0.0f, 16.0f);
+	tileRenderData[2].textureCoords = getTextureCoords(2.0f, 0.0f, 16.0f);
+	tileRenderData[3].textureCoords = getTextureCoords(3.0f, 0.0f, 16.0f);
+	tileRenderData[4].textureCoords = getTextureCoords(4.0f, 0.0f, 16.0f);
+	tileRenderData[5].textureCoords = getTextureCoords(5.0f, 0.0f, 16.0f);
+	tileRenderData[6].textureCoords = getTextureCoords(6.0f, 0.0f, 16.0f);
+	tileRenderData[7].textureCoords = getTextureCoords(7.0f, 0.0f, 16.0f);
+	tileRenderData[8].textureCoords = getTextureCoords(8.0f, 0.0f, 16.0f);
+	tileRenderData[9].textureCoords = getTextureCoords(9.0f, 0.0f, 16.0f);
 
 	std::vector<t2d::debug::CollideInfo> debugCollideInfos;
 
@@ -169,12 +175,12 @@ int main() {
 		size_t testBodyCount = 400;
 		size_t testBodyWidth = 2;
 		size_t testBodyHeight = 2;
-		float cursorX = -1000.0f;
-		float cursorY = -100.0f;
+		float cursorX = -100.0f;
+		float cursorY = -1800.0f;
 		for (int i = 0; i < testBodyCount; i++) {
-			if (cursorX > 4000.0f) {
+			if (cursorX > 100.0f) {
 				cursorY += t2d::tileHeight * testBodyHeight + 10.0f;
-				cursorX = -1000.0f;
+				cursorX = -100.0f;
 				//if (cursorY > window.getSize().y)
 				//	break;
 			}
@@ -185,7 +191,7 @@ int main() {
 			props.isMainTile = true;
 			props.mutliTile.width = testBodyWidth;
 			props.mutliTile.height = testBodyHeight;*/
-			props.userData.renderId = 0;
+			props.userData.renderId = rand() % 10;
 			tileMap.first->addTile({ 0, 0 }, props);
 			tileMap.first->addTile({ 0, 1 }, props);
 			tileMap.first->addTile({ 1, 0 }, props);
@@ -193,7 +199,6 @@ int main() {
 			tileMap.second->setPos({ cursorX, cursorY });
 			//tileMap.second->addLinearVel({ rand() % 10, rand() % 10 });
 			tileMaps.emplace_back(tileMap.first);
-			world.insertIntoTree(tileMap.second);
 
 			cursorX += t2d::tileWidth * testBodyWidth + 10.0f;
 		}
@@ -216,7 +221,6 @@ int main() {
 			playerTileMap.first->endBulkInsert();
 			playerTileMap.second->setPos({ 400.0f, -200.0f });
 			tileMaps.emplace_back(playerTileMap.first);
-			world.insertIntoTree(playerTileMap.second);
 		}
 
 		auto floor = t2d::createTileMap<TileData>(tileMapPool, world);
@@ -235,7 +239,6 @@ int main() {
 			floor.first->endBulkInsert();
 			floor.second->setPos({ 400.0f, 100.0f });
 			tileMaps.emplace_back(floor.first);
-			world.insertIntoTree(floor.second);
 			floor.second->setStatic(true);
 		}
 
@@ -276,7 +279,7 @@ int main() {
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)) {
 				sf::Vector2f dir = window.mapPixelToCoords(sf::Mouse::getPosition(window)) - convert(playerTileMap.second->getWorldPos());
 				dir = dir.normalized();
-				playerTileMap.second->addLinearVel(vec2(dir.x, dir.y) * 10.0f);
+				((t2d::Body*)playerTileMap.second)->addLinearVel(vec2(dir.x, dir.y) * Float(10.0));
 			}
 		});
 
@@ -362,7 +365,7 @@ int main() {
 
 							sf::VertexArray lines(sf::PrimitiveType::LineStrip, 2);
 							lines[0].position = convert(manifold.points[i]);
-							lines[1].position = convert(manifold.points[i] + manifold.normal * 10.0f);
+							lines[1].position = convert(manifold.points[i] + manifold.normal * Float(10.0));
 							window.draw(lines);
 						}
 					}
@@ -394,7 +397,7 @@ int main() {
 
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scan::C))
 					for (auto& pair : world.grid().gridMap()) {
-						t2d::AABB<Float> cAABB((vec2)pair.first * t2d::tileWidth * 4.0f, (vec2)(pair.first + 1) * t2d::tileWidth * 4.0f);
+						t2d::AABB<Float> cAABB((vec2)pair.first * t2d::tileWidth * Float(4.0), (vec2)(pair.first + 1) * t2d::tileWidth * Float(4.0));
 
 						sf::ConvexShape aabb(4);
 						if (pair.second.elements.size() <= 4)

@@ -191,8 +191,8 @@ inline std::array<vec2, 4> tileObb2 = {};
 
 template<class TileData>
 bool detectNarrowCollision(const TileBody<TileData>& body1, glm::i32vec2 tilePos1, vec2 body1Offset, const TileBody<TileData>& body2, glm::i32vec2 tilePos2, vec2 body2Offset, CollisionManifold& manifold) {
-	tileObb1 = body1.getTileWorldOBBOffsetVertices(tilePos1, body1Offset);
-	tileObb2 = body2.getTileWorldOBBOffsetVertices(tilePos2, body2Offset);
+	body1.getTileWorldOBBOffsetVertices(tilePos1, body1Offset, tileObb1);
+	body2.getTileWorldOBBOffsetVertices(tilePos2, body2Offset, tileObb2);
 
 	{
 		auto normals1 = body1.normals();
@@ -320,38 +320,6 @@ void detectTileBodyCollision(
 #endif
 }
 
-template<class TileData>
-void detectAndResolveTileBodyCollisionON2(TileBody<TileData>& body1, TileBody<TileData>& body2, TileBodyCache<TileData>& cache) {
-#ifndef NDEBUG
-	debug::CollideInfo collideInfo;
-#endif
-
-	for (auto tile1 : body1.tileMap()) {
-		if (body1.tileMap().getTileProperties(tile1).isMultiTile && !body1.tileMap().getTileProperties(tile1).isMainTile)
-			continue;
-
-		for (auto tile2 : body2.tileMap()) {
-			if (body2.tileMap().getTileProperties(tile2).isMultiTile && !body2.tileMap().getTileProperties(tile2).isMainTile)
-				continue;
-
-			CollisionManifold manifold;
-
-			if (detectNarrowCollision(body1, tile1, body2, tile2, manifold)) {
-				ResolveMethods::impulseMethod(body1, body2, manifold);
-
-#ifndef NDEBUG
-				collideInfo.manifolds.emplace_back(manifold);
-#endif
-
-			}
-		}
-	}
-
-#ifndef NDEBUG
-	debug::collideInfos.emplace_back(std::move(collideInfo));
-#endif
-}
-
 struct ResolveMethods {
 	struct Impulse {
 		vec2 r1 = {Float(0.0), Float(0.0)};
@@ -450,7 +418,6 @@ struct ResolveMethods {
 			body2.m_linearVelocity += impulse.friction_impulse * body2.m_inverseMass;
 			body2.m_angularVelocity += cross(impulse.friction_impulse, impulse.r2) * body2.m_inverseI;
 		}
-
 	}
 };
 

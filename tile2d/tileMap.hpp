@@ -2,10 +2,6 @@
 
 #include "body.hpp"
 
-#include <boost/container/flat_map.hpp>
-#include <boost/container/flat_set.hpp>
-#include <boost/function.hpp>
-
 T2D_NAMESPACE_BEGIN
 
 template<typename T>
@@ -55,22 +51,19 @@ struct PhysicsTileProperties {
 	uint8_t restitution = 0;// [0 - 255] -> [0.0 = 1.0]
 };
 
-struct _CreateTileMap {};
-
 template<typename TileType>
 class TileBody;
+
+struct _CreateTileMap {};
 
 template<typename TileType>
 class TileMap {
 	friend class TileBody<TileType>;
-	template<class TileType, class TileMapAllocator, class PhysicsWorld>
+	template<class ATileType, class TileMapAllocator, class PhysicsWorld>
 	friend class CreateTileMap;
 
-protected:
-	TileMap();
-
 public:
-	TileMap(_CreateTileMap) {}
+	TileMap(_CreateTileMap) {};
 	virtual ~TileMap() {}
 
 	inline const PhysicsTileProperties& getPhysicsTileProperties(const glm::i32vec2& tilePos) const {
@@ -193,7 +186,7 @@ public:
 		Body::integrate(dt);
 	}
 
-	inline virtual AABB<Float> getAABB() override {
+	inline virtual AABB<Float> getAABB() const override {
 		return getAABB(Transform());
 	}
 
@@ -258,6 +251,21 @@ public: /* Tiles! */
 		const vec2 trExt = -blExt;
 
 		return {
+			 worldPos - wExt,
+			{worldPos.x + blExt.x, worldPos.y + blExt.y},
+			 worldPos + wExt,
+			{worldPos.x + trExt.x, worldPos.y + trExt.y}
+		};
+	}
+
+	inline void getTileWorldOBBOffsetVertices(const glm::i32vec2& iPos, const vec2& worldOffset, std::array<vec2, 4>& vertices) const {
+		vec2 extent = m_tileMap.getRealTileDimensions(iPos) * Float(0.5);
+		vec2 worldPos = getTileWorldPoint(iPos) + worldOffset;
+		const vec2 wExt = rotate({ extent.x, extent.y }, m_transform.sincos);
+		const vec2 blExt = rotate({ extent.x, -extent.y }, m_transform.sincos);
+		const vec2 trExt = -blExt;
+
+		vertices = {
 			 worldPos - wExt,
 			{worldPos.x + blExt.x, worldPos.y + blExt.y},
 			 worldPos + wExt,
@@ -361,7 +369,7 @@ public:
 		return chunk;
 	}
 
-	std::array<vec2, 4> getLocalAABBWorldVertices(const AABB<Float>& localAABB) {
+	std::array<vec2, 4> getLocalAABBWorldVertices(const AABB<Float>& localAABB) const {
 		std::array<vec2, 4> vertices = {};
 		vec2 min = localAABB.min();
 		vec2 max = localAABB.max();
@@ -384,7 +392,10 @@ protected:
 		m_I = 0.0f;
 		for (const auto& pair : m_tileMap.m_physicsTiles) {
 			auto tileDimensions = m_tileMap.getTileDimensions(pair.first);
-			m_I += parallelAxisTheorem(pair.second.getMomentOfInertia<uint16_t>(tileDimensions), pair.second.getMass(tileDimensions), glm::length2(getTileLocalPoint(pair.first) - m_centroid));
+			m_I += parallelAxisTheorem<Float>(
+				pair.second.template getMomentOfInertia<uint16_t>(tileDimensions), 
+				pair.second.template getMass<uint16_t>(tileDimensions), 
+				glm::length2(getTileLocalPoint(pair.first) - m_centroid));
 		}
 		if (m_I != 0.0f && !m_flags[IS_STATIC])
 			m_inverseI = 1.0f / m_I;
@@ -414,7 +425,10 @@ protected:
 				max.y = tilePos.y + (tileDimensions.y - 1);
 			}
 
-			m_I += parallelAxisTheorem(pair.second.getMomentOfInertia<uint16_t>(tileDimensions), pair.second.getMass(tileDimensions), glm::length2(getTileLocalPoint(tilePos) - m_centroid));
+			m_I += parallelAxisTheorem<Float>(
+				pair.second.template getMomentOfInertia<uint16_t>(tileDimensions), 
+				pair.second.template getMass<uint16_t>(tileDimensions), 
+				glm::length2(getTileLocalPoint(tilePos) - m_centroid));
 		}
 
 		if (m_I != 0.0f && !m_flags[IS_STATIC])
@@ -519,7 +533,7 @@ private:
 	bool isBulkAdd = false;
 	TileMap<TileType>& m_tileMap;
 	AABB<int32_t> corners;
-	boost::container::flat_set<glm::i32vec2> m_chunks;
+	boost::unordered_flat_set<glm::i32vec2> m_chunks;
 };
 
 template<typename TileType>
@@ -572,7 +586,7 @@ void TileMap<TileType>::removeTile(const glm::i32vec2& pos) noexcept {
 	m_body->removeTile(pos);
 	m_physicsTiles.erase(pos);
 
-	TileProperties& tileProperties = m_tiles.at(pos);
+	TileProperties<TileType>& tileProperties = m_tiles.at(pos);
 	if (tileProperties.isMultiTile) {
 		if (!tileProperties.isMainTile)
 			throw "Attempt to remove multi tile that isn't the main tile\n";
@@ -625,16 +639,16 @@ TileBody<TileType>& TileMap<TileType>::body() {
 
 template<class TileType, class TileMapAllocator, class PhysicsWorld>
 struct CreateTileMap {
-	std::pair<TileMap<TileType>*, Body*> operator()(TileMapAllocator& tileMapAllocator, PhysicsWorld& physicsWorld) {
-		TileMap<TileType>* tileMap = tileMapAllocator.construct<_CreateTileMap>(_CreateTileMap());
-		Body* tileBody = physicsWorld.createTileBody(*tileMap);
+	std::pair<TileMap<TileType>*, WorldBody*> operator()(TileMapAllocator& tileMapAllocator, PhysicsWorld& physicsWorld) {
+		TileMap<TileType>* tileMap = tileMapAllocator.template construct<_CreateTileMap>(_CreateTileMap());
+		WorldBody* tileBody = physicsWorld.createTileBody(*tileMap);
 
 		return { tileMap, tileBody };
 	}
 };
 
 template<class TileType, class TileMapAllocator, class PhysicsWorld>
-std::pair<TileMap<TileType>*, Body*> createTileMap(TileMapAllocator& tileMapAllocator, PhysicsWorld& physicsWorld) {
+std::pair<TileMap<TileType>*, WorldBody*> createTileMap(TileMapAllocator& tileMapAllocator, PhysicsWorld& physicsWorld) {
 	return CreateTileMap<TileType, TileMapAllocator, PhysicsWorld>()(tileMapAllocator, physicsWorld);
 }
 

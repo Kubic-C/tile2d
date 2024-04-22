@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../../bin/libtile2d.a CMakeFiles/tile2d.dir/base.cpp.o
+/usr/bin/ranlib ../../bin/libtile2d.a

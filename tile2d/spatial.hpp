@@ -123,30 +123,6 @@ public:
 		}
 
 		std::vector<uint16_t> elements;
-
-
-		//struct Cell {
-		//	void insert(uint16_t idx) {
-		//		elements.push_back(idx);
-		//	}
-
-		//	void erase(uint16_t idx) {
-		//		elements.erase(std::find(elements.begin(), elements.end(), idx));
-		//	}
-
-		//	std::vector<uint16_t> elements;
-		//};
-
-		//FreeList<Cell, uint16_t> m_cells;
-
-		/* Slower ... */
-		//void insert(uint16_t idx) {
-		//	elements.insert(idx);
-		//}
-		//void erase(uint16_t idx) {
-		//	elements.erase(idx);
-		//}
-		//boost::unordered_flat_set<uint16_t> elements;
 	};
 
 	using GridMap = boost::unordered_flat_map<ivec2, ParentCell>;
@@ -211,7 +187,7 @@ public:
 	}
 
 	// Erases an element. After calling this, the idx will no longer be valid
-	inline bool erase(uint16_t idx) {
+	inline void erase(uint16_t idx) {
 		GridElement& element = m_elementList.get(idx);
 		const ivec2& min = getCellCoords(element.aabb.min());
 		const ivec2& max = getCellCoords(element.aabb.max());

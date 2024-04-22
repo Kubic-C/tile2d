@@ -70,16 +70,26 @@ public:
 		m_flags[IS_STATIC] = static_;
 	}
 
-	void lock() {
-		m_mutex.lock();
+	virtual vec2 getWorldPoint(const vec2& localPoint) const {
+		return m_transform.getWorldPoint(localPoint);
 	}
 
-	void unlock() {
-		m_mutex.unlock();
+	virtual vec2 getLocalPoint(const vec2& worldPoint) const {
+		return m_transform.getLocalPoint(worldPoint);
+	}
+
+	virtual vec2 getWorldPos() {
+		return m_transform.pos;
+	}
+
+	virtual AABB<Float> getAABB() const = 0;
+
+	void addLinearVel(const vec2& vel) {
+		m_linearVelocity += vel * (Float)!m_flags[IS_STATIC];
 	}
 
 protected:
-	boost::mutex m_mutex;
+	vec2 m_linearVelocity = { 0.0f, 0.0f };
 	std::bitset<4> m_flags;
 	Transform m_transform;
 	BodyType m_bodyType = BodyType::Invalid;
@@ -89,6 +99,8 @@ private:
 
 class Body : public WorldBody {
 	friend class ResolveMethods;
+	template<class TileData>
+	friend class World;
 
 public:
 	Body(uint32_t id, BodyType type)
@@ -119,25 +131,19 @@ public:
 		m_transform.rot = rot;
 	}
 
-	void addLinearVel(const vec2& vel) {
-		m_linearVelocity += vel * (Float)!m_flags[IS_STATIC];
-	}
-
 	void addAngularVel(const Float& vel) {
 		m_angularVelocity = vel * (Float)!m_flags[IS_STATIC];
 	}
 
-	vec2 getWorldPoint(const vec2& localPoint) const {
+	virtual vec2 getWorldPoint(const vec2& localPoint) const override {
 		return m_transform.getWorldPoint(localPoint, m_com);
 	}
 
-	vec2 getLocalPoint(const vec2& worldPoint) {
+	virtual vec2 getLocalPoint(const vec2& worldPoint) const override {
 		return m_transform.getLocalPoint(worldPoint, m_com);
 	}
 
-	virtual AABB<Float> getAABB() = 0;
-
-	vec2 getWorldPos() {
+	virtual vec2 getWorldPos() override {
 		return m_transform.pos + m_com;
 	}
 
@@ -207,7 +213,6 @@ protected:
 	vec2 m_unweightedCom = { 0.0f, 0.0f };
 	vec2 m_unweightedCentroid = { 0.0f, 0.0f };
 
-	vec2 m_linearVelocity = { 0.0f, 0.0f };
 	vec2 m_force = { 0.0f, 0.0f };
 	Float m_angularVelocity = 0.0f;
 	Float m_torque = 0.0f;
@@ -215,14 +220,22 @@ protected:
 
 class BulletBody : public WorldBody {
 public:
+	BulletBody(uint32_t id, Float radius)
+		: WorldBody(id, BodyType::Bullet), m_radius(radius) {}
+
 	virtual void integrate(Float dt) override {
 		m_transform.pos = m_transform.pos + m_linearVelocity * dt;
 	}
 
+	virtual AABB<Float> getAABB() const {
+		const Float m_aabbRadius = m_radius * sqrt<Float>(2.0f);
+
+		return AABB<Float>(m_transform.pos, m_aabbRadius, m_aabbRadius);
+	}
+
 private:
-	uint32_t m_id;
-	Float m_mass;
-	vec2 m_linearVelocity;
+	Float m_radius;
+	Float m_mass = 0.0f;
 };
 
 T2D_NAMESPACE_END
