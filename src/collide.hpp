@@ -402,7 +402,6 @@ struct ImpulseMethod {
 		vec2 friction_impulse = { 0.0f, 0.0f };
 	};
 
-	// solve for new velocties for two bodies given a collision manifold
 	void operator()(Body& body1, Body& body2, const CollisionManifold& manifold) {
 		Impulse impulse;
 		vec2 average = manifold.points[0];

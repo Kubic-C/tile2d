@@ -360,7 +360,7 @@ public:
 				}
 
 				for (CollisionManifold& manifold : manifolds) {
-					ResolveMethods::impulseMethod(*(Body*)body, *(Body*)otherBody, manifold);
+					ImpulseMethod()(*(Body*)body, *(Body*)otherBody, manifold);
 				}
 
 				body->moveBy(body1Offset);
