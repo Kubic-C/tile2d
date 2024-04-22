@@ -31,7 +31,7 @@
 *.out
 *.app
 
-/build/*
-/.vscode/*
-/.vs/*
-/out/*
+/build/
+/.vscode/
+/.vs/
+/out/
