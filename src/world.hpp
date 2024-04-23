@@ -129,17 +129,17 @@ template<typename T, typename Access, typename Int>
 void LinkedListHeader<T, Access, Int>::remove_element(Int element) {
 	LinkedListElement<Int>* list_element = dynamic_cast<LinkedListElement<Int>*>(&m_access[element]);
 
-	if (list_element == first) {
+	if (element == first) {
 		first = list_element->next;
 	}
-	if (list_element == last) {
+	if (element == last) {
 		last = list_element->prev;
 	}
 
-	if (list_element->prev) {
+	if (list_element->prev != invalid) {
 		m_access[list_element->prev].next = list_element->next;
 	}
-	if (list_element->next) {
+	if (list_element->next != invalid) {
 		m_access[list_element->next].prev = list_element->prev;
 	}
 
@@ -205,11 +205,12 @@ protected:
 		std::vector<std::pair<uint32_t, uint32_t>> couldCollide;
 	};
 
+public:
 	struct BodyElement : public LinkedListElement<uint32_t> {
 		uint16_t element = std::numeric_limits<uint16_t>::max();
 		WorldBody* body = nullptr;
 	};
-public:
+
 	using TileMapT = TileMap<TileData>;
 	using TileBodyT = TileBody<TileData>;
 
@@ -416,6 +417,12 @@ public:
 		return m_grid;
 	}
 
+public:
+	using Iterator = typename BodyList::Iterator;
+	
+	Iterator begin() { return m_bodyList.begin(); }
+	Iterator end() { return m_bodyList.end(); }
+
 protected:
 	template<class Func>
 	void executeOnBodies(Float timePerStep, Func&& func) {
@@ -501,7 +508,7 @@ protected:
 
 	void eraseFromTree(WorldBody* body) {
 		BodyElement& bodyElement = m_bodies[body->id()];
-		m_grid.erase(bodyElement->element);
+		m_grid.erase(bodyElement.element);
 	}
 
 private:

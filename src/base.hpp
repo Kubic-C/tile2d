@@ -28,82 +28,82 @@ Related pages:
 ```cpp
 
 #include <iostream>
-#include <tile2d/world.hpp>
+#include <src/world.hpp>
 
-struct CustomTileData {
-	std::string name;
-}
+struct TileData {
+    std::string name;
+};
 
 int main() {
-	boost::object_pool<t2d::TileMap<TileData>> tileMapPool;
-	t2d::World<CustomTileData> physicsWorld(4); // 4 is the amount of threads to use.
+    boost::object_pool<t2d::TileMap<TileData>> tileMapPool;
+    t2d::World<TileData> physicsWorld(4); // 4 is the amount of threads to use.
 
-	std::pair<t2d::TileMap<TileData>, t2d::WorldBody*> tileMap = t2d::createTileMap(tileMapPool, physicsWorld);
+    std::pair<t2d::TileMap<TileData>*, t2d::WorldBody*> tileMap = t2d::createTileMap<TileData>(tileMapPool, physicsWorld);
 
-	t2d::TileProperties<TileData> tileProperty;
-	tileProperty.userData.name = "My cool tile";
-	// You can also create multi tiles
-	tileProperty.isMultiTile = true; // Very important that both isMultiTile and isMainTile is set to true when creating a multi tile
-	tileProperty.isMainTile = true;
-	tileProperty.mutliTile.width = 4;
-	tileProperty.mutliTile.height= 4;
+    t2d::TileProperties<TileData> tileProperty;
+    tileProperty.userData.name = "My cool tile";
+    // You can also create multi tiles
+    tileProperty.isMultiTile = true; // Very important that both isMultiTile and isMainTile is set to true when creating a multi tile
+    tileProperty.isMainTile = true;
+    tileProperty.mutliTile.width = 4;
+    tileProperty.mutliTile.height = 4;
 
-	t2d::PhysicsTileProperties physicsTileProperty;
-	physicsTileProperties.density = 10.0f;
-	// Range from [0, 255] will be normalized into [0.0 -> 1.0]
-	physicsTileProperties.staticFriction = 100;
-	physicsTileProperties.dynamicFriction = 100;
-	physicsTileProperties.restitution = 100;
+    t2d::PhysicsTileProperties physicsTileProperty;
+    physicsTileProperty.density = 10.0f;
+    // Range from [0, 255] will be normalized into [0.0 -> 1.0]
+    physicsTileProperty.staticFriction = 100;
+    physicsTileProperty.dynamicFriction = 100;
+    physicsTileProperty.restitution = 100;
 
-	// Create a 4x4 tile at position (0, 0)
-	tileMap.first->addTile({0, 0}, tileProperty, physicsTileProperty);
-	// Theres a default parameter for the physics properties of a tile
-	// tileMap.first->addTile({0, 0}, tileProperty); 
+    // Create a 4x4 tile at position (0, 0)
+    tileMap.first->addTile({ 0, 0 }, tileProperty, physicsTileProperty);
+    // Theres a default parameter for the physics properties of a tile
+    // tileMap.first->addTile({0, 0}, tileProperty);
 
-	// Attempting to create a tile or a multi tile when its space is alread occupied by another will result in addTile() returning false
-	bool res = tileMap.first.addTile({0, 0}, tileProperty, physicsTileProperty);
-	if(res) {
-		std::cout << "Tile could not be created!\n";
-	}
+    // Attempting to create a tile or a multi tile when its space is alread occupied by another will result in addTile() returning false
+    bool res = tileMap.first->addTile({ 0, 0 }, tileProperty, physicsTileProperty);
+    if (res) {
+        std::cout << "Tile could not be created!\n";
+    }
 
-	// Removing a tile is just that easy
-	tileMap.first->removeTile({0, 0});
+    // Removing a tile is just that easy
+    tileMap.first->removeTile({ 0, 0 });
 
-	// Tile properties can be reused and modified after creating a tile with them
-	tileProperty.isMultiTile = false;
+    // Tile properties can be reused and modified after creating a tile with them
+    tileProperty.isMultiTile = false;
 
-	// Using beginBulkInsert() and endBulkInsert() speed up the process
-	// of inserting a large amount of tiles.
-	//
-	// Note: there is no upper or lower bound limit on how big a tile body can be
-	// so tileMap.first.addTile({100000, 100000}, tileProperty) is perfectly fine here.
-	// This does come at a moderate performance cost for lots of these large bodies
-	tileMap.first->beginBulkInsert();
-	for(uint32_t i = 0; i < 1000; i++)
-		for(uint32_t j = 0; j < 1000; j++)
-			tileMap.first->addTile({i, j}, tileProperty);
-	tileMap.first->endBulkInsert();
+    // Using beginBulkInsert() and endBulkInsert() speed up the process
+    // of inserting a large amount of tiles.
+    //
+    // Note: there is no upper or lower bound limit on how big a tile body can be
+    // so tileMap.first.addTile({100000, 100000}, tileProperty) is perfectly fine here.
+    // This does come at a moderate performance cost for lots of these large bodies
+    tileMap.first->beginBulkInsert();
+    for (uint32_t i = 0; i < 100; i++)
+        for (uint32_t j = 0; j < 100; j++)
+            tileMap.first->addTile({ i, j }, tileProperty);
+    tileMap.first->endBulkInsert();
 
-	// Add some linear velocity to the attached rigid body of the tile map
-	tileMap.second->addLinearVelocity({0.0f, 100.0f});
-
-	// There also exists a beginBulkErase() and endBulkErase() 
-	// tileMap.first->beginBulkErase();
-	// for(uint32_t i = 0; i < 1000; i++)
-	// 	for(uint32_t j = 0; j < 1000; j++)
-	// 		tileMap.first->removeTile({i, j});
-	// tileMap.first->endBulkErase();
-
-	while(true) {
-		// simulate 0.016 seconds with 6 sub steps.
-		physicsWorld.update(0.016, 6);
-	}
+    // Add some linear velocity to the attached rigid body of the tile map
+    tileMap.second->addLinearVel({ 0.0f, 100.0f });
 
 
-	physicsWorld.destroyBody(pair.second);
-	tileMapPool.destroy(pair.first);
+    while (true) {
+        // simulate 0.016 seconds with 6 sub steps.
+        physicsWorld.update(0.016, 6);
+    }
 
-	return 0;
+    // There also exists a beginBulkErase() and endBulkErase()
+     tileMap.first->beginBulkErase();
+     for(uint32_t i = 0; i < 100; i++)
+      for(uint32_t j = 0; j < 100; j++)
+          tileMap.first->removeTile({i, j});
+     tileMap.first->endBulkErase();
+
+    physicsWorld.destroyBody(tileMap.second);
+    tileMapPool.destroy(tileMap.first);
+
+    return 0;
 }
 
 ```

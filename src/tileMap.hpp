@@ -159,7 +159,7 @@ public:
 	 *
 	 * @return True if the tile could be removed.
 	 */
-	bool removeTile(const glm::i32vec2& pos) noexcept;
+	bool removeTile(const glm::i32vec2& pos);
 
 	/**
 	 * @brief Returns the tile dimensions of the tile located at @p pos
@@ -310,8 +310,8 @@ public:
 		Body::integrate(dt);
 	}
 
-	inline virtual AABB<Float> getAABB() const override {
-		return getAABB(getLocalAABB(), Transform());
+	inline virtual AABB<Float> getAABB() const {
+		return Body::getAABB(getLocalAABB(), Transform());
 	}
 
 	/**
@@ -548,15 +548,6 @@ public:
 		return AABB((vec2)chunk * chunkDim + chunkDim * Float(0.5f), chunkDim.x * Float(0.5), chunkDim.y * Float(0.5));
 	}
 
-protected:
-	inline void insertIntoChunk(const glm::i32vec2& tile) {
-		glm::i32vec2 chunk = getChunk(tile);
-
-		if (m_chunks.find(chunk) == m_chunks.end()) {
-			m_chunks.insert(chunk);
-		}
-	}
-
 	// gets the local AABB of this object
 	inline AABB<Float> getLocalAABB() const {
 		const vec2 halfDim = {
@@ -565,6 +556,16 @@ protected:
 		};
 		return AABB(halfDim) + getTileLocalPointNoDim(corners.min()) + halfDim;
 	}
+
+protected:
+	inline void insertIntoChunk(const glm::i32vec2& tile) {
+		glm::i32vec2 chunk = getChunkCoords(tile);
+
+		if (m_chunks.find(chunk) == m_chunks.end()) {
+			m_chunks.insert(chunk);
+		}
+	}
+
 
 	// get the local position of a tile without accounting for the tiles actual dimensions
 	inline vec2 getTileLocalPointNoDim(const glm::i32vec2& iPos) const {
@@ -659,8 +660,6 @@ protected: /* For use within the Tile Map Class*/
 		if (iPos.y + (tileDimensions.y - 1) > max.y) {
 			max.y = iPos.y + (tileDimensions.y - 1);
 		}
-
-		assert(isValid());
 	}
 
 	void removeTile(const glm::i32vec2& iPos) {
@@ -682,8 +681,6 @@ protected: /* For use within the Tile Map Class*/
 		if (!isBulkErase) {
 			calculateRotationalInertiaAndAABB();
 		}
-
-		assert(isValid());
 	}
 
 	void beginBulkInsert() {
@@ -760,7 +757,7 @@ bool TileMap<TileType>::addTile(const glm::i32vec2& pos, const TileProperties<Ti
 }
 
 template<typename TileType>
-bool TileMap<TileType>::removeTile(const glm::i32vec2& pos) noexcept {
+bool TileMap<TileType>::removeTile(const glm::i32vec2& pos) {
 	assert(m_body);
 
 	if (!m_tiles.contains(pos))
@@ -779,13 +776,22 @@ bool TileMap<TileType>::removeTile(const glm::i32vec2& pos) noexcept {
 			pos.y + tileProperties.mutliTile.height
 		};
 
+		// ensure the area is clear
+		for (auto y = pos.y; y < endPos.y; y++) {
+			for (auto x = pos.x; x < endPos.x; x++) {
+				if (!m_tiles.contains({ x, y })) {
+					return false;
+				}
+			}
+		}
+
 		for (auto y = pos.y; y < endPos.y; y++) {
 			for (auto x = pos.x; x < endPos.x; x++) {
 				m_tiles.erase({ x, y });
 			}
 		}
 
-		return;
+		return true;
 	}
 
 	m_tiles.erase(pos);
@@ -824,9 +830,9 @@ TileBody<TileType>& TileMap<TileType>::body() {
 
 template<class TileType, class TileMapAllocator, class PhysicsWorld>
 struct CreateTileMap {
-	std::pair<TileMap<TileType>*, Body*> operator()(TileMapAllocator& tileMapAllocator, PhysicsWorld& physicsWorld) {
+	std::pair<TileMap<TileType>*, WorldBody*> operator()(TileMapAllocator& tileMapAllocator, PhysicsWorld& physicsWorld) {
 		TileMap<TileType>* tileMap = tileMapAllocator.construct<_CreateTileMap>(_CreateTileMap());
-		Body* tileBody = physicsWorld.createTileBody(*tileMap);
+		WorldBody* tileBody = physicsWorld.createTileBody(*tileMap);
 
 		return { tileMap, tileBody };
 	}

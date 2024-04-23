@@ -207,12 +207,12 @@ public:
 	virtual AABB<Float> getAABB() const = 0;
 
 	// get the local AABB (of the entire object) in the localSpace of spaceTransform
-	inline AABB<Float> getAABB(const Transform& spaceTransform, const vec2& localOffset = { Float(0.5f), Float(0.5f) }) const {
+	inline virtual AABB<Float> getAABB(const Transform& spaceTransform, const vec2& localOffset = { Float(0.5f), Float(0.5f) }) const {
 		return getAABB(getAABB(), spaceTransform, localOffset);
 	}
 
 	// get the some local AABB in the localSpace of spaceTransform
-	inline AABB<Float> getAABB(const AABB<Float>& localAABB, const Transform& spaceTransform, const vec2& localOffset = { Float(0.5f), Float(0.5f) }) const {
+	inline virtual AABB<Float> getAABB(const AABB<Float>& localAABB, const Transform& spaceTransform, const vec2& localOffset = { Float(0.5f), Float(0.5f) }) const {
 		vec2 relPos = spaceTransform.getLocalPoint(getWorldPoint(localAABB.midpoint()), localOffset);
 		return AABB<Float>(relPos, localAABB.width() * 0.5f, localAABB.height() * 0.5f).rotate(spaceTransform.sincos - m_transform.sincos);
 	}

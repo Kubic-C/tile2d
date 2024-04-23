@@ -240,8 +240,8 @@ bool detectNarrowCollision(
 	const glm::i32vec2& tilePos2, 
 	const vec2& body2Offset, 
 	CollisionManifold& manifold) {
-	std::array<vec2, 4> tileObb1 = body1.getTileWorldOBBOffsetVertices(tilePos1, body1Offset, tileObb1);
-	std::array<vec2, 4> tileObb2 = body2.getTileWorldOBBOffsetVertices(tilePos2, body2Offset, tileObb2);
+	std::array<vec2, 4> tileObb1 = body1.getTileWorldOBBOffsetVertices(tilePos1, body1Offset);
+	std::array<vec2, 4> tileObb2 = body2.getTileWorldOBBOffsetVertices(tilePos2, body2Offset);
 
 	{
 		auto normals1 = body1.normals();
@@ -302,11 +302,11 @@ void detectTileBodyCollision(
 	std::vector<CollisionManifold>& manifolds,
 	vec2& body1Offset,
 	vec2& body2Offset) {
-	AABB<Float> approxAreaOfBody1Local = computeAABBCollisionArea(body1.getLocalAABB(), body2.getAABB(body1.transform(), body1.com()));
+	AABB<Float> approxAreaOfBody1Local = computeAABBCollisionArea(body1.getLocalAABB(), body2.Body::getAABB(body1.transform(), body1.com()));
 	if (std::isnan(approxAreaOfBody1Local.min().x))
 		return;
 
-	AABB<Float> approxAreaOfBody2Local = computeAABBCollisionArea(body2.getLocalAABB(), body1.getAABB(body2.transform(), body2.com()));
+	AABB<Float> approxAreaOfBody2Local = computeAABBCollisionArea(body2.getLocalAABB(), body1.Body::getAABB(body2.transform(), body2.com()));
 	if (std::isnan(approxAreaOfBody2Local.min().x))
 		return;
 
@@ -317,22 +317,13 @@ void detectTileBodyCollision(
 	body1.queryChunks(approxAreaOfBody1Local, std::back_inserter(cache.results1));
 	body2.queryChunks(approxAreaOfBody2Local, std::back_inserter(cache.results2));
 
-#ifndef NDEBUG
-	debug::CollideInfo collideInfo;
-	for (auto& r1 : cache.results1)
-		collideInfo.chunkAABBs.push_back(body1.getLocalAABBWorldVertices(r1.aabb));
-
-	for (auto& r2 : cache.results2)
-		collideInfo.chunkAABBs.push_back(body2.getLocalAABBWorldVertices(r2.aabb));
-#endif
-
 	for (auto& chunk1 : cache.results1) {
 		for (auto& chunk2 : cache.results2) {
-			AABB<Float> approxAreaOfChunk1Local = computeAABBCollisionArea(chunk1.aabb, body2.getAABB(chunk2.aabb, body1.transform(), body1.com()));
+			AABB<Float> approxAreaOfChunk1Local = computeAABBCollisionArea(chunk1.aabb, body2.Body::getAABB(chunk2.aabb, body1.transform(), body1.com()));
 			if (std::isnan(approxAreaOfChunk1Local.min().x))
 				continue;
 
-			AABB<Float> approxAreaOfChunk2Local = computeAABBCollisionArea(chunk2.aabb, body1.getAABB(chunk1.aabb, body2.transform(), body2.com()));
+			AABB<Float> approxAreaOfChunk2Local = computeAABBCollisionArea(chunk2.aabb, body1.Body::getAABB(chunk1.aabb, body2.transform(), body2.com()));
 			if (std::isnan(approxAreaOfChunk2Local.min().x))
 				continue;
 
@@ -346,14 +337,6 @@ void detectTileBodyCollision(
 
 		body1.queryTiles(approxArea.first, std::back_inserter(cache.results1));
 		body2.queryTiles(approxArea.second, std::back_inserter(cache.results2));
-
-#ifndef NDEBUG
-		for (auto& r1 : cache.results1)
-			collideInfo.tileAABBs.push_back(body1.getLocalAABBWorldVertices(body1.getTileLocalAABB(r1.pos)));
-
-		for (auto& r2 : cache.results2)
-			collideInfo.tileAABBs.push_back(body2.getLocalAABBWorldVertices(body2.getTileLocalAABB(r2.pos)));
-#endif
 
 
 		for (auto& tile1 : cache.results1) {
@@ -371,17 +354,10 @@ void detectTileBodyCollision(
 					body2Offset += manifold.normal * body2Depth * Float(0.5);
 
 					manifolds.emplace_back(manifold);
-#ifndef NDEBUG
-					collideInfo.manifolds.emplace_back(manifold);
-#endif
 				}
 			}
 		}
 	}
-
-#ifndef NDEBUG
-	debug::collideInfos.emplace_back(std::move(collideInfo));
-#endif
 }
 
 /**
