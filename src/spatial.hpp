@@ -109,6 +109,8 @@ private:
 	std::vector<Node> m_elements;
 };
 
+inline const boost::thread::id mainThreadId = boost::this_thread::get_id();
+
 /**
  * @class Grid
  * 
@@ -116,7 +118,6 @@ private:
  */
 template<class T, typename Int = int32_t>
 class Grid {
-	static inline const boost::thread::id mainThreadId = boost::this_thread::get_id();
 	using ivec2 = typename glm::vec<2, Int, glm::packed_lowp>;
 protected:
 	struct GridElement {

@@ -53,7 +53,6 @@ struct CollisionManifold {
 	bool isValid() const {
 		return !isNaN(normal) && 
 			   !isNaN(depth) && 
-			   !isNaN(count) && 
 			   count <= 2 && 
 			   !isNaN(staticFriction) &&
 			   !isNaN(dynamicFriction) &&

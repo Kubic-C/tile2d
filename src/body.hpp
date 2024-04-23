@@ -251,8 +251,6 @@ public:
 		: WorldBody(id, type) {}
 
 	virtual void integrate(Float dt) override {
-		assert(isValid());
-
 		// Using the semi implicit euler method
 
 		// A(v) = force / mass

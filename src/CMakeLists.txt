@@ -12,5 +12,6 @@ target_link_libraries(tile2d PUBLIC Boost::thread)
 target_include_directories(tile2d PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/../")
 target_link_libraries(tile2d PUBLIC glm)
 
-add_compile_options("-no-pie")
-add_link_options("-no-pie")
+if(WIN32)
+	target_compile_options(tile2d PUBLIC "/std:c++17")
+endif()

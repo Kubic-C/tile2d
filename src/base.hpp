@@ -213,12 +213,12 @@ using FlatSet = boost::unordered_flat_set<K>;
 
 template<typename T>
 bool isNaN(const T& v) {
-	return std::isnan(v);
+	return glm::isnan(v);
 }
 
 template<>
 bool isNaN<vec2>(const vec2& v) {
-	return std::isnan(v.x) || std::isnan(v.y);
+	return glm::isnan(v.x) || glm::isnan(v.y);
 }
 
 T2D_NAMESPACE_END
