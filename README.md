@@ -10,6 +10,6 @@ The data which is contained inside of tiles is entirely user-decided because of 
 
 ## Documentation
 
-See [this](https://github.com/Kubic-C/tile2d/docs/html/index.html) for HTML documentation.
+See [this](https://kubic-c.github.io/tile2d/index.html) for documentation.
 
 For now, public documentation is mostly done, but it still needs work in some places. 
