@@ -1,0 +1,88 @@
+\doxysection{World\texorpdfstring{$<$}{<} Tile\+Data \texorpdfstring{$>$}{>}\+::Cache Struct Reference}
+\hypertarget{struct_world_1_1_cache}{}\label{struct_world_1_1_cache}\index{World$<$ TileData $>$::Cache@{World$<$ TileData $>$::Cache}}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{struct_world_1_1_spatial_index}{Spatial\+Index}} $>$ \mbox{\hyperlink{struct_world_1_1_cache_aa8366e450ccb9b7d3848c5051fb38c5f}{results}}
+\item 
+\+::t2d\+::\+Tile\+Body\+Collision\+Cache$<$ Tile\+Data $>$ \mbox{\hyperlink{struct_world_1_1_cache_ab4ec3a87df3c93628f294df111046aa2}{detection\+Cache}}
+\item 
+std\+::vector$<$ std\+::pair$<$ uint16\+\_\+t, \mbox{\hyperlink{struct_a_a_b_b}{AABB}}$<$ Float $>$ $>$ $>$ \mbox{\hyperlink{struct_world_1_1_cache_ad129d56870b28cf6bf97359aacf55376}{should\+Move}}
+\item 
+std\+::vector$<$ std\+::pair$<$ uint32\+\_\+t, uint32\+\_\+t $>$ $>$ \mbox{\hyperlink{struct_world_1_1_cache_a2096b0b55147aed20b97dc88a241fbea}{could\+Collide}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$class Tile\+Data$>$\newline
+struct World$<$ Tile\+Data $>$\+::\+Cache}
+
+
+Definition at line \mbox{\hyperlink{world_8hpp_source_l00198}{198}} of file \mbox{\hyperlink{world_8hpp_source}{world.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{struct_world_1_1_cache_afdf59ea6c1db43fec176b597ce5a1953}\label{struct_world_1_1_cache_afdf59ea6c1db43fec176b597ce5a1953} 
+\index{World$<$ TileData $>$::Cache@{World$<$ TileData $>$::Cache}!Cache@{Cache}}
+\index{Cache@{Cache}!World$<$ TileData $>$::Cache@{World$<$ TileData $>$::Cache}}
+\doxysubsubsection{\texorpdfstring{Cache()}{Cache()}}
+{\footnotesize\ttfamily template$<$class Tile\+Data $>$ \\
+\mbox{\hyperlink{class_world}{World}}$<$ Tile\+Data $>$\+::\+Cache\+::\+Cache (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{world_8hpp_source_l00199}{199}} of file \mbox{\hyperlink{world_8hpp_source}{world.\+hpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_world_1_1_cache_a2096b0b55147aed20b97dc88a241fbea}\label{struct_world_1_1_cache_a2096b0b55147aed20b97dc88a241fbea} 
+\index{World$<$ TileData $>$::Cache@{World$<$ TileData $>$::Cache}!couldCollide@{couldCollide}}
+\index{couldCollide@{couldCollide}!World$<$ TileData $>$::Cache@{World$<$ TileData $>$::Cache}}
+\doxysubsubsection{\texorpdfstring{couldCollide}{couldCollide}}
+{\footnotesize\ttfamily template$<$class Tile\+Data $>$ \\
+std\+::vector$<$std\+::pair$<$uint32\+\_\+t, uint32\+\_\+t$>$ $>$ \mbox{\hyperlink{class_world}{World}}$<$ Tile\+Data $>$\+::\+Cache\+::could\+Collide}
+
+
+
+Definition at line \mbox{\hyperlink{world_8hpp_source_l00205}{205}} of file \mbox{\hyperlink{world_8hpp_source}{world.\+hpp}}.
+
+\Hypertarget{struct_world_1_1_cache_ab4ec3a87df3c93628f294df111046aa2}\label{struct_world_1_1_cache_ab4ec3a87df3c93628f294df111046aa2} 
+\index{World$<$ TileData $>$::Cache@{World$<$ TileData $>$::Cache}!detectionCache@{detectionCache}}
+\index{detectionCache@{detectionCache}!World$<$ TileData $>$::Cache@{World$<$ TileData $>$::Cache}}
+\doxysubsubsection{\texorpdfstring{detectionCache}{detectionCache}}
+{\footnotesize\ttfamily template$<$class Tile\+Data $>$ \\
+\+::t2d\+::\+Tile\+Body\+Collision\+Cache$<$Tile\+Data$>$ \mbox{\hyperlink{class_world}{World}}$<$ Tile\+Data $>$\+::\+Cache\+::detection\+Cache}
+
+
+
+Definition at line \mbox{\hyperlink{world_8hpp_source_l00202}{202}} of file \mbox{\hyperlink{world_8hpp_source}{world.\+hpp}}.
+
+\Hypertarget{struct_world_1_1_cache_aa8366e450ccb9b7d3848c5051fb38c5f}\label{struct_world_1_1_cache_aa8366e450ccb9b7d3848c5051fb38c5f} 
+\index{World$<$ TileData $>$::Cache@{World$<$ TileData $>$::Cache}!results@{results}}
+\index{results@{results}!World$<$ TileData $>$::Cache@{World$<$ TileData $>$::Cache}}
+\doxysubsubsection{\texorpdfstring{results}{results}}
+{\footnotesize\ttfamily template$<$class Tile\+Data $>$ \\
+std\+::vector$<$\mbox{\hyperlink{struct_world_1_1_spatial_index}{Spatial\+Index}}$>$ \mbox{\hyperlink{class_world}{World}}$<$ Tile\+Data $>$\+::\+Cache\+::results}
+
+
+
+Definition at line \mbox{\hyperlink{world_8hpp_source_l00201}{201}} of file \mbox{\hyperlink{world_8hpp_source}{world.\+hpp}}.
+
+\Hypertarget{struct_world_1_1_cache_ad129d56870b28cf6bf97359aacf55376}\label{struct_world_1_1_cache_ad129d56870b28cf6bf97359aacf55376} 
+\index{World$<$ TileData $>$::Cache@{World$<$ TileData $>$::Cache}!shouldMove@{shouldMove}}
+\index{shouldMove@{shouldMove}!World$<$ TileData $>$::Cache@{World$<$ TileData $>$::Cache}}
+\doxysubsubsection{\texorpdfstring{shouldMove}{shouldMove}}
+{\footnotesize\ttfamily template$<$class Tile\+Data $>$ \\
+std\+::vector$<$std\+::pair$<$uint16\+\_\+t, \mbox{\hyperlink{struct_a_a_b_b}{AABB}}$<$Float$>$ $>$ $>$ \mbox{\hyperlink{class_world}{World}}$<$ Tile\+Data $>$\+::\+Cache\+::should\+Move}
+
+
+
+Definition at line \mbox{\hyperlink{world_8hpp_source_l00204}{204}} of file \mbox{\hyperlink{world_8hpp_source}{world.\+hpp}}.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{world_8hpp}{world.\+hpp}}\end{DoxyCompactItemize}

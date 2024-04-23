@@ -1,0 +1,127 @@
+\doxysection{Physics\+Tile\+Properties Class Reference}
+\hypertarget{struct_physics_tile_properties}{}\label{struct_physics_tile_properties}\index{PhysicsTileProperties@{PhysicsTileProperties}}
+
+
+Contains the physical properties of a tile, such as elasticity.  
+
+
+
+
+{\ttfamily \#include $<$tile\+Map.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename Integer $>$ }\\Float \mbox{\hyperlink{struct_physics_tile_properties_ab3eee6389a59d4908881bf9c83dbfc4e}{get\+Moment\+Of\+Inertia}} (const glm\+::vec$<$ 2, Integer $>$ \&tile\+Dimensions) const
+\begin{DoxyCompactList}\small\item\em Returns the rotational inertia of this tile. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Integer $>$ }\\Float \mbox{\hyperlink{struct_physics_tile_properties_a0a4c4439134c389f6ad5a1bc2349070f}{get\+Mass}} (const glm\+::vec$<$ 2, Integer $>$ \&tile\+Dimensions) const
+\begin{DoxyCompactList}\small\item\em Returns the mass of this tile with using the area calculated from {\ttfamily tile\+Dimensions}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Float \mbox{\hyperlink{struct_physics_tile_properties_aeee95ca972e02b49f3338d7d83d470ef}{density}} = 1.\+0f
+\item 
+uint8\+\_\+t \mbox{\hyperlink{struct_physics_tile_properties_ace8ce673704fec81ad73a6090ba3bad0}{static\+Friction}} = 255
+\item 
+uint8\+\_\+t \mbox{\hyperlink{struct_physics_tile_properties_abd67b7cb4087d3f8cc343ff05ec44b8b}{dynamic\+Friction}} = 255
+\item 
+uint8\+\_\+t \mbox{\hyperlink{struct_physics_tile_properties_af3cf6d61b776a2d404b76a613a8cabb7}{restitution}} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Contains the physical properties of a tile, such as elasticity. 
+
+Definition at line \mbox{\hyperlink{tile_map_8hpp_source_l00045}{45}} of file \mbox{\hyperlink{tile_map_8hpp_source}{tile\+Map.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{struct_physics_tile_properties_a0a4c4439134c389f6ad5a1bc2349070f}\label{struct_physics_tile_properties_a0a4c4439134c389f6ad5a1bc2349070f} 
+\index{PhysicsTileProperties@{PhysicsTileProperties}!getMass@{getMass}}
+\index{getMass@{getMass}!PhysicsTileProperties@{PhysicsTileProperties}}
+\doxysubsubsection{\texorpdfstring{getMass()}{getMass()}}
+{\footnotesize\ttfamily template$<$typename Integer $>$ \\
+Float Physics\+Tile\+Properties\+::get\+Mass (\begin{DoxyParamCaption}\item[{const glm\+::vec$<$ 2, Integer $>$ \&}]{tile\+Dimensions }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the mass of this tile with using the area calculated from {\ttfamily tile\+Dimensions}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tile\+Dimensions} & The tile\+Dimensions from which the area of this tile will be calculated \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{tile_map_8hpp_source_l00067}{67}} of file \mbox{\hyperlink{tile_map_8hpp_source}{tile\+Map.\+hpp}}.
+
+\Hypertarget{struct_physics_tile_properties_ab3eee6389a59d4908881bf9c83dbfc4e}\label{struct_physics_tile_properties_ab3eee6389a59d4908881bf9c83dbfc4e} 
+\index{PhysicsTileProperties@{PhysicsTileProperties}!getMomentOfInertia@{getMomentOfInertia}}
+\index{getMomentOfInertia@{getMomentOfInertia}!PhysicsTileProperties@{PhysicsTileProperties}}
+\doxysubsubsection{\texorpdfstring{getMomentOfInertia()}{getMomentOfInertia()}}
+{\footnotesize\ttfamily template$<$typename Integer $>$ \\
+Float Physics\+Tile\+Properties\+::get\+Moment\+Of\+Inertia (\begin{DoxyParamCaption}\item[{const glm\+::vec$<$ 2, Integer $>$ \&}]{tile\+Dimensions }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the rotational inertia of this tile. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tile\+Dimensions} & The tile\+Dimensions from which the area of this tile will be calculated \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{tile_map_8hpp_source_l00052}{52}} of file \mbox{\hyperlink{tile_map_8hpp_source}{tile\+Map.\+hpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_physics_tile_properties_aeee95ca972e02b49f3338d7d83d470ef}\label{struct_physics_tile_properties_aeee95ca972e02b49f3338d7d83d470ef} 
+\index{PhysicsTileProperties@{PhysicsTileProperties}!density@{density}}
+\index{density@{density}!PhysicsTileProperties@{PhysicsTileProperties}}
+\doxysubsubsection{\texorpdfstring{density}{density}}
+{\footnotesize\ttfamily Float Physics\+Tile\+Properties\+::density = 1.\+0f}
+
+
+
+Definition at line \mbox{\hyperlink{tile_map_8hpp_source_l00074}{74}} of file \mbox{\hyperlink{tile_map_8hpp_source}{tile\+Map.\+hpp}}.
+
+\Hypertarget{struct_physics_tile_properties_abd67b7cb4087d3f8cc343ff05ec44b8b}\label{struct_physics_tile_properties_abd67b7cb4087d3f8cc343ff05ec44b8b} 
+\index{PhysicsTileProperties@{PhysicsTileProperties}!dynamicFriction@{dynamicFriction}}
+\index{dynamicFriction@{dynamicFriction}!PhysicsTileProperties@{PhysicsTileProperties}}
+\doxysubsubsection{\texorpdfstring{dynamicFriction}{dynamicFriction}}
+{\footnotesize\ttfamily uint8\+\_\+t Physics\+Tile\+Properties\+::dynamic\+Friction = 255}
+
+
+
+Definition at line \mbox{\hyperlink{tile_map_8hpp_source_l00076}{76}} of file \mbox{\hyperlink{tile_map_8hpp_source}{tile\+Map.\+hpp}}.
+
+\Hypertarget{struct_physics_tile_properties_af3cf6d61b776a2d404b76a613a8cabb7}\label{struct_physics_tile_properties_af3cf6d61b776a2d404b76a613a8cabb7} 
+\index{PhysicsTileProperties@{PhysicsTileProperties}!restitution@{restitution}}
+\index{restitution@{restitution}!PhysicsTileProperties@{PhysicsTileProperties}}
+\doxysubsubsection{\texorpdfstring{restitution}{restitution}}
+{\footnotesize\ttfamily uint8\+\_\+t Physics\+Tile\+Properties\+::restitution = 0}
+
+
+
+Definition at line \mbox{\hyperlink{tile_map_8hpp_source_l00077}{77}} of file \mbox{\hyperlink{tile_map_8hpp_source}{tile\+Map.\+hpp}}.
+
+\Hypertarget{struct_physics_tile_properties_ace8ce673704fec81ad73a6090ba3bad0}\label{struct_physics_tile_properties_ace8ce673704fec81ad73a6090ba3bad0} 
+\index{PhysicsTileProperties@{PhysicsTileProperties}!staticFriction@{staticFriction}}
+\index{staticFriction@{staticFriction}!PhysicsTileProperties@{PhysicsTileProperties}}
+\doxysubsubsection{\texorpdfstring{staticFriction}{staticFriction}}
+{\footnotesize\ttfamily uint8\+\_\+t Physics\+Tile\+Properties\+::static\+Friction = 255}
+
+
+
+Definition at line \mbox{\hyperlink{tile_map_8hpp_source_l00075}{75}} of file \mbox{\hyperlink{tile_map_8hpp_source}{tile\+Map.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{tile_map_8hpp}{tile\+Map.\+hpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,314 @@
+\doxysection{Grid\texorpdfstring{$<$}{<} T, Int \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{class_grid}{}\label{class_grid}\index{Grid$<$ T, Int $>$@{Grid$<$ T, Int $>$}}
+
+
+Used for spatial indexing.  
+
+
+
+
+{\ttfamily \#include $<$spatial.\+hpp$>$}
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_grid_1_1_grid_element}{Grid\+Element}}
+\item 
+struct \mbox{\hyperlink{struct_grid_1_1_parent_cell}{Parent\+Cell}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{class_grid_a57439fca28ff7e8919277e6eb6726820}{Grid\+Map}} = boost\+::unordered\+\_\+flat\+\_\+map$<$ivec2, \mbox{\hyperlink{struct_grid_1_1_parent_cell}{Parent\+Cell}}$>$
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_grid_aee35a8d035abbdc09adc041ea97aae63}{Grid}} (Float cell\+Size=(Float) tcW)
+\begin{DoxyCompactList}\small\item\em Constructs a new \doxylink{class_grid}{Grid}. \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{class_grid_aaf75f94f8d1054144a17b59e003fd378}{insert}} (const \mbox{\hyperlink{struct_a_a_b_b}{AABB}}$<$ Float $>$ \&aabb, const T \&data)
+\begin{DoxyCompactList}\small\item\em Inserts a new element into the grid. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_grid_abdc0beb6c30b2bdf416deb26fabc0036}{relocate}} (uint16\+\_\+t idx, const \mbox{\hyperlink{struct_a_a_b_b}{AABB}}$<$ Float $>$ \&new\+AABB)
+\begin{DoxyCompactList}\small\item\em Relocates an already existing element within the grid. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_grid_a02042d2da423c9ec01f1784026192b32}{erase}} (uint16\+\_\+t idx)
+\begin{DoxyCompactList}\small\item\em Erases an element. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Callback $>$ }\\void \mbox{\hyperlink{class_grid_a7720310cee30747a6afffbc10af0d041}{query\+Intersects}} (const \mbox{\hyperlink{struct_a_a_b_b}{AABB}}$<$ Float $>$ \&area, Callback \&\&clbk) const
+\item 
+void \mbox{\hyperlink{class_grid_a97c9704022cc102500d452c18ca46263}{cleanup}} ()
+\begin{DoxyCompactList}\small\item\em Removes empty cells, if any. \end{DoxyCompactList}\item 
+Grid\+Map \& \mbox{\hyperlink{class_grid_a68514c6434ad9bc13101d52c83fe6be5}{grid\+Map}} ()
+\begin{DoxyCompactList}\small\item\em Returns the map of all cells. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+ivec2 \mbox{\hyperlink{class_grid_ad3068ec726b8e6a25a12a2e469a30a65}{get\+Cell\+Coords}} (const vec2 \&coords) const
+\item 
+bool \mbox{\hyperlink{class_grid_a97b5698371b9470b8aff23e1f781b48c}{contains}} (const Int \&min, const Int \&max, const Int \&point)
+\item 
+bool \mbox{\hyperlink{class_grid_ae79829899682fd0527faaacc0a8fbe17}{contains}} (const ivec2 \&min, const ivec2 \&max, const ivec2 \&point)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Float \mbox{\hyperlink{class_grid_aa440d351db0877305bbce14543893d95}{m\+\_\+inv\+Cell\+Size}}
+\item 
+Float \mbox{\hyperlink{class_grid_afce2e5a80cb069d921d843e9fa2bd54d}{m\+\_\+cell\+Size}}
+\item 
+\mbox{\hyperlink{class_free_list}{Free\+List}}$<$ \mbox{\hyperlink{struct_grid_1_1_grid_element}{Grid\+Element}}, uint16\+\_\+t $>$ \mbox{\hyperlink{class_grid_ab6959bdba27ce4b378113deb6c502324}{m\+\_\+element\+List}}
+\item 
+Grid\+Map \mbox{\hyperlink{class_grid_a8a3ae53fe4ea7953d7dd11db6b4751e5}{m\+\_\+cells}}
+\item 
+std\+::vector$<$ ivec2 $>$ \mbox{\hyperlink{class_grid_aec850b695d52edc2d1c017c1fb6ecfa2}{m\+\_\+possibly\+Empty\+Cells}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$class T, typename Int = int32\+\_\+t$>$\newline
+class Grid$<$ T, Int $>$}
+Used for spatial indexing. 
+
+Definition at line \mbox{\hyperlink{spatial_8hpp_source_l00118}{118}} of file \mbox{\hyperlink{spatial_8hpp_source}{spatial.\+hpp}}.
+
+
+
+\doxysubsection{Member Typedef Documentation}
+\Hypertarget{class_grid_a57439fca28ff7e8919277e6eb6726820}\label{class_grid_a57439fca28ff7e8919277e6eb6726820} 
+\index{Grid$<$ T, Int $>$@{Grid$<$ T, Int $>$}!GridMap@{GridMap}}
+\index{GridMap@{GridMap}!Grid$<$ T, Int $>$@{Grid$<$ T, Int $>$}}
+\doxysubsubsection{\texorpdfstring{GridMap}{GridMap}}
+{\footnotesize\ttfamily template$<$class T , typename Int  = int32\+\_\+t$>$ \\
+using \mbox{\hyperlink{class_grid}{Grid}}$<$ T, Int $>$\+::\+Grid\+Map = boost\+::unordered\+\_\+flat\+\_\+map$<$ivec2, \mbox{\hyperlink{struct_grid_1_1_parent_cell}{Parent\+Cell}}$>$}
+
+
+
+Definition at line \mbox{\hyperlink{spatial_8hpp_source_l00139}{139}} of file \mbox{\hyperlink{spatial_8hpp_source}{spatial.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_grid_aee35a8d035abbdc09adc041ea97aae63}\label{class_grid_aee35a8d035abbdc09adc041ea97aae63} 
+\index{Grid$<$ T, Int $>$@{Grid$<$ T, Int $>$}!Grid@{Grid}}
+\index{Grid@{Grid}!Grid$<$ T, Int $>$@{Grid$<$ T, Int $>$}}
+\doxysubsubsection{\texorpdfstring{Grid()}{Grid()}}
+{\footnotesize\ttfamily template$<$class T , typename Int  = int32\+\_\+t$>$ \\
+\mbox{\hyperlink{class_grid}{Grid}}$<$ T, Int $>$\mbox{\hyperlink{class_grid}{\+::\+Grid}} (\begin{DoxyParamCaption}\item[{Float}]{cell\+Size = {\ttfamily (Float)tcW} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructs a new \doxylink{class_grid}{Grid}. 
+
+@parram cell\+Size the side length of a cell within this grid 
+
+Definition at line \mbox{\hyperlink{spatial_8hpp_source_l00146}{146}} of file \mbox{\hyperlink{spatial_8hpp_source}{spatial.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_grid_a97c9704022cc102500d452c18ca46263}\label{class_grid_a97c9704022cc102500d452c18ca46263} 
+\index{Grid$<$ T, Int $>$@{Grid$<$ T, Int $>$}!cleanup@{cleanup}}
+\index{cleanup@{cleanup}!Grid$<$ T, Int $>$@{Grid$<$ T, Int $>$}}
+\doxysubsubsection{\texorpdfstring{cleanup()}{cleanup()}}
+{\footnotesize\ttfamily template$<$class T , typename Int  = int32\+\_\+t$>$ \\
+void \mbox{\hyperlink{class_grid}{Grid}}$<$ T, Int $>$\+::cleanup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Removes empty cells, if any. 
+
+
+
+Definition at line \mbox{\hyperlink{spatial_8hpp_source_l00261}{261}} of file \mbox{\hyperlink{spatial_8hpp_source}{spatial.\+hpp}}.
+
+\Hypertarget{class_grid_a97b5698371b9470b8aff23e1f781b48c}\label{class_grid_a97b5698371b9470b8aff23e1f781b48c} 
+\index{Grid$<$ T, Int $>$@{Grid$<$ T, Int $>$}!contains@{contains}}
+\index{contains@{contains}!Grid$<$ T, Int $>$@{Grid$<$ T, Int $>$}}
+\doxysubsubsection{\texorpdfstring{contains()}{contains()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class T , typename Int  = int32\+\_\+t$>$ \\
+bool \mbox{\hyperlink{class_grid}{Grid}}$<$ T, Int $>$\+::contains (\begin{DoxyParamCaption}\item[{const Int \&}]{min,  }\item[{const Int \&}]{max,  }\item[{const Int \&}]{point }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{spatial_8hpp_source_l00289}{289}} of file \mbox{\hyperlink{spatial_8hpp_source}{spatial.\+hpp}}.
+
+\Hypertarget{class_grid_ae79829899682fd0527faaacc0a8fbe17}\label{class_grid_ae79829899682fd0527faaacc0a8fbe17} 
+\index{Grid$<$ T, Int $>$@{Grid$<$ T, Int $>$}!contains@{contains}}
+\index{contains@{contains}!Grid$<$ T, Int $>$@{Grid$<$ T, Int $>$}}
+\doxysubsubsection{\texorpdfstring{contains()}{contains()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class T , typename Int  = int32\+\_\+t$>$ \\
+bool \mbox{\hyperlink{class_grid}{Grid}}$<$ T, Int $>$\+::contains (\begin{DoxyParamCaption}\item[{const ivec2 \&}]{min,  }\item[{const ivec2 \&}]{max,  }\item[{const ivec2 \&}]{point }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{spatial_8hpp_source_l00293}{293}} of file \mbox{\hyperlink{spatial_8hpp_source}{spatial.\+hpp}}.
+
+\Hypertarget{class_grid_a02042d2da423c9ec01f1784026192b32}\label{class_grid_a02042d2da423c9ec01f1784026192b32} 
+\index{Grid$<$ T, Int $>$@{Grid$<$ T, Int $>$}!erase@{erase}}
+\index{erase@{erase}!Grid$<$ T, Int $>$@{Grid$<$ T, Int $>$}}
+\doxysubsubsection{\texorpdfstring{erase()}{erase()}}
+{\footnotesize\ttfamily template$<$class T , typename Int  = int32\+\_\+t$>$ \\
+void \mbox{\hyperlink{class_grid}{Grid}}$<$ T, Int $>$\+::erase (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{idx }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Erases an element. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em idx} & The id of the element to remove \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{spatial_8hpp_source_l00220}{220}} of file \mbox{\hyperlink{spatial_8hpp_source}{spatial.\+hpp}}.
+
+\Hypertarget{class_grid_ad3068ec726b8e6a25a12a2e469a30a65}\label{class_grid_ad3068ec726b8e6a25a12a2e469a30a65} 
+\index{Grid$<$ T, Int $>$@{Grid$<$ T, Int $>$}!getCellCoords@{getCellCoords}}
+\index{getCellCoords@{getCellCoords}!Grid$<$ T, Int $>$@{Grid$<$ T, Int $>$}}
+\doxysubsubsection{\texorpdfstring{getCellCoords()}{getCellCoords()}}
+{\footnotesize\ttfamily template$<$class T , typename Int  = int32\+\_\+t$>$ \\
+ivec2 \mbox{\hyperlink{class_grid}{Grid}}$<$ T, Int $>$\+::get\+Cell\+Coords (\begin{DoxyParamCaption}\item[{const vec2 \&}]{coords }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{spatial_8hpp_source_l00281}{281}} of file \mbox{\hyperlink{spatial_8hpp_source}{spatial.\+hpp}}.
+
+\Hypertarget{class_grid_a68514c6434ad9bc13101d52c83fe6be5}\label{class_grid_a68514c6434ad9bc13101d52c83fe6be5} 
+\index{Grid$<$ T, Int $>$@{Grid$<$ T, Int $>$}!gridMap@{gridMap}}
+\index{gridMap@{gridMap}!Grid$<$ T, Int $>$@{Grid$<$ T, Int $>$}}
+\doxysubsubsection{\texorpdfstring{gridMap()}{gridMap()}}
+{\footnotesize\ttfamily template$<$class T , typename Int  = int32\+\_\+t$>$ \\
+Grid\+Map \& \mbox{\hyperlink{class_grid}{Grid}}$<$ T, Int $>$\+::grid\+Map (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the map of all cells. 
+
+\begin{DoxyReturn}{Returns}
+the map of all cells 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{spatial_8hpp_source_l00276}{276}} of file \mbox{\hyperlink{spatial_8hpp_source}{spatial.\+hpp}}.
+
+\Hypertarget{class_grid_aaf75f94f8d1054144a17b59e003fd378}\label{class_grid_aaf75f94f8d1054144a17b59e003fd378} 
+\index{Grid$<$ T, Int $>$@{Grid$<$ T, Int $>$}!insert@{insert}}
+\index{insert@{insert}!Grid$<$ T, Int $>$@{Grid$<$ T, Int $>$}}
+\doxysubsubsection{\texorpdfstring{insert()}{insert()}}
+{\footnotesize\ttfamily template$<$class T , typename Int  = int32\+\_\+t$>$ \\
+uint16\+\_\+t \mbox{\hyperlink{class_grid}{Grid}}$<$ T, Int $>$\+::insert (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_a_a_b_b}{AABB}}$<$ Float $>$ \&}]{aabb,  }\item[{const T \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Inserts a new element into the grid. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em aabb} & The \doxylink{struct_a_a_b_b}{AABB} of the element \\
+\hline
+{\em data} & The user data of the element\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The id of the element 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{spatial_8hpp_source_l00158}{158}} of file \mbox{\hyperlink{spatial_8hpp_source}{spatial.\+hpp}}.
+
+\Hypertarget{class_grid_a7720310cee30747a6afffbc10af0d041}\label{class_grid_a7720310cee30747a6afffbc10af0d041} 
+\index{Grid$<$ T, Int $>$@{Grid$<$ T, Int $>$}!queryIntersects@{queryIntersects}}
+\index{queryIntersects@{queryIntersects}!Grid$<$ T, Int $>$@{Grid$<$ T, Int $>$}}
+\doxysubsubsection{\texorpdfstring{queryIntersects()}{queryIntersects()}}
+{\footnotesize\ttfamily template$<$class T , typename Int  = int32\+\_\+t$>$ \\
+template$<$typename Callback $>$ \\
+void \mbox{\hyperlink{class_grid}{Grid}}$<$ T, Int $>$\+::query\+Intersects (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_a_a_b_b}{AABB}}$<$ Float $>$ \&}]{area,  }\item[{Callback \&\&}]{clbk }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{spatial_8hpp_source_l00235}{235}} of file \mbox{\hyperlink{spatial_8hpp_source}{spatial.\+hpp}}.
+
+\Hypertarget{class_grid_abdc0beb6c30b2bdf416deb26fabc0036}\label{class_grid_abdc0beb6c30b2bdf416deb26fabc0036} 
+\index{Grid$<$ T, Int $>$@{Grid$<$ T, Int $>$}!relocate@{relocate}}
+\index{relocate@{relocate}!Grid$<$ T, Int $>$@{Grid$<$ T, Int $>$}}
+\doxysubsubsection{\texorpdfstring{relocate()}{relocate()}}
+{\footnotesize\ttfamily template$<$class T , typename Int  = int32\+\_\+t$>$ \\
+void \mbox{\hyperlink{class_grid}{Grid}}$<$ T, Int $>$\+::relocate (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{idx,  }\item[{const \mbox{\hyperlink{struct_a_a_b_b}{AABB}}$<$ Float $>$ \&}]{new\+AABB }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Relocates an already existing element within the grid. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em idx} & The id of the element \\
+\hline
+{\em new\+AABB} & The new \doxylink{struct_a_a_b_b}{AABB} of the element \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{spatial_8hpp_source_l00183}{183}} of file \mbox{\hyperlink{spatial_8hpp_source}{spatial.\+hpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_grid_a8a3ae53fe4ea7953d7dd11db6b4751e5}\label{class_grid_a8a3ae53fe4ea7953d7dd11db6b4751e5} 
+\index{Grid$<$ T, Int $>$@{Grid$<$ T, Int $>$}!m\_cells@{m\_cells}}
+\index{m\_cells@{m\_cells}!Grid$<$ T, Int $>$@{Grid$<$ T, Int $>$}}
+\doxysubsubsection{\texorpdfstring{m\_cells}{m\_cells}}
+{\footnotesize\ttfamily template$<$class T , typename Int  = int32\+\_\+t$>$ \\
+Grid\+Map \mbox{\hyperlink{class_grid}{Grid}}$<$ T, Int $>$\+::m\+\_\+cells\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{spatial_8hpp_source_l00302}{302}} of file \mbox{\hyperlink{spatial_8hpp_source}{spatial.\+hpp}}.
+
+\Hypertarget{class_grid_afce2e5a80cb069d921d843e9fa2bd54d}\label{class_grid_afce2e5a80cb069d921d843e9fa2bd54d} 
+\index{Grid$<$ T, Int $>$@{Grid$<$ T, Int $>$}!m\_cellSize@{m\_cellSize}}
+\index{m\_cellSize@{m\_cellSize}!Grid$<$ T, Int $>$@{Grid$<$ T, Int $>$}}
+\doxysubsubsection{\texorpdfstring{m\_cellSize}{m\_cellSize}}
+{\footnotesize\ttfamily template$<$class T , typename Int  = int32\+\_\+t$>$ \\
+Float \mbox{\hyperlink{class_grid}{Grid}}$<$ T, Int $>$\+::m\+\_\+cell\+Size\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{spatial_8hpp_source_l00299}{299}} of file \mbox{\hyperlink{spatial_8hpp_source}{spatial.\+hpp}}.
+
+\Hypertarget{class_grid_ab6959bdba27ce4b378113deb6c502324}\label{class_grid_ab6959bdba27ce4b378113deb6c502324} 
+\index{Grid$<$ T, Int $>$@{Grid$<$ T, Int $>$}!m\_elementList@{m\_elementList}}
+\index{m\_elementList@{m\_elementList}!Grid$<$ T, Int $>$@{Grid$<$ T, Int $>$}}
+\doxysubsubsection{\texorpdfstring{m\_elementList}{m\_elementList}}
+{\footnotesize\ttfamily template$<$class T , typename Int  = int32\+\_\+t$>$ \\
+\mbox{\hyperlink{class_free_list}{Free\+List}}$<$\mbox{\hyperlink{struct_grid_1_1_grid_element}{Grid\+Element}}, uint16\+\_\+t$>$ \mbox{\hyperlink{class_grid}{Grid}}$<$ T, Int $>$\+::m\+\_\+element\+List\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{spatial_8hpp_source_l00300}{300}} of file \mbox{\hyperlink{spatial_8hpp_source}{spatial.\+hpp}}.
+
+\Hypertarget{class_grid_aa440d351db0877305bbce14543893d95}\label{class_grid_aa440d351db0877305bbce14543893d95} 
+\index{Grid$<$ T, Int $>$@{Grid$<$ T, Int $>$}!m\_invCellSize@{m\_invCellSize}}
+\index{m\_invCellSize@{m\_invCellSize}!Grid$<$ T, Int $>$@{Grid$<$ T, Int $>$}}
+\doxysubsubsection{\texorpdfstring{m\_invCellSize}{m\_invCellSize}}
+{\footnotesize\ttfamily template$<$class T , typename Int  = int32\+\_\+t$>$ \\
+Float \mbox{\hyperlink{class_grid}{Grid}}$<$ T, Int $>$\+::m\+\_\+inv\+Cell\+Size\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{spatial_8hpp_source_l00298}{298}} of file \mbox{\hyperlink{spatial_8hpp_source}{spatial.\+hpp}}.
+
+\Hypertarget{class_grid_aec850b695d52edc2d1c017c1fb6ecfa2}\label{class_grid_aec850b695d52edc2d1c017c1fb6ecfa2} 
+\index{Grid$<$ T, Int $>$@{Grid$<$ T, Int $>$}!m\_possiblyEmptyCells@{m\_possiblyEmptyCells}}
+\index{m\_possiblyEmptyCells@{m\_possiblyEmptyCells}!Grid$<$ T, Int $>$@{Grid$<$ T, Int $>$}}
+\doxysubsubsection{\texorpdfstring{m\_possiblyEmptyCells}{m\_possiblyEmptyCells}}
+{\footnotesize\ttfamily template$<$class T , typename Int  = int32\+\_\+t$>$ \\
+std\+::vector$<$ivec2$>$ \mbox{\hyperlink{class_grid}{Grid}}$<$ T, Int $>$\+::m\+\_\+possibly\+Empty\+Cells\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{spatial_8hpp_source_l00303}{303}} of file \mbox{\hyperlink{spatial_8hpp_source}{spatial.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/spatial.\+hpp\end{DoxyCompactItemize}

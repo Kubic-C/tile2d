@@ -1,0 +1,91 @@
+\doxysection{base.\+hpp}
+\hypertarget{base_8hpp_source}{}\label{base_8hpp_source}\index{src/base.hpp@{src/base.hpp}}
+\mbox{\hyperlink{base_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00013}00013\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00014}00014\ \textcolor{preprocessor}{\#include\ <iterator>}}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00015}00015\ \textcolor{preprocessor}{\#include\ <cassert>}}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00016}00016\ \textcolor{preprocessor}{\#include\ <array>}}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00017}00017\ \textcolor{preprocessor}{\#include\ <set>}}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00018}00018\ \textcolor{preprocessor}{\#include\ <bitset>}}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00019}00019\ \textcolor{preprocessor}{\#include\ <stack>}}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00021}00021\ \textcolor{preprocessor}{\#define\ GLM\_ENABLE\_EXPERIMENTAL}}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00022}00022\ \textcolor{preprocessor}{\#include\ <glm/glm.hpp>}}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00023}00023\ \textcolor{preprocessor}{\#include\ <glm/gtx/rotate\_vector.hpp>}}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00024}00024\ \textcolor{preprocessor}{\#include\ <glm/gtc/type\_ptr.hpp>}}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00025}00025\ \textcolor{preprocessor}{\#include\ <glm/gtx/norm.hpp>}}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00026}00026\ \textcolor{preprocessor}{\#include\ <glm/gtx/vector\_angle.hpp>}}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00028}00028\ \textcolor{preprocessor}{\#include\ <boost/unordered/unordered\_flat\_map.hpp>}}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00029}00029\ \textcolor{preprocessor}{\#include\ <boost/unordered/unordered\_flat\_set.hpp>}}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00031}00031\ \textcolor{comment}{//\ Multithreading}}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00032}00032\ \textcolor{preprocessor}{\#include\ <boost/pool/object\_pool.hpp>}}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00033}00033\ \textcolor{preprocessor}{\#include\ <boost/asio/io\_service.hpp>}}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00034}00034\ \textcolor{preprocessor}{\#include\ <boost/bind/bind.hpp>}}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00035}00035\ \textcolor{preprocessor}{\#include\ <boost/thread/thread.hpp>}}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00036}00036\ \textcolor{preprocessor}{\#include\ <boost/thread/locks.hpp>}}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00038}00038\ \textcolor{preprocessor}{\#define\ T2D\_NAMESPACE\_BEGIN\ namespace\ t2d\ \{}}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00039}00039\ \textcolor{preprocessor}{\#define\ T2D\_NAMESPACE\_END\ \}}}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00041}00041\ T2D\_NAMESPACE\_BEGIN}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00043}00043\ \textcolor{keyword}{using\ }Float\ =\ float;}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00044}00044\ \textcolor{keyword}{using\ }vec2\ =\ glm::vec<2,\ Float,\ glm::packed\_lowp>;}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00046}00046\ \textcolor{keyword}{namespace\ }debug\ \{}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00048}00048\ \}}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00050}00050\ \textcolor{keyword}{namespace\ }impl\ \{}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00051}00051\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00052}00052\ \ \ \ \ T\ \textcolor{keyword}{constexpr}\ sqrtNewtonRaphson(T\ x,\ T\ curr,\ T\ prev)}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00053}00053\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00054}00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ curr\ ==\ prev}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ ?\ curr}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ :\ sqrtNewtonRaphson<T>(x,\ (T)0.5\ *\ (curr\ +\ x\ /\ curr),\ curr);}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00057}00057\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00058}00058\ \}}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00065}00065\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00066}\mbox{\hyperlink{base_8hpp_a2bb1b3a71476bfcfe7c877a06672a418}{00066}}\ T\ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{base_8hpp_a2bb1b3a71476bfcfe7c877a06672a418}{sqrt}}(T\ x)}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00067}00067\ \{}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00068}00068\ \ \ \ \ \textcolor{keywordflow}{return}\ x\ >=\ 0\ \&\&\ x\ <\ std::numeric\_limits<T>::infinity()}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00069}00069\ \ \ \ \ \ \ \ \ ?\ impl::sqrtNewtonRaphson<T>(x,\ x,\ 0)}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00070}00070\ \ \ \ \ \ \ \ \ :\ std::numeric\_limits<T>::quiet\_NaN();}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00071}00071\ \}}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00073}00073\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ Float\ tileWidth\ =\ 10.0f;}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00074}00074\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ Float\ tileHeight\ =\ 10.0f;}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00075}00075\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ vec2\ tileSize\ =\ vec2(tileWidth,\ tileHeight);}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00076}00076\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ Float\ tileRadi\ =\ sqrt<Float>(tileWidth\ *\ tileWidth\ +\ tileHeight\ *\ tileHeight)\ *\ 0.5f;}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00078}00078\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{size\_t}\ chunkSideLength\ =\ 4;}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00079}00079\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{size\_t}\ chunkWidth\ =\ chunkSideLength;}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00080}00080\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{size\_t}\ chunkHeight\ =\ chunkSideLength;}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00081}00081\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ Float\ tcW\ =\ (Float)tileWidth\ *\ (Float)chunkWidth;}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00082}00082\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ Float\ tcH\ =\ (Float)tileHeight\ *\ (Float)chunkHeight;}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00084}00084\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ K,\ \textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00085}00085\ \textcolor{keyword}{using\ }FlatMap\ =\ boost::unordered\_flat\_map<K,\ T>;}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00087}00087\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ K>}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00088}00088\ \textcolor{keyword}{using\ }FlatSet\ =\ boost::unordered\_flat\_set<K>;}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00090}00090\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00091}00091\ \textcolor{keywordtype}{bool}\ isNaN(\textcolor{keyword}{const}\ T\&\ v)\ \{}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00092}00092\ \ \ \ \ \textcolor{keywordflow}{return}\ std::isnan(v);}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00093}00093\ \}}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00095}00095\ \textcolor{keyword}{template}<>}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00096}00096\ \textcolor{keywordtype}{bool}\ isNaN<vec2>(\textcolor{keyword}{const}\ vec2\&\ v)\ \{}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00097}00097\ \ \ \ \ \textcolor{keywordflow}{return}\ std::isnan(v.x)\ ||\ std::isnan(v.y);}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00098}00098\ \}}
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00099}00099\ }
+\DoxyCodeLine{\Hypertarget{base_8hpp_source_l00100}00100\ T2D\_NAMESPACE\_END}
+
+\end{DoxyCode}

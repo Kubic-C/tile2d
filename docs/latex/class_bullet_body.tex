@@ -1,0 +1,153 @@
+\doxysection{Bullet\+Body Class Reference}
+\hypertarget{class_bullet_body}{}\label{class_bullet_body}\index{BulletBody@{BulletBody}}
+Inheritance diagram for Bullet\+Body\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_bullet_body}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_bullet_body_ac6617f94dfbb09ad7142954678559aa3}{Bullet\+Body}} (uint32\+\_\+t \mbox{\hyperlink{class_world_body_ad8bfcd33f6b24a101288f627c94d771c}{id}}, Float radius)
+\item 
+virtual void \mbox{\hyperlink{class_bullet_body_aa58f625e8b4f79ce7853944fa8a42a20}{integrate}} (Float dt) override
+\begin{DoxyCompactList}\small\item\em Integerates this body, meaning the linear velocity and angular velocity will be integrated into the position and rotation of this body. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{struct_a_a_b_b}{AABB}}$<$ Float $>$ \mbox{\hyperlink{class_bullet_body_a9c5b14312e17f59983576f0b491c63b7}{get\+AABB}} () const
+\begin{DoxyCompactList}\small\item\em Returns the \doxylink{struct_a_a_b_b}{AABB} of this body. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_world_body}{World\+Body}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_world_body_aa7c6ffa2887d629c5874cfcf621102b2}{World\+Body}} (uint32\+\_\+t \mbox{\hyperlink{class_world_body_ad8bfcd33f6b24a101288f627c94d771c}{id}}, Body\+Type \mbox{\hyperlink{class_world_body_a9612e8713400d874e4146c993c451ec6}{body\+Type}})
+\begin{DoxyCompactList}\small\item\em constructs a new \doxylink{class_world_body}{World\+Body} \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{class_world_body_ad8bfcd33f6b24a101288f627c94d771c}{id}} () const
+\begin{DoxyCompactList}\small\item\em Returns the id assigned to this body the physics world. \end{DoxyCompactList}\item 
+Body\+Type \mbox{\hyperlink{class_world_body_a9612e8713400d874e4146c993c451ec6}{body\+Type}} () const
+\begin{DoxyCompactList}\small\item\em Returns the body\+Type of this body, see enum Body\+Type. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_transform}{Transform}} \& \mbox{\hyperlink{class_world_body_a3584d94b29f32c3ed17ff1a8c41b5f71}{transform}} ()
+\begin{DoxyCompactList}\small\item\em Returns the REFERENCE transform of this body. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{struct_transform}{Transform}} \& \mbox{\hyperlink{class_world_body_a423acc77e49cd702737ff669c717d5dc}{transform}} () const
+\begin{DoxyCompactList}\small\item\em Returns the CONST REFERENCE transform of this body. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_world_body_acc7680ca8eaf43dcfdcaa3659705de72}{move\+By}} (const vec2 \&amount)
+\begin{DoxyCompactList}\small\item\em Moves the body by {\ttfamily amount}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_world_body_a610526dea596e47087b100bda19f46b6}{rotate\+By}} (Float amount)
+\begin{DoxyCompactList}\small\item\em Rotates the body by {\ttfamily amount}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_world_body_a7ee73511ab0cfd11090fe3ea8f1bd3c6}{set\+Pos}} (const vec2 \&pos)
+\begin{DoxyCompactList}\small\item\em Sets the position of this body to {\ttfamily pos}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_world_body_ae72ffca9d12717be1a72df9f0d393e31}{set\+Rot}} (Float rot)
+\begin{DoxyCompactList}\small\item\em Sets the rotation of this body to {\ttfamily rot}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_world_body_ac5e7232da3d635d40dcda401b46f868d}{is\+Static}} () const
+\begin{DoxyCompactList}\small\item\em Returns if the body is static, meaning it cannot be moved by forces or other bodies. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_world_body_a0af58fc876befc11369c5c312ea98e08}{set\+Static}} (bool static\+\_\+)
+\begin{DoxyCompactList}\small\item\em Either make the body static or dynamic. \end{DoxyCompactList}\item 
+virtual vec2 \mbox{\hyperlink{class_world_body_a755dd7be376bf17e6d16da0a76f74a38}{get\+World\+Point}} (const vec2 \&local\+Point) const
+\begin{DoxyCompactList}\small\item\em Gets a local position thats within the local space of this body and transforms into the world space. \end{DoxyCompactList}\item 
+virtual vec2 \mbox{\hyperlink{class_world_body_a29cc3198a2e7b72ba789db3e7656dc1e}{get\+Local\+Point}} (const vec2 \&world\+Point) const
+\begin{DoxyCompactList}\small\item\em Gets a world position thats space of this body and transforms into the local space of this body. \end{DoxyCompactList}\item 
+virtual vec2 \mbox{\hyperlink{class_world_body_afc42a76d803e29da04b3e3305408baeb}{get\+World\+Pos}} ()
+\begin{DoxyCompactList}\small\item\em Returns the world position of this body. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_world_body_a0ffbb51f8659fe4d9d6a65459b5b4998}{add\+Linear\+Vel}} (const vec2 \&vel)
+\begin{DoxyCompactList}\small\item\em applies a linear velocity to this body \end{DoxyCompactList}\item 
+Float \mbox{\hyperlink{class_world_body_af16eb00f017d10982c1f09397001f228}{mass}} () const
+\begin{DoxyCompactList}\small\item\em Returns the mass of this body. \end{DoxyCompactList}\item 
+Float \mbox{\hyperlink{class_world_body_a53aa9866b3431aa0f88d5f2ba8153b37}{inverse\+Mass}} () const
+\begin{DoxyCompactList}\small\item\em Returns the inverse mass of this body. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_a_a_b_b}{AABB}}$<$ Float $>$ \mbox{\hyperlink{class_world_body_ab30f0aad7639f300634ec506bfc540e5}{get\+AABB}} (const \mbox{\hyperlink{struct_transform}{Transform}} \&space\+Transform, const vec2 \&local\+Offset=\{ Float(0.\+5f), Float(0.\+5f) \}) const
+\item 
+\mbox{\hyperlink{struct_a_a_b_b}{AABB}}$<$ Float $>$ \mbox{\hyperlink{class_world_body_ae85b7dc02d136476e6f339b49e6ab959}{get\+AABB}} (const \mbox{\hyperlink{struct_a_a_b_b}{AABB}}$<$ Float $>$ \&local\+AABB, const \mbox{\hyperlink{struct_transform}{Transform}} \&space\+Transform, const vec2 \&local\+Offset=\{ Float(0.\+5f), Float(0.\+5f) \}) const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{class_world_body}{World\+Body}}}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bfseries Flag\+Indexes} \{ {\bfseries NEEDS\+\_\+\+REINSERT} = 0
+, {\bfseries IS\+\_\+\+STATIC} = 1
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_world_body}{World\+Body}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_transform}{Transform}} \mbox{\hyperlink{class_world_body_aac0befe5ae6afbf67522fe5cabddfaf9}{m\+\_\+transform}}
+\item 
+Float \mbox{\hyperlink{class_world_body_a72e3c603db7ec774bd50ac9da562786f}{m\+\_\+mass}} = 0.\+0f
+\item 
+Float \mbox{\hyperlink{class_world_body_a3a31d4eb9ee51cd7379989e06f8db298}{m\+\_\+inverse\+Mass}} = 0
+\item 
+vec2 \mbox{\hyperlink{class_world_body_a7379628fdfc5a33664efb02be839708e}{m\+\_\+linear\+Velocity}} = \{ 0.\+0f, 0.\+0f \}
+\item 
+std\+::bitset$<$ 4 $>$ \mbox{\hyperlink{class_world_body_ac93aeed5e761fa51f78a99ef6232ba93}{m\+\_\+flags}}
+\item 
+Body\+Type \mbox{\hyperlink{class_world_body_ab21dca738a0a19f4a7bcdb6c485ff59e}{m\+\_\+body\+Type}} = Body\+Type\+::\+Invalid
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{body_8hpp_source_l00357}{357}} of file \mbox{\hyperlink{body_8hpp_source}{body.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_bullet_body_ac6617f94dfbb09ad7142954678559aa3}\label{class_bullet_body_ac6617f94dfbb09ad7142954678559aa3} 
+\index{BulletBody@{BulletBody}!BulletBody@{BulletBody}}
+\index{BulletBody@{BulletBody}!BulletBody@{BulletBody}}
+\doxysubsubsection{\texorpdfstring{BulletBody()}{BulletBody()}}
+{\footnotesize\ttfamily Bullet\+Body\+::\+Bullet\+Body (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{id,  }\item[{Float}]{radius }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{body_8hpp_source_l00359}{359}} of file \mbox{\hyperlink{body_8hpp_source}{body.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_bullet_body_a9c5b14312e17f59983576f0b491c63b7}\label{class_bullet_body_a9c5b14312e17f59983576f0b491c63b7} 
+\index{BulletBody@{BulletBody}!getAABB@{getAABB}}
+\index{getAABB@{getAABB}!BulletBody@{BulletBody}}
+\doxysubsubsection{\texorpdfstring{getAABB()}{getAABB()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{struct_a_a_b_b}{AABB}}$<$ Float $>$ Bullet\+Body\+::get\+AABB (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Returns the \doxylink{struct_a_a_b_b}{AABB} of this body. 
+
+\begin{DoxyReturn}{Returns}
+The \doxylink{struct_a_a_b_b}{AABB} of this body 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_world_body_ab67f9f903f28f2e1fbeb8f576fade18e}{World\+Body}}.
+
+
+
+Definition at line \mbox{\hyperlink{body_8hpp_source_l00366}{366}} of file \mbox{\hyperlink{body_8hpp_source}{body.\+hpp}}.
+
+\Hypertarget{class_bullet_body_aa58f625e8b4f79ce7853944fa8a42a20}\label{class_bullet_body_aa58f625e8b4f79ce7853944fa8a42a20} 
+\index{BulletBody@{BulletBody}!integrate@{integrate}}
+\index{integrate@{integrate}!BulletBody@{BulletBody}}
+\doxysubsubsection{\texorpdfstring{integrate()}{integrate()}}
+{\footnotesize\ttfamily virtual void Bullet\+Body\+::integrate (\begin{DoxyParamCaption}\item[{Float}]{dt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Integerates this body, meaning the linear velocity and angular velocity will be integrated into the position and rotation of this body. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dt} & The amount to integrate by; delta time \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_world_body_acaf74fff800141bd59a6fce87a8f13d2}{World\+Body}}.
+
+
+
+Definition at line \mbox{\hyperlink{body_8hpp_source_l00362}{362}} of file \mbox{\hyperlink{body_8hpp_source}{body.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{body_8hpp}{body.\+hpp}}\end{DoxyCompactItemize}

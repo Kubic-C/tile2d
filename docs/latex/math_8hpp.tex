@@ -1,0 +1,364 @@
+\doxysection{src/math.hpp File Reference}
+\hypertarget{math_8hpp}{}\label{math_8hpp}\index{src/math.hpp@{src/math.hpp}}
+
+
+contains various functions and classes that are used for both convience and/or functionality that may not be fit to be in other files  
+
+
+{\ttfamily \#include "{}base.\+hpp"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structstd_1_1less_3_01glm_1_1i32vec2_01_4}{std\+::less$<$ glm\+::i32vec2 $>$}}
+\item 
+struct \mbox{\hyperlink{structstd_1_1less_3_01glm_1_1vec_3_012_00_01int32__t_00_01glm_1_1packed__lowp_01_4_01_4}{std\+::less$<$ glm\+::vec$<$ 2, int32\+\_\+t, glm\+::packed\+\_\+lowp $>$ $>$}}
+\item 
+struct \mbox{\hyperlink{structstd_1_1hash_3_01glm_1_1i32vec2_01_4}{std\+::hash$<$ glm\+::i32vec2 $>$}}
+\item 
+struct \mbox{\hyperlink{structboost_1_1hash_3_01glm_1_1vec_3_012_00_01int32__t_00_01glm_1_1packed__lowp_01_4_01_4}{boost\+::hash$<$ glm\+::vec$<$ 2, int32\+\_\+t, glm\+::packed\+\_\+lowp $>$ $>$}}
+\item 
+struct \mbox{\hyperlink{structboost_1_1hash_3_01glm_1_1i32vec2_01_4}{boost\+::hash$<$ glm\+::i32vec2 $>$}}
+\item 
+struct \mbox{\hyperlink{structstd_1_1equal__to_3_01glm_1_1i32vec2_01_4}{std\+::equal\+\_\+to$<$ glm\+::i32vec2 $>$}}
+\item 
+class \mbox{\hyperlink{struct_sin_cos}{Sin\+Cos}}
+\begin{DoxyCompactList}\small\item\em Used to simplify the use of precalculated values for sine and cosine. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_transform}{Transform}}
+\item 
+struct \mbox{\hyperlink{struct_a_a_b_b}{AABB$<$ T, Prec $>$}}
+\item 
+struct \mbox{\hyperlink{struct_linear_general_form}{Linear\+General\+Form}}
+\item 
+struct \mbox{\hyperlink{struct_t_o_b_b}{TOBB}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{math_8hpp_af029f6083f13ccf10e5a69e45207b8d8}{Min\+Max}} = std\+::pair$<$Float, Float$>$
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T $>$ }\\T2\+D\+\_\+\+NAMESPACE\+\_\+\+BEGIN T constexpr \mbox{\hyperlink{math_8hpp_a145bfddd24a2cdd256dbed6d741a3842}{square}} (T x)
+\begin{DoxyCompactList}\small\item\em Returns the sqaure of {\ttfamily x}. \end{DoxyCompactList}\item 
+vec2 \mbox{\hyperlink{math_8hpp_af80db5fa59ed63cc2c134814a0a3620b}{rotate}} (const vec2 \&v, Float sin, Float cos)
+\item 
+vec2 \mbox{\hyperlink{math_8hpp_a47a76737f050ee3a76f323b8b370f7cb}{rotate}} (const vec2 \&v, const \mbox{\hyperlink{struct_sin_cos}{Sin\+Cos}} \&sincos)
+\item 
+Float \mbox{\hyperlink{math_8hpp_a57686a943ac6a78600628222f6134bcf}{cross}} (const vec2 \&a, const vec2 \&b)
+\item 
+bool \mbox{\hyperlink{math_8hpp_a45fdad7f759d8f3b2dd916cb3fce23e8}{overlap}} (Float min1, Float max1, Float min2, Float max2)
+\item 
+Float \mbox{\hyperlink{math_8hpp_aa75a5452d1500905495f696c293cbc1e}{absdot}} (const vec2 \&vec1, const vec2 \&vec2)
+\item 
+vec2 \mbox{\hyperlink{math_8hpp_a0d6630cc4f536f502d3f7b96091c149b}{reverse}} (const vec2 \&vec)
+\item 
+Float \mbox{\hyperlink{math_8hpp_afbe515b58ba299feddd0399c117e2a20}{side\+Of}} (const vec2 \&p, const vec2 \&a, const vec2 \&b)
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{math_8hpp_aaf1aa8714dbd1604cd80c97332862e4f}{parallel\+Axis\+Theorem}} (T Icm, T mass, T sq\+Distance)
+\item 
+{\footnotesize template$<$typename T $>$ }\\\mbox{\hyperlink{struct_a_a_b_b}{AABB}}$<$ T $>$ \mbox{\hyperlink{math_8hpp_a7f7a07c6cfcd3f0e5d81f6b7508f3629}{compute\+AABBCollision\+Area}} (const \mbox{\hyperlink{struct_a_a_b_b}{AABB}}$<$ T $>$ \&\+\_\+1, const \mbox{\hyperlink{struct_a_a_b_b}{AABB}}$<$ T $>$ \&\+\_\+2)
+\item 
+bool \mbox{\hyperlink{math_8hpp_a1be83ac5a4c35a2240aaa5b1f1814fde}{nearly\+Equal}} (Float a, Float b, Float max=0.\+0001f)
+\item 
+bool \mbox{\hyperlink{math_8hpp_a7da984a3582ef1384e81b9dc49fb5da9}{nearly\+Equal}} (vec2 a, vec2 b, Float max=0.\+0001f)
+\item 
+Float \mbox{\hyperlink{math_8hpp_a3cc6313e7fecfe539181e5dcd5f945f4}{sqaure}} (Float value)
+\item 
+Float \mbox{\hyperlink{math_8hpp_a59548e3bdf3b28852365119be068d701}{point\+Segment\+Distance}} (vec2 p, vec2 v1, vec2 v2, vec2 \&cp)
+\item 
+{\footnotesize template$<$class Container $>$ }\\Min\+Max \mbox{\hyperlink{math_8hpp_a894a5ce70174e03ac0bd6467014bd0cc}{project\+Box\+On\+Normal}} (const Container \&vertices, const vec2 \&normal)
+\item 
+{\footnotesize template$<$class Container , class Output\+Container  = std\+::vector$<$vec2$>$$>$ }\\Output\+Container \mbox{\hyperlink{math_8hpp_a1762e64bc22920e25d589cd21e8d36a3}{sutherland\+Hodgman\+Clip}} (const Container \&subject\+Vertices, const Container \&clip\+Vertices)
+\item 
+bool \mbox{\hyperlink{math_8hpp_a7b93c225585ef6ca22a369a961bbf9d1}{circle\+Collide}} (Float radi1, const vec2 \&pos1, Float radi2, const vec2 \&pos2)
+\item 
+Float \mbox{\hyperlink{math_8hpp_ac6f5840aca2b242a66c442dbff757ef7}{convert\+To\+Float}} (uint8\+\_\+t num)
+\item 
+{\footnotesize template$<$typename Tint $>$ }\\Tint constexpr \mbox{\hyperlink{math_8hpp_a93e222ce8f014300fbd191d5022bdb5f}{get\+Sqrt\+Magic\+Number}} ()
+\item 
+template$<$$>$ constexpr std\+::int32\+\_\+t \mbox{\hyperlink{math_8hpp_a1c47e42ca6dc92c18cec120e1b480088}{get\+Sqrt\+Magic\+Number}} ()
+\item 
+template$<$$>$ constexpr std\+::int64\+\_\+t \mbox{\hyperlink{math_8hpp_ab00732cd4306f8696ef7538908de6298}{get\+Sqrt\+Magic\+Number}} ()
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{math_8hpp_ab8d1bbdbf53d441f8e2b665ed3bef7bc}{fast\+Inverse\+Sqrt}} (T x)
+\item 
+{\footnotesize template$<$typename Int , typename Float $>$ }\\Int \mbox{\hyperlink{math_8hpp_aff73354ff095d8776bb700e09f3b5016}{floor}} (Float x)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+contains various functions and classes that are used for both convience and/or functionality that may not be fit to be in other files 
+
+
+
+Definition in file \mbox{\hyperlink{math_8hpp_source}{math.\+hpp}}.
+
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{math_8hpp_af029f6083f13ccf10e5a69e45207b8d8}\label{math_8hpp_af029f6083f13ccf10e5a69e45207b8d8} 
+\index{math.hpp@{math.hpp}!MinMax@{MinMax}}
+\index{MinMax@{MinMax}!math.hpp@{math.hpp}}
+\doxysubsubsection{\texorpdfstring{MinMax}{MinMax}}
+{\footnotesize\ttfamily using Min\+Max = std\+::pair$<$Float, Float$>$}
+
+
+
+Definition at line \mbox{\hyperlink{math_8hpp_source_l00454}{454}} of file \mbox{\hyperlink{math_8hpp_source}{math.\+hpp}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{math_8hpp_aa75a5452d1500905495f696c293cbc1e}\label{math_8hpp_aa75a5452d1500905495f696c293cbc1e} 
+\index{math.hpp@{math.hpp}!absdot@{absdot}}
+\index{absdot@{absdot}!math.hpp@{math.hpp}}
+\doxysubsubsection{\texorpdfstring{absdot()}{absdot()}}
+{\footnotesize\ttfamily Float absdot (\begin{DoxyParamCaption}\item[{const vec2 \&}]{vec1,  }\item[{const vec2 \&}]{vec2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{math_8hpp_source_l00187}{187}} of file \mbox{\hyperlink{math_8hpp_source}{math.\+hpp}}.
+
+\Hypertarget{math_8hpp_a7b93c225585ef6ca22a369a961bbf9d1}\label{math_8hpp_a7b93c225585ef6ca22a369a961bbf9d1} 
+\index{math.hpp@{math.hpp}!circleCollide@{circleCollide}}
+\index{circleCollide@{circleCollide}!math.hpp@{math.hpp}}
+\doxysubsubsection{\texorpdfstring{circleCollide()}{circleCollide()}}
+{\footnotesize\ttfamily bool circle\+Collide (\begin{DoxyParamCaption}\item[{Float}]{radi1,  }\item[{const vec2 \&}]{pos1,  }\item[{Float}]{radi2,  }\item[{const vec2 \&}]{pos2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{math_8hpp_source_l00519}{519}} of file \mbox{\hyperlink{math_8hpp_source}{math.\+hpp}}.
+
+\Hypertarget{math_8hpp_a7f7a07c6cfcd3f0e5d81f6b7508f3629}\label{math_8hpp_a7f7a07c6cfcd3f0e5d81f6b7508f3629} 
+\index{math.hpp@{math.hpp}!computeAABBCollisionArea@{computeAABBCollisionArea}}
+\index{computeAABBCollisionArea@{computeAABBCollisionArea}!math.hpp@{math.hpp}}
+\doxysubsubsection{\texorpdfstring{computeAABBCollisionArea()}{computeAABBCollisionArea()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{struct_a_a_b_b}{AABB}}$<$ T $>$ compute\+AABBCollision\+Area (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_a_a_b_b}{AABB}}$<$ T $>$ \&}]{\+\_\+1,  }\item[{const \mbox{\hyperlink{struct_a_a_b_b}{AABB}}$<$ T $>$ \&}]{\+\_\+2 }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{math_8hpp_source_l00410}{410}} of file \mbox{\hyperlink{math_8hpp_source}{math.\+hpp}}.
+
+\Hypertarget{math_8hpp_ac6f5840aca2b242a66c442dbff757ef7}\label{math_8hpp_ac6f5840aca2b242a66c442dbff757ef7} 
+\index{math.hpp@{math.hpp}!convertToFloat@{convertToFloat}}
+\index{convertToFloat@{convertToFloat}!math.hpp@{math.hpp}}
+\doxysubsubsection{\texorpdfstring{convertToFloat()}{convertToFloat()}}
+{\footnotesize\ttfamily Float convert\+To\+Float (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{num }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{math_8hpp_source_l00528}{528}} of file \mbox{\hyperlink{math_8hpp_source}{math.\+hpp}}.
+
+\Hypertarget{math_8hpp_a57686a943ac6a78600628222f6134bcf}\label{math_8hpp_a57686a943ac6a78600628222f6134bcf} 
+\index{math.hpp@{math.hpp}!cross@{cross}}
+\index{cross@{cross}!math.hpp@{math.hpp}}
+\doxysubsubsection{\texorpdfstring{cross()}{cross()}}
+{\footnotesize\ttfamily Float cross (\begin{DoxyParamCaption}\item[{const vec2 \&}]{a,  }\item[{const vec2 \&}]{b }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{math_8hpp_source_l00178}{178}} of file \mbox{\hyperlink{math_8hpp_source}{math.\+hpp}}.
+
+\Hypertarget{math_8hpp_ab8d1bbdbf53d441f8e2b665ed3bef7bc}\label{math_8hpp_ab8d1bbdbf53d441f8e2b665ed3bef7bc} 
+\index{math.hpp@{math.hpp}!fastInverseSqrt@{fastInverseSqrt}}
+\index{fastInverseSqrt@{fastInverseSqrt}!math.hpp@{math.hpp}}
+\doxysubsubsection{\texorpdfstring{fastInverseSqrt()}{fastInverseSqrt()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T fast\+Inverse\+Sqrt (\begin{DoxyParamCaption}\item[{T}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{math_8hpp_source_l00551}{551}} of file \mbox{\hyperlink{math_8hpp_source}{math.\+hpp}}.
+
+\Hypertarget{math_8hpp_aff73354ff095d8776bb700e09f3b5016}\label{math_8hpp_aff73354ff095d8776bb700e09f3b5016} 
+\index{math.hpp@{math.hpp}!floor@{floor}}
+\index{floor@{floor}!math.hpp@{math.hpp}}
+\doxysubsubsection{\texorpdfstring{floor()}{floor()}}
+{\footnotesize\ttfamily template$<$typename Int , typename Float $>$ \\
+Int floor (\begin{DoxyParamCaption}\item[{Float}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{math_8hpp_source_l00576}{576}} of file \mbox{\hyperlink{math_8hpp_source}{math.\+hpp}}.
+
+\Hypertarget{math_8hpp_a93e222ce8f014300fbd191d5022bdb5f}\label{math_8hpp_a93e222ce8f014300fbd191d5022bdb5f} 
+\index{math.hpp@{math.hpp}!getSqrtMagicNumber@{getSqrtMagicNumber}}
+\index{getSqrtMagicNumber@{getSqrtMagicNumber}!math.hpp@{math.hpp}}
+\doxysubsubsection{\texorpdfstring{getSqrtMagicNumber()}{getSqrtMagicNumber()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$typename Tint $>$ \\
+Tint constexpr get\+Sqrt\+Magic\+Number (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+
+
+Definition at line \mbox{\hyperlink{math_8hpp_source_l00534}{534}} of file \mbox{\hyperlink{math_8hpp_source}{math.\+hpp}}.
+
+\Hypertarget{math_8hpp_a1c47e42ca6dc92c18cec120e1b480088}\label{math_8hpp_a1c47e42ca6dc92c18cec120e1b480088} 
+\index{math.hpp@{math.hpp}!getSqrtMagicNumber@{getSqrtMagicNumber}}
+\index{getSqrtMagicNumber@{getSqrtMagicNumber}!math.hpp@{math.hpp}}
+\doxysubsubsection{\texorpdfstring{getSqrtMagicNumber()}{getSqrtMagicNumber()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$$>$ \\
+constexpr std\+::int32\+\_\+t get\+Sqrt\+Magic\+Number (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+
+
+Definition at line \mbox{\hyperlink{math_8hpp_source_l00540}{540}} of file \mbox{\hyperlink{math_8hpp_source}{math.\+hpp}}.
+
+\Hypertarget{math_8hpp_ab00732cd4306f8696ef7538908de6298}\label{math_8hpp_ab00732cd4306f8696ef7538908de6298} 
+\index{math.hpp@{math.hpp}!getSqrtMagicNumber@{getSqrtMagicNumber}}
+\index{getSqrtMagicNumber@{getSqrtMagicNumber}!math.hpp@{math.hpp}}
+\doxysubsubsection{\texorpdfstring{getSqrtMagicNumber()}{getSqrtMagicNumber()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$$>$ \\
+constexpr std\+::int64\+\_\+t get\+Sqrt\+Magic\+Number (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+
+
+Definition at line \mbox{\hyperlink{math_8hpp_source_l00545}{545}} of file \mbox{\hyperlink{math_8hpp_source}{math.\+hpp}}.
+
+\Hypertarget{math_8hpp_a1be83ac5a4c35a2240aaa5b1f1814fde}\label{math_8hpp_a1be83ac5a4c35a2240aaa5b1f1814fde} 
+\index{math.hpp@{math.hpp}!nearlyEqual@{nearlyEqual}}
+\index{nearlyEqual@{nearlyEqual}!math.hpp@{math.hpp}}
+\doxysubsubsection{\texorpdfstring{nearlyEqual()}{nearlyEqual()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool nearly\+Equal (\begin{DoxyParamCaption}\item[{Float}]{a,  }\item[{Float}]{b,  }\item[{Float}]{max = {\ttfamily 0.0001f} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{math_8hpp_source_l00418}{418}} of file \mbox{\hyperlink{math_8hpp_source}{math.\+hpp}}.
+
+\Hypertarget{math_8hpp_a7da984a3582ef1384e81b9dc49fb5da9}\label{math_8hpp_a7da984a3582ef1384e81b9dc49fb5da9} 
+\index{math.hpp@{math.hpp}!nearlyEqual@{nearlyEqual}}
+\index{nearlyEqual@{nearlyEqual}!math.hpp@{math.hpp}}
+\doxysubsubsection{\texorpdfstring{nearlyEqual()}{nearlyEqual()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool nearly\+Equal (\begin{DoxyParamCaption}\item[{vec2}]{a,  }\item[{vec2}]{b,  }\item[{Float}]{max = {\ttfamily 0.0001f} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{math_8hpp_source_l00422}{422}} of file \mbox{\hyperlink{math_8hpp_source}{math.\+hpp}}.
+
+\Hypertarget{math_8hpp_a45fdad7f759d8f3b2dd916cb3fce23e8}\label{math_8hpp_a45fdad7f759d8f3b2dd916cb3fce23e8} 
+\index{math.hpp@{math.hpp}!overlap@{overlap}}
+\index{overlap@{overlap}!math.hpp@{math.hpp}}
+\doxysubsubsection{\texorpdfstring{overlap()}{overlap()}}
+{\footnotesize\ttfamily bool overlap (\begin{DoxyParamCaption}\item[{Float}]{min1,  }\item[{Float}]{max1,  }\item[{Float}]{min2,  }\item[{Float}]{max2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{math_8hpp_source_l00183}{183}} of file \mbox{\hyperlink{math_8hpp_source}{math.\+hpp}}.
+
+\Hypertarget{math_8hpp_aaf1aa8714dbd1604cd80c97332862e4f}\label{math_8hpp_aaf1aa8714dbd1604cd80c97332862e4f} 
+\index{math.hpp@{math.hpp}!parallelAxisTheorem@{parallelAxisTheorem}}
+\index{parallelAxisTheorem@{parallelAxisTheorem}!math.hpp@{math.hpp}}
+\doxysubsubsection{\texorpdfstring{parallelAxisTheorem()}{parallelAxisTheorem()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T parallel\+Axis\+Theorem (\begin{DoxyParamCaption}\item[{T}]{Icm,  }\item[{T}]{mass,  }\item[{T}]{sq\+Distance }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{math_8hpp_source_l00386}{386}} of file \mbox{\hyperlink{math_8hpp_source}{math.\+hpp}}.
+
+\Hypertarget{math_8hpp_a59548e3bdf3b28852365119be068d701}\label{math_8hpp_a59548e3bdf3b28852365119be068d701} 
+\index{math.hpp@{math.hpp}!pointSegmentDistance@{pointSegmentDistance}}
+\index{pointSegmentDistance@{pointSegmentDistance}!math.hpp@{math.hpp}}
+\doxysubsubsection{\texorpdfstring{pointSegmentDistance()}{pointSegmentDistance()}}
+{\footnotesize\ttfamily Float point\+Segment\+Distance (\begin{DoxyParamCaption}\item[{vec2}]{p,  }\item[{vec2}]{v1,  }\item[{vec2}]{v2,  }\item[{vec2 \&}]{cp }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{math_8hpp_source_l00430}{430}} of file \mbox{\hyperlink{math_8hpp_source}{math.\+hpp}}.
+
+\Hypertarget{math_8hpp_a894a5ce70174e03ac0bd6467014bd0cc}\label{math_8hpp_a894a5ce70174e03ac0bd6467014bd0cc} 
+\index{math.hpp@{math.hpp}!projectBoxOnNormal@{projectBoxOnNormal}}
+\index{projectBoxOnNormal@{projectBoxOnNormal}!math.hpp@{math.hpp}}
+\doxysubsubsection{\texorpdfstring{projectBoxOnNormal()}{projectBoxOnNormal()}}
+{\footnotesize\ttfamily template$<$class Container $>$ \\
+Min\+Max project\+Box\+On\+Normal (\begin{DoxyParamCaption}\item[{const Container \&}]{vertices,  }\item[{const vec2 \&}]{normal }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{math_8hpp_source_l00457}{457}} of file \mbox{\hyperlink{math_8hpp_source}{math.\+hpp}}.
+
+\Hypertarget{math_8hpp_a0d6630cc4f536f502d3f7b96091c149b}\label{math_8hpp_a0d6630cc4f536f502d3f7b96091c149b} 
+\index{math.hpp@{math.hpp}!reverse@{reverse}}
+\index{reverse@{reverse}!math.hpp@{math.hpp}}
+\doxysubsubsection{\texorpdfstring{reverse()}{reverse()}}
+{\footnotesize\ttfamily vec2 reverse (\begin{DoxyParamCaption}\item[{const vec2 \&}]{vec }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{math_8hpp_source_l00191}{191}} of file \mbox{\hyperlink{math_8hpp_source}{math.\+hpp}}.
+
+\Hypertarget{math_8hpp_a47a76737f050ee3a76f323b8b370f7cb}\label{math_8hpp_a47a76737f050ee3a76f323b8b370f7cb} 
+\index{math.hpp@{math.hpp}!rotate@{rotate}}
+\index{rotate@{rotate}!math.hpp@{math.hpp}}
+\doxysubsubsection{\texorpdfstring{rotate()}{rotate()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily vec2 rotate (\begin{DoxyParamCaption}\item[{const vec2 \&}]{v,  }\item[{const \mbox{\hyperlink{struct_sin_cos}{Sin\+Cos}} \&}]{sincos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{math_8hpp_source_l00138}{138}} of file \mbox{\hyperlink{math_8hpp_source}{math.\+hpp}}.
+
+\Hypertarget{math_8hpp_af80db5fa59ed63cc2c134814a0a3620b}\label{math_8hpp_af80db5fa59ed63cc2c134814a0a3620b} 
+\index{math.hpp@{math.hpp}!rotate@{rotate}}
+\index{rotate@{rotate}!math.hpp@{math.hpp}}
+\doxysubsubsection{\texorpdfstring{rotate()}{rotate()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily vec2 rotate (\begin{DoxyParamCaption}\item[{const vec2 \&}]{v,  }\item[{Float}]{sin,  }\item[{Float}]{cos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{math_8hpp_source_l00130}{130}} of file \mbox{\hyperlink{math_8hpp_source}{math.\+hpp}}.
+
+\Hypertarget{math_8hpp_afbe515b58ba299feddd0399c117e2a20}\label{math_8hpp_afbe515b58ba299feddd0399c117e2a20} 
+\index{math.hpp@{math.hpp}!sideOf@{sideOf}}
+\index{sideOf@{sideOf}!math.hpp@{math.hpp}}
+\doxysubsubsection{\texorpdfstring{sideOf()}{sideOf()}}
+{\footnotesize\ttfamily Float side\+Of (\begin{DoxyParamCaption}\item[{const vec2 \&}]{p,  }\item[{const vec2 \&}]{a,  }\item[{const vec2 \&}]{b }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{math_8hpp_source_l00198}{198}} of file \mbox{\hyperlink{math_8hpp_source}{math.\+hpp}}.
+
+\Hypertarget{math_8hpp_a3cc6313e7fecfe539181e5dcd5f945f4}\label{math_8hpp_a3cc6313e7fecfe539181e5dcd5f945f4} 
+\index{math.hpp@{math.hpp}!sqaure@{sqaure}}
+\index{sqaure@{sqaure}!math.hpp@{math.hpp}}
+\doxysubsubsection{\texorpdfstring{sqaure()}{sqaure()}}
+{\footnotesize\ttfamily Float sqaure (\begin{DoxyParamCaption}\item[{Float}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{math_8hpp_source_l00426}{426}} of file \mbox{\hyperlink{math_8hpp_source}{math.\+hpp}}.
+
+\Hypertarget{math_8hpp_a145bfddd24a2cdd256dbed6d741a3842}\label{math_8hpp_a145bfddd24a2cdd256dbed6d741a3842} 
+\index{math.hpp@{math.hpp}!square@{square}}
+\index{square@{square}!math.hpp@{math.hpp}}
+\doxysubsubsection{\texorpdfstring{square()}{square()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T2\+D\+\_\+\+NAMESPACE\+\_\+\+BEGIN T constexpr square (\begin{DoxyParamCaption}\item[{T}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+
+
+Returns the sqaure of {\ttfamily x}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The value to get the sqaure of \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The sqaure of {\ttfamily x} 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{math_8hpp_source_l00071}{71}} of file \mbox{\hyperlink{math_8hpp_source}{math.\+hpp}}.
+
+\Hypertarget{math_8hpp_a1762e64bc22920e25d589cd21e8d36a3}\label{math_8hpp_a1762e64bc22920e25d589cd21e8d36a3} 
+\index{math.hpp@{math.hpp}!sutherlandHodgmanClip@{sutherlandHodgmanClip}}
+\index{sutherlandHodgmanClip@{sutherlandHodgmanClip}!math.hpp@{math.hpp}}
+\doxysubsubsection{\texorpdfstring{sutherlandHodgmanClip()}{sutherlandHodgmanClip()}}
+{\footnotesize\ttfamily template$<$class Container , class Output\+Container  = std\+::vector$<$vec2$>$$>$ \\
+Output\+Container sutherland\+Hodgman\+Clip (\begin{DoxyParamCaption}\item[{const Container \&}]{subject\+Vertices,  }\item[{const Container \&}]{clip\+Vertices }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{math_8hpp_source_l00477}{477}} of file \mbox{\hyperlink{math_8hpp_source}{math.\+hpp}}.
+

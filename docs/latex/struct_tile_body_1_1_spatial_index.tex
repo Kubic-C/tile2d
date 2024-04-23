@@ -1,0 +1,105 @@
+\doxysection{Tile\+Body\texorpdfstring{$<$}{<} Tile\+Type \texorpdfstring{$>$}{>}\+::Spatial\+Index Class Reference}
+\hypertarget{struct_tile_body_1_1_spatial_index}{}\label{struct_tile_body_1_1_spatial_index}\index{TileBody$<$ TileType $>$::SpatialIndex@{TileBody$<$ TileType $>$::SpatialIndex}}
+
+
+A spatial index where pos may point towards a chunk or tile.  
+
+
+
+
+{\ttfamily \#include $<$tile\+Map.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_tile_body_1_1_spatial_index_ab90cb9795d324d90d20d538f23793717}{Spatial\+Index}} (const glm\+::i32vec2 \&pos)
+\item 
+\mbox{\hyperlink{struct_tile_body_1_1_spatial_index_a5ed2e264b330442460e6afeeedad43bf}{Spatial\+Index}} (const \mbox{\hyperlink{struct_a_a_b_b}{AABB}}$<$ Float $>$ \&aabb, const glm\+::i32vec2 \&pos)
+\item 
+bool \mbox{\hyperlink{struct_tile_body_1_1_spatial_index_a9d3437432487f0ae4cf603d85acd1988}{operator==}} (const \mbox{\hyperlink{struct_tile_body_1_1_spatial_index}{Spatial\+Index}} \&other) const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_a_a_b_b}{AABB}}$<$ Float $>$ \mbox{\hyperlink{struct_tile_body_1_1_spatial_index_abcc9467bd56a50ca51f29d7923658050}{aabb}}
+\item 
+glm\+::i32vec2 \mbox{\hyperlink{struct_tile_body_1_1_spatial_index_afdb1c68cab00204dfd7a832e2d1d88f8}{pos}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename Tile\+Type$>$\newline
+class Tile\+Body$<$ Tile\+Type $>$\+::\+Spatial\+Index}
+A spatial index where pos may point towards a chunk or tile. 
+
+Definition at line \mbox{\hyperlink{tile_map_8hpp_source_l00279}{279}} of file \mbox{\hyperlink{tile_map_8hpp_source}{tile\+Map.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{struct_tile_body_1_1_spatial_index_ab90cb9795d324d90d20d538f23793717}\label{struct_tile_body_1_1_spatial_index_ab90cb9795d324d90d20d538f23793717} 
+\index{TileBody$<$ TileType $>$::SpatialIndex@{TileBody$<$ TileType $>$::SpatialIndex}!SpatialIndex@{SpatialIndex}}
+\index{SpatialIndex@{SpatialIndex}!TileBody$<$ TileType $>$::SpatialIndex@{TileBody$<$ TileType $>$::SpatialIndex}}
+\doxysubsubsection{\texorpdfstring{SpatialIndex()}{SpatialIndex()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename Tile\+Type $>$ \\
+\mbox{\hyperlink{class_tile_body}{Tile\+Body}}$<$ Tile\+Type $>$\+::\+Spatial\+Index\+::\+Spatial\+Index (\begin{DoxyParamCaption}\item[{const glm\+::i32vec2 \&}]{pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{tile_map_8hpp_source_l00281}{281}} of file \mbox{\hyperlink{tile_map_8hpp_source}{tile\+Map.\+hpp}}.
+
+\Hypertarget{struct_tile_body_1_1_spatial_index_a5ed2e264b330442460e6afeeedad43bf}\label{struct_tile_body_1_1_spatial_index_a5ed2e264b330442460e6afeeedad43bf} 
+\index{TileBody$<$ TileType $>$::SpatialIndex@{TileBody$<$ TileType $>$::SpatialIndex}!SpatialIndex@{SpatialIndex}}
+\index{SpatialIndex@{SpatialIndex}!TileBody$<$ TileType $>$::SpatialIndex@{TileBody$<$ TileType $>$::SpatialIndex}}
+\doxysubsubsection{\texorpdfstring{SpatialIndex()}{SpatialIndex()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename Tile\+Type $>$ \\
+\mbox{\hyperlink{class_tile_body}{Tile\+Body}}$<$ Tile\+Type $>$\+::\+Spatial\+Index\+::\+Spatial\+Index (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_a_a_b_b}{AABB}}$<$ Float $>$ \&}]{aabb,  }\item[{const glm\+::i32vec2 \&}]{pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{tile_map_8hpp_source_l00285}{285}} of file \mbox{\hyperlink{tile_map_8hpp_source}{tile\+Map.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{struct_tile_body_1_1_spatial_index_a9d3437432487f0ae4cf603d85acd1988}\label{struct_tile_body_1_1_spatial_index_a9d3437432487f0ae4cf603d85acd1988} 
+\index{TileBody$<$ TileType $>$::SpatialIndex@{TileBody$<$ TileType $>$::SpatialIndex}!operator==@{operator==}}
+\index{operator==@{operator==}!TileBody$<$ TileType $>$::SpatialIndex@{TileBody$<$ TileType $>$::SpatialIndex}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily template$<$typename Tile\+Type $>$ \\
+bool \mbox{\hyperlink{class_tile_body}{Tile\+Body}}$<$ Tile\+Type $>$\+::\+Spatial\+Index\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_tile_body_1_1_spatial_index}{Spatial\+Index}} \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{tile_map_8hpp_source_l00293}{293}} of file \mbox{\hyperlink{tile_map_8hpp_source}{tile\+Map.\+hpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_tile_body_1_1_spatial_index_abcc9467bd56a50ca51f29d7923658050}\label{struct_tile_body_1_1_spatial_index_abcc9467bd56a50ca51f29d7923658050} 
+\index{TileBody$<$ TileType $>$::SpatialIndex@{TileBody$<$ TileType $>$::SpatialIndex}!aabb@{aabb}}
+\index{aabb@{aabb}!TileBody$<$ TileType $>$::SpatialIndex@{TileBody$<$ TileType $>$::SpatialIndex}}
+\doxysubsubsection{\texorpdfstring{aabb}{aabb}}
+{\footnotesize\ttfamily template$<$typename Tile\+Type $>$ \\
+\mbox{\hyperlink{struct_a_a_b_b}{AABB}}$<$Float$>$ \mbox{\hyperlink{class_tile_body}{Tile\+Body}}$<$ Tile\+Type $>$\+::\+Spatial\+Index\+::aabb}
+
+
+
+Definition at line \mbox{\hyperlink{tile_map_8hpp_source_l00290}{290}} of file \mbox{\hyperlink{tile_map_8hpp_source}{tile\+Map.\+hpp}}.
+
+\Hypertarget{struct_tile_body_1_1_spatial_index_afdb1c68cab00204dfd7a832e2d1d88f8}\label{struct_tile_body_1_1_spatial_index_afdb1c68cab00204dfd7a832e2d1d88f8} 
+\index{TileBody$<$ TileType $>$::SpatialIndex@{TileBody$<$ TileType $>$::SpatialIndex}!pos@{pos}}
+\index{pos@{pos}!TileBody$<$ TileType $>$::SpatialIndex@{TileBody$<$ TileType $>$::SpatialIndex}}
+\doxysubsubsection{\texorpdfstring{pos}{pos}}
+{\footnotesize\ttfamily template$<$typename Tile\+Type $>$ \\
+glm\+::i32vec2 \mbox{\hyperlink{class_tile_body}{Tile\+Body}}$<$ Tile\+Type $>$\+::\+Spatial\+Index\+::pos}
+
+
+
+Definition at line \mbox{\hyperlink{tile_map_8hpp_source_l00291}{291}} of file \mbox{\hyperlink{tile_map_8hpp_source}{tile\+Map.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{tile_map_8hpp}{tile\+Map.\+hpp}}\end{DoxyCompactItemize}

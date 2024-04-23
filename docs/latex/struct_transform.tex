@@ -1,0 +1,147 @@
+\doxysection{Transform Struct Reference}
+\hypertarget{struct_transform}{}\label{struct_transform}\index{Transform@{Transform}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_transform_a243da9688d5a37d8132cd5739e0a167a}{Transform}} (const vec2 \&pos, Float rot)
+\item 
+\mbox{\hyperlink{struct_transform}{Transform}} \mbox{\hyperlink{struct_transform_a0f2bae22ba713ea8e6c7803ca40965ff}{get\+Inverse}} () const
+\item 
+vec2 \mbox{\hyperlink{struct_transform_a508c67a0e50e4371cb5004633bc7271e}{get\+World\+Point}} (const vec2 \&local\+Point) const
+\item 
+vec2 \mbox{\hyperlink{struct_transform_aa205c18d1db7b4a941d177962563af5b}{get\+World\+Point}} (const vec2 \&local\+Point, const vec2 \&local\+Offset) const
+\item 
+vec2 \mbox{\hyperlink{struct_transform_a81faf25d4b7ce46bc4bab7f91bedca31}{get\+Local\+Point}} (const vec2 \&world\+Point, const vec2 \&local\+Offset=\{ 0.\+0f, 0.\+0f \}) const
+\item 
+void \mbox{\hyperlink{struct_transform_a377194ad810fc2e6d05e3008eb8c7655}{update}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+vec2 \mbox{\hyperlink{struct_transform_a5a73c211118a22906e52b9a6d735cb03}{pos}}
+\item 
+Float \mbox{\hyperlink{struct_transform_a00520f036d20e6e65bae399d39088c67}{rot}}
+\item 
+\mbox{\hyperlink{struct_sin_cos}{Sin\+Cos}} \mbox{\hyperlink{struct_transform_a66eef75668601e7588b5969db888e35e}{sincos}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{math_8hpp_source_l00142}{142}} of file \mbox{\hyperlink{math_8hpp_source}{math.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{struct_transform_aa08ca4266efabc768973cdeea51945ab}\label{struct_transform_aa08ca4266efabc768973cdeea51945ab} 
+\index{Transform@{Transform}!Transform@{Transform}}
+\index{Transform@{Transform}!Transform@{Transform}}
+\doxysubsubsection{\texorpdfstring{Transform()}{Transform()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Transform\+::\+Transform (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{math_8hpp_source_l00143}{143}} of file \mbox{\hyperlink{math_8hpp_source}{math.\+hpp}}.
+
+\Hypertarget{struct_transform_a243da9688d5a37d8132cd5739e0a167a}\label{struct_transform_a243da9688d5a37d8132cd5739e0a167a} 
+\index{Transform@{Transform}!Transform@{Transform}}
+\index{Transform@{Transform}!Transform@{Transform}}
+\doxysubsubsection{\texorpdfstring{Transform()}{Transform()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Transform\+::\+Transform (\begin{DoxyParamCaption}\item[{const vec2 \&}]{pos,  }\item[{Float}]{rot }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{math_8hpp_source_l00146}{146}} of file \mbox{\hyperlink{math_8hpp_source}{math.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{struct_transform_a0f2bae22ba713ea8e6c7803ca40965ff}\label{struct_transform_a0f2bae22ba713ea8e6c7803ca40965ff} 
+\index{Transform@{Transform}!getInverse@{getInverse}}
+\index{getInverse@{getInverse}!Transform@{Transform}}
+\doxysubsubsection{\texorpdfstring{getInverse()}{getInverse()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_transform}{Transform}} Transform\+::get\+Inverse (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{math_8hpp_source_l00149}{149}} of file \mbox{\hyperlink{math_8hpp_source}{math.\+hpp}}.
+
+\Hypertarget{struct_transform_a81faf25d4b7ce46bc4bab7f91bedca31}\label{struct_transform_a81faf25d4b7ce46bc4bab7f91bedca31} 
+\index{Transform@{Transform}!getLocalPoint@{getLocalPoint}}
+\index{getLocalPoint@{getLocalPoint}!Transform@{Transform}}
+\doxysubsubsection{\texorpdfstring{getLocalPoint()}{getLocalPoint()}}
+{\footnotesize\ttfamily vec2 Transform\+::get\+Local\+Point (\begin{DoxyParamCaption}\item[{const vec2 \&}]{world\+Point,  }\item[{const vec2 \&}]{local\+Offset = {\ttfamily \{~0.0f,~0.0f~\}} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{math_8hpp_source_l00161}{161}} of file \mbox{\hyperlink{math_8hpp_source}{math.\+hpp}}.
+
+\Hypertarget{struct_transform_a508c67a0e50e4371cb5004633bc7271e}\label{struct_transform_a508c67a0e50e4371cb5004633bc7271e} 
+\index{Transform@{Transform}!getWorldPoint@{getWorldPoint}}
+\index{getWorldPoint@{getWorldPoint}!Transform@{Transform}}
+\doxysubsubsection{\texorpdfstring{getWorldPoint()}{getWorldPoint()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily vec2 Transform\+::get\+World\+Point (\begin{DoxyParamCaption}\item[{const vec2 \&}]{local\+Point }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{math_8hpp_source_l00153}{153}} of file \mbox{\hyperlink{math_8hpp_source}{math.\+hpp}}.
+
+\Hypertarget{struct_transform_aa205c18d1db7b4a941d177962563af5b}\label{struct_transform_aa205c18d1db7b4a941d177962563af5b} 
+\index{Transform@{Transform}!getWorldPoint@{getWorldPoint}}
+\index{getWorldPoint@{getWorldPoint}!Transform@{Transform}}
+\doxysubsubsection{\texorpdfstring{getWorldPoint()}{getWorldPoint()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily vec2 Transform\+::get\+World\+Point (\begin{DoxyParamCaption}\item[{const vec2 \&}]{local\+Point,  }\item[{const vec2 \&}]{local\+Offset }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{math_8hpp_source_l00157}{157}} of file \mbox{\hyperlink{math_8hpp_source}{math.\+hpp}}.
+
+\Hypertarget{struct_transform_a377194ad810fc2e6d05e3008eb8c7655}\label{struct_transform_a377194ad810fc2e6d05e3008eb8c7655} 
+\index{Transform@{Transform}!update@{update}}
+\index{update@{update}!Transform@{Transform}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Transform\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{math_8hpp_source_l00169}{169}} of file \mbox{\hyperlink{math_8hpp_source}{math.\+hpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_transform_a5a73c211118a22906e52b9a6d735cb03}\label{struct_transform_a5a73c211118a22906e52b9a6d735cb03} 
+\index{Transform@{Transform}!pos@{pos}}
+\index{pos@{pos}!Transform@{Transform}}
+\doxysubsubsection{\texorpdfstring{pos}{pos}}
+{\footnotesize\ttfamily vec2 Transform\+::pos}
+
+
+
+Definition at line \mbox{\hyperlink{math_8hpp_source_l00173}{173}} of file \mbox{\hyperlink{math_8hpp_source}{math.\+hpp}}.
+
+\Hypertarget{struct_transform_a00520f036d20e6e65bae399d39088c67}\label{struct_transform_a00520f036d20e6e65bae399d39088c67} 
+\index{Transform@{Transform}!rot@{rot}}
+\index{rot@{rot}!Transform@{Transform}}
+\doxysubsubsection{\texorpdfstring{rot}{rot}}
+{\footnotesize\ttfamily Float Transform\+::rot}
+
+
+
+Definition at line \mbox{\hyperlink{math_8hpp_source_l00174}{174}} of file \mbox{\hyperlink{math_8hpp_source}{math.\+hpp}}.
+
+\Hypertarget{struct_transform_a66eef75668601e7588b5969db888e35e}\label{struct_transform_a66eef75668601e7588b5969db888e35e} 
+\index{Transform@{Transform}!sincos@{sincos}}
+\index{sincos@{sincos}!Transform@{Transform}}
+\doxysubsubsection{\texorpdfstring{sincos}{sincos}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_sin_cos}{Sin\+Cos}} Transform\+::sincos}
+
+
+
+Definition at line \mbox{\hyperlink{math_8hpp_source_l00175}{175}} of file \mbox{\hyperlink{math_8hpp_source}{math.\+hpp}}.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{math_8hpp}{math.\+hpp}}\end{DoxyCompactItemize}

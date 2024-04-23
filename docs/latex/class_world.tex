@@ -1,0 +1,377 @@
+\doxysection{World\texorpdfstring{$<$}{<} Tile\+Data \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{class_world}{}\label{class_world}\index{World$<$ TileData $>$@{World$<$ TileData $>$}}
+
+
+Allows collisions between different bodies to occur.  
+
+
+
+
+{\ttfamily \#include $<$world.\+hpp$>$}
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_world_1_1_body_element}{Body\+Element}}
+\item 
+struct \mbox{\hyperlink{struct_world_1_1_cache}{Cache}}
+\item 
+struct \mbox{\hyperlink{struct_world_1_1_spatial_index}{Spatial\+Index}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{class_world_aef899d13fc245ca03d1052a28f682412}{Tile\+MapT}} = \mbox{\hyperlink{class_tile_map}{Tile\+Map}}$<$Tile\+Data$>$
+\item 
+using \mbox{\hyperlink{class_world_a10bf32c08899dc666cf595180a4b2000}{Tile\+BodyT}} = \mbox{\hyperlink{class_tile_body}{Tile\+Body}}$<$Tile\+Data$>$
+\item 
+using \mbox{\hyperlink{class_world_a014c4e030cb5a73062d877c79af9e6ea}{Body\+List}} = \mbox{\hyperlink{class_linked_list_header}{Linked\+List\+Header}}$<$\mbox{\hyperlink{struct_world_1_1_body_element}{Body\+Element}}, \mbox{\hyperlink{class_free_list}{Free\+List}}$<$\mbox{\hyperlink{struct_world_1_1_body_element}{Body\+Element}}, uint32\+\_\+t$>$, uint32\+\_\+t$>$
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_world_a5d0b78946c58d58ac9fce342803f2a76}{World}} (size\+\_\+t thread\+Count)
+\begin{DoxyCompactList}\small\item\em Constructs a physics world. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_world_body}{World\+Body}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_world_ab2da0c5aff95d4bc8e5c5d63d482424c}{create\+Tile\+Body}} (\mbox{\hyperlink{class_tile_map}{Tile\+MapT}} \&tile\+Map)
+\begin{DoxyCompactList}\small\item\em Do not use. See \doxylink{tile_map_8hpp_a25af7b866ff9bca9a97d68cfec014caf}{create\+Tile\+Map()} \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_world_body}{World\+Body}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_world_a5348ca903eeaf2e880d0ee84a68e9784}{create\+Bullet\+Body}} (Float radius, const vec2 \&initial\+Linear\+Velocity)
+\begin{DoxyCompactList}\small\item\em NOT YET IMPLEMENTED. Creates a bullet body. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_world_a3c96994b5d9f2eb364510e8ab6a13bc4}{destroy\+Body}} (\mbox{\hyperlink{class_world_body}{World\+Body}} \texorpdfstring{$\ast$}{*}body)
+\begin{DoxyCompactList}\small\item\em Destroys a body, must be a type of a bullet or a tile body. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_world_ab3c0b59fd0ed1e03b9b5d33fc073cfb9}{update}} (const Float dt, size\+\_\+t steps)
+\begin{DoxyCompactList}\small\item\em Updates the body by {\ttfamily dt}. \end{DoxyCompactList}\item 
+Float \mbox{\hyperlink{class_world_af3b13bb422c651769473a422932f2026}{get\+Execution\+Time\+Avg}} ()
+\begin{DoxyCompactList}\small\item\em Returns the average speed of update. The stats will reset after call. \end{DoxyCompactList}\item 
+vec2 \mbox{\hyperlink{class_world_a5fabfd21bb85f39d481fef02a3f050cc}{gravity}} () const
+\begin{DoxyCompactList}\small\item\em Returns the gravity of the world. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_world_a95f1e7dad4ed64a1e1a7ff2d44570242}{set\+Gravity}} (const vec2 \&gravity)
+\begin{DoxyCompactList}\small\item\em Set the gravity of the world. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_grid}{Grid}}$<$ \mbox{\hyperlink{struct_world_1_1_spatial_index}{Spatial\+Index}} $>$ \& \mbox{\hyperlink{class_world_a3a621e0170c24f5e981f89db12b3e905}{grid}} ()
+\begin{DoxyCompactList}\small\item\em Returns a grid refence, may be used for queries or insertions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class Func $>$ }\\void \mbox{\hyperlink{class_world_ac38f76b8ee6072d1ba1a809b624e3833}{execute\+On\+Bodies}} (Float time\+Per\+Step, Func \&\&func)
+\item 
+void \mbox{\hyperlink{class_world_a727ac52d75473ea820c6dadd9534bc3d}{update\+Bodies}} (Float time\+Per\+Step, size\+\_\+t start, size\+\_\+t end)
+\item 
+void \mbox{\hyperlink{class_world_a0e279d6eccae1b0b08fd5e704e4afbe2}{batch\+Query}} (Float time\+Per\+Step, size\+\_\+t start, size\+\_\+t end)
+\item 
+void \mbox{\hyperlink{class_world_a8cbc7bebc452512dfd4c7c319b75d1b9}{insert\+Into\+Tree}} (\mbox{\hyperlink{class_world_body}{World\+Body}} \texorpdfstring{$\ast$}{*}body)
+\item 
+void \mbox{\hyperlink{class_world_a49f8c4bb5727ce34e64ab878bd272547}{erase\+From\+Tree}} (\mbox{\hyperlink{class_world_body}{World\+Body}} \texorpdfstring{$\ast$}{*}body)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$class Tile\+Data$>$\newline
+class World$<$ Tile\+Data $>$}
+Allows collisions between different bodies to occur. 
+
+Definition at line \mbox{\hyperlink{world_8hpp_source_l00188}{188}} of file \mbox{\hyperlink{world_8hpp_source}{world.\+hpp}}.
+
+
+
+\doxysubsection{Member Typedef Documentation}
+\Hypertarget{class_world_a014c4e030cb5a73062d877c79af9e6ea}\label{class_world_a014c4e030cb5a73062d877c79af9e6ea} 
+\index{World$<$ TileData $>$@{World$<$ TileData $>$}!BodyList@{BodyList}}
+\index{BodyList@{BodyList}!World$<$ TileData $>$@{World$<$ TileData $>$}}
+\doxysubsubsection{\texorpdfstring{BodyList}{BodyList}}
+{\footnotesize\ttfamily template$<$class Tile\+Data $>$ \\
+using \mbox{\hyperlink{class_world}{World}}$<$ Tile\+Data $>$\+::\+Body\+List = \mbox{\hyperlink{class_linked_list_header}{Linked\+List\+Header}}$<$\mbox{\hyperlink{struct_world_1_1_body_element}{Body\+Element}}, \mbox{\hyperlink{class_free_list}{Free\+List}}$<$\mbox{\hyperlink{struct_world_1_1_body_element}{Body\+Element}}, uint32\+\_\+t$>$, uint32\+\_\+t$>$}
+
+
+
+Definition at line \mbox{\hyperlink{world_8hpp_source_l00216}{216}} of file \mbox{\hyperlink{world_8hpp_source}{world.\+hpp}}.
+
+\Hypertarget{class_world_a10bf32c08899dc666cf595180a4b2000}\label{class_world_a10bf32c08899dc666cf595180a4b2000} 
+\index{World$<$ TileData $>$@{World$<$ TileData $>$}!TileBodyT@{TileBodyT}}
+\index{TileBodyT@{TileBodyT}!World$<$ TileData $>$@{World$<$ TileData $>$}}
+\doxysubsubsection{\texorpdfstring{TileBodyT}{TileBodyT}}
+{\footnotesize\ttfamily template$<$class Tile\+Data $>$ \\
+using \mbox{\hyperlink{class_world}{World}}$<$ Tile\+Data $>$\+::\+Tile\+BodyT = \mbox{\hyperlink{class_tile_body}{Tile\+Body}}$<$Tile\+Data$>$}
+
+
+
+Definition at line \mbox{\hyperlink{world_8hpp_source_l00214}{214}} of file \mbox{\hyperlink{world_8hpp_source}{world.\+hpp}}.
+
+\Hypertarget{class_world_aef899d13fc245ca03d1052a28f682412}\label{class_world_aef899d13fc245ca03d1052a28f682412} 
+\index{World$<$ TileData $>$@{World$<$ TileData $>$}!TileMapT@{TileMapT}}
+\index{TileMapT@{TileMapT}!World$<$ TileData $>$@{World$<$ TileData $>$}}
+\doxysubsubsection{\texorpdfstring{TileMapT}{TileMapT}}
+{\footnotesize\ttfamily template$<$class Tile\+Data $>$ \\
+using \mbox{\hyperlink{class_world}{World}}$<$ Tile\+Data $>$\+::\+Tile\+MapT = \mbox{\hyperlink{class_tile_map}{Tile\+Map}}$<$Tile\+Data$>$}
+
+
+
+Definition at line \mbox{\hyperlink{world_8hpp_source_l00213}{213}} of file \mbox{\hyperlink{world_8hpp_source}{world.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_world_a5d0b78946c58d58ac9fce342803f2a76}\label{class_world_a5d0b78946c58d58ac9fce342803f2a76} 
+\index{World$<$ TileData $>$@{World$<$ TileData $>$}!World@{World}}
+\index{World@{World}!World$<$ TileData $>$@{World$<$ TileData $>$}}
+\doxysubsubsection{\texorpdfstring{World()}{World()}}
+{\footnotesize\ttfamily template$<$class Tile\+Data $>$ \\
+\mbox{\hyperlink{class_world}{World}}$<$ Tile\+Data $>$\mbox{\hyperlink{class_world}{\+::\+World}} (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{thread\+Count }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructs a physics world. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em thread\+Count} & The amount of threads to create to allow for additional speed up, may be 0. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{world_8hpp_source_l00223}{223}} of file \mbox{\hyperlink{world_8hpp_source}{world.\+hpp}}.
+
+\Hypertarget{class_world_a2bba31a266e066d08553e4219a24d3f6}\label{class_world_a2bba31a266e066d08553e4219a24d3f6} 
+\index{World$<$ TileData $>$@{World$<$ TileData $>$}!````~World@{\texorpdfstring{$\sim$}{\string~}World}}
+\index{````~World@{\texorpdfstring{$\sim$}{\string~}World}!World$<$ TileData $>$@{World$<$ TileData $>$}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}World()}{\string~World()}}
+{\footnotesize\ttfamily template$<$class Tile\+Data $>$ \\
+\mbox{\hyperlink{class_world}{World}}$<$ Tile\+Data $>$\+::\texorpdfstring{$\sim$}{\string~}\mbox{\hyperlink{class_world}{World}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{world_8hpp_source_l00240}{240}} of file \mbox{\hyperlink{world_8hpp_source}{world.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_world_a0e279d6eccae1b0b08fd5e704e4afbe2}\label{class_world_a0e279d6eccae1b0b08fd5e704e4afbe2} 
+\index{World$<$ TileData $>$@{World$<$ TileData $>$}!batchQuery@{batchQuery}}
+\index{batchQuery@{batchQuery}!World$<$ TileData $>$@{World$<$ TileData $>$}}
+\doxysubsubsection{\texorpdfstring{batchQuery()}{batchQuery()}}
+{\footnotesize\ttfamily template$<$class Tile\+Data $>$ \\
+void \mbox{\hyperlink{class_world}{World}}$<$ Tile\+Data $>$\+::batch\+Query (\begin{DoxyParamCaption}\item[{Float}]{time\+Per\+Step,  }\item[{size\+\_\+t}]{start,  }\item[{size\+\_\+t}]{end }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{world_8hpp_source_l00469}{469}} of file \mbox{\hyperlink{world_8hpp_source}{world.\+hpp}}.
+
+\Hypertarget{class_world_a5348ca903eeaf2e880d0ee84a68e9784}\label{class_world_a5348ca903eeaf2e880d0ee84a68e9784} 
+\index{World$<$ TileData $>$@{World$<$ TileData $>$}!createBulletBody@{createBulletBody}}
+\index{createBulletBody@{createBulletBody}!World$<$ TileData $>$@{World$<$ TileData $>$}}
+\doxysubsubsection{\texorpdfstring{createBulletBody()}{createBulletBody()}}
+{\footnotesize\ttfamily template$<$class Tile\+Data $>$ \\
+\mbox{\hyperlink{class_world_body}{World\+Body}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_world}{World}}$<$ Tile\+Data $>$\+::create\+Bullet\+Body (\begin{DoxyParamCaption}\item[{Float}]{radius,  }\item[{const vec2 \&}]{initial\+Linear\+Velocity }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+NOT YET IMPLEMENTED. Creates a bullet body. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em radius} & The radius of the bullet \\
+\hline
+{\em initial\+Linear\+Velocity} & The initial linear velocity of the body\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The new bullet body 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{world_8hpp_source_l00271}{271}} of file \mbox{\hyperlink{world_8hpp_source}{world.\+hpp}}.
+
+\Hypertarget{class_world_ab2da0c5aff95d4bc8e5c5d63d482424c}\label{class_world_ab2da0c5aff95d4bc8e5c5d63d482424c} 
+\index{World$<$ TileData $>$@{World$<$ TileData $>$}!createTileBody@{createTileBody}}
+\index{createTileBody@{createTileBody}!World$<$ TileData $>$@{World$<$ TileData $>$}}
+\doxysubsubsection{\texorpdfstring{createTileBody()}{createTileBody()}}
+{\footnotesize\ttfamily template$<$class Tile\+Data $>$ \\
+\mbox{\hyperlink{class_world_body}{World\+Body}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_world}{World}}$<$ Tile\+Data $>$\+::create\+Tile\+Body (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_tile_map}{Tile\+MapT}} \&}]{tile\+Map }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Do not use. See \doxylink{tile_map_8hpp_a25af7b866ff9bca9a97d68cfec014caf}{create\+Tile\+Map()} 
+
+
+
+Definition at line \mbox{\hyperlink{world_8hpp_source_l00248}{248}} of file \mbox{\hyperlink{world_8hpp_source}{world.\+hpp}}.
+
+\Hypertarget{class_world_a3c96994b5d9f2eb364510e8ab6a13bc4}\label{class_world_a3c96994b5d9f2eb364510e8ab6a13bc4} 
+\index{World$<$ TileData $>$@{World$<$ TileData $>$}!destroyBody@{destroyBody}}
+\index{destroyBody@{destroyBody}!World$<$ TileData $>$@{World$<$ TileData $>$}}
+\doxysubsubsection{\texorpdfstring{destroyBody()}{destroyBody()}}
+{\footnotesize\ttfamily template$<$class Tile\+Data $>$ \\
+void \mbox{\hyperlink{class_world}{World}}$<$ Tile\+Data $>$\+::destroy\+Body (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_world_body}{World\+Body}} \texorpdfstring{$\ast$}{*}}]{body }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Destroys a body, must be a type of a bullet or a tile body. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em body} & The body to destroy \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{world_8hpp_source_l00295}{295}} of file \mbox{\hyperlink{world_8hpp_source}{world.\+hpp}}.
+
+\Hypertarget{class_world_a49f8c4bb5727ce34e64ab878bd272547}\label{class_world_a49f8c4bb5727ce34e64ab878bd272547} 
+\index{World$<$ TileData $>$@{World$<$ TileData $>$}!eraseFromTree@{eraseFromTree}}
+\index{eraseFromTree@{eraseFromTree}!World$<$ TileData $>$@{World$<$ TileData $>$}}
+\doxysubsubsection{\texorpdfstring{eraseFromTree()}{eraseFromTree()}}
+{\footnotesize\ttfamily template$<$class Tile\+Data $>$ \\
+void \mbox{\hyperlink{class_world}{World}}$<$ Tile\+Data $>$\+::erase\+From\+Tree (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_world_body}{World\+Body}} \texorpdfstring{$\ast$}{*}}]{body }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{world_8hpp_source_l00502}{502}} of file \mbox{\hyperlink{world_8hpp_source}{world.\+hpp}}.
+
+\Hypertarget{class_world_ac38f76b8ee6072d1ba1a809b624e3833}\label{class_world_ac38f76b8ee6072d1ba1a809b624e3833} 
+\index{World$<$ TileData $>$@{World$<$ TileData $>$}!executeOnBodies@{executeOnBodies}}
+\index{executeOnBodies@{executeOnBodies}!World$<$ TileData $>$@{World$<$ TileData $>$}}
+\doxysubsubsection{\texorpdfstring{executeOnBodies()}{executeOnBodies()}}
+{\footnotesize\ttfamily template$<$class Tile\+Data $>$ \\
+template$<$class Func $>$ \\
+void \mbox{\hyperlink{class_world}{World}}$<$ Tile\+Data $>$\+::execute\+On\+Bodies (\begin{DoxyParamCaption}\item[{Float}]{time\+Per\+Step,  }\item[{Func \&\&}]{func }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{world_8hpp_source_l00421}{421}} of file \mbox{\hyperlink{world_8hpp_source}{world.\+hpp}}.
+
+\Hypertarget{class_world_af3b13bb422c651769473a422932f2026}\label{class_world_af3b13bb422c651769473a422932f2026} 
+\index{World$<$ TileData $>$@{World$<$ TileData $>$}!getExecutionTimeAvg@{getExecutionTimeAvg}}
+\index{getExecutionTimeAvg@{getExecutionTimeAvg}!World$<$ TileData $>$@{World$<$ TileData $>$}}
+\doxysubsubsection{\texorpdfstring{getExecutionTimeAvg()}{getExecutionTimeAvg()}}
+{\footnotesize\ttfamily template$<$class Tile\+Data $>$ \\
+Float \mbox{\hyperlink{class_world}{World}}$<$ Tile\+Data $>$\+::get\+Execution\+Time\+Avg (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the average speed of update. The stats will reset after call. 
+
+\begin{DoxyReturn}{Returns}
+The average time it takes for \doxylink{class_world_ab3c0b59fd0ed1e03b9b5d33fc073cfb9}{update()} to proccess 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{world_8hpp_source_l00384}{384}} of file \mbox{\hyperlink{world_8hpp_source}{world.\+hpp}}.
+
+\Hypertarget{class_world_a5fabfd21bb85f39d481fef02a3f050cc}\label{class_world_a5fabfd21bb85f39d481fef02a3f050cc} 
+\index{World$<$ TileData $>$@{World$<$ TileData $>$}!gravity@{gravity}}
+\index{gravity@{gravity}!World$<$ TileData $>$@{World$<$ TileData $>$}}
+\doxysubsubsection{\texorpdfstring{gravity()}{gravity()}}
+{\footnotesize\ttfamily template$<$class Tile\+Data $>$ \\
+vec2 \mbox{\hyperlink{class_world}{World}}$<$ Tile\+Data $>$\+::gravity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the gravity of the world. 
+
+\begin{DoxyReturn}{Returns}
+The gravity of the world 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{world_8hpp_source_l00397}{397}} of file \mbox{\hyperlink{world_8hpp_source}{world.\+hpp}}.
+
+\Hypertarget{class_world_a3a621e0170c24f5e981f89db12b3e905}\label{class_world_a3a621e0170c24f5e981f89db12b3e905} 
+\index{World$<$ TileData $>$@{World$<$ TileData $>$}!grid@{grid}}
+\index{grid@{grid}!World$<$ TileData $>$@{World$<$ TileData $>$}}
+\doxysubsubsection{\texorpdfstring{grid()}{grid()}}
+{\footnotesize\ttfamily template$<$class Tile\+Data $>$ \\
+\mbox{\hyperlink{class_grid}{Grid}}$<$ \mbox{\hyperlink{struct_world_1_1_spatial_index}{Spatial\+Index}} $>$ \& \mbox{\hyperlink{class_world}{World}}$<$ Tile\+Data $>$\+::grid (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns a grid refence, may be used for queries or insertions. 
+
+\begin{DoxyReturn}{Returns}
+The world\textquotesingle{}s grid 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{world_8hpp_source_l00415}{415}} of file \mbox{\hyperlink{world_8hpp_source}{world.\+hpp}}.
+
+\Hypertarget{class_world_a8cbc7bebc452512dfd4c7c319b75d1b9}\label{class_world_a8cbc7bebc452512dfd4c7c319b75d1b9} 
+\index{World$<$ TileData $>$@{World$<$ TileData $>$}!insertIntoTree@{insertIntoTree}}
+\index{insertIntoTree@{insertIntoTree}!World$<$ TileData $>$@{World$<$ TileData $>$}}
+\doxysubsubsection{\texorpdfstring{insertIntoTree()}{insertIntoTree()}}
+{\footnotesize\ttfamily template$<$class Tile\+Data $>$ \\
+void \mbox{\hyperlink{class_world}{World}}$<$ Tile\+Data $>$\+::insert\+Into\+Tree (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_world_body}{World\+Body}} \texorpdfstring{$\ast$}{*}}]{body }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{world_8hpp_source_l00497}{497}} of file \mbox{\hyperlink{world_8hpp_source}{world.\+hpp}}.
+
+\Hypertarget{class_world_a95f1e7dad4ed64a1e1a7ff2d44570242}\label{class_world_a95f1e7dad4ed64a1e1a7ff2d44570242} 
+\index{World$<$ TileData $>$@{World$<$ TileData $>$}!setGravity@{setGravity}}
+\index{setGravity@{setGravity}!World$<$ TileData $>$@{World$<$ TileData $>$}}
+\doxysubsubsection{\texorpdfstring{setGravity()}{setGravity()}}
+{\footnotesize\ttfamily template$<$class Tile\+Data $>$ \\
+void \mbox{\hyperlink{class_world}{World}}$<$ Tile\+Data $>$\+::set\+Gravity (\begin{DoxyParamCaption}\item[{const vec2 \&}]{gravity }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the gravity of the world. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em gravity} & The new gravity \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{world_8hpp_source_l00406}{406}} of file \mbox{\hyperlink{world_8hpp_source}{world.\+hpp}}.
+
+\Hypertarget{class_world_ab3c0b59fd0ed1e03b9b5d33fc073cfb9}\label{class_world_ab3c0b59fd0ed1e03b9b5d33fc073cfb9} 
+\index{World$<$ TileData $>$@{World$<$ TileData $>$}!update@{update}}
+\index{update@{update}!World$<$ TileData $>$@{World$<$ TileData $>$}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily template$<$class Tile\+Data $>$ \\
+void \mbox{\hyperlink{class_world}{World}}$<$ Tile\+Data $>$\+::update (\begin{DoxyParamCaption}\item[{const Float}]{dt,  }\item[{size\+\_\+t}]{steps }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Updates the body by {\ttfamily dt}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dt} & The amount of time to simulate \\
+\hline
+{\em steps} & Essentialy, the quality of the simulation. Higher steps means higher quality but is slower to process. Recommended amount is 6 if its called 60 times a second \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{world_8hpp_source_l00320}{320}} of file \mbox{\hyperlink{world_8hpp_source}{world.\+hpp}}.
+
+\Hypertarget{class_world_a727ac52d75473ea820c6dadd9534bc3d}\label{class_world_a727ac52d75473ea820c6dadd9534bc3d} 
+\index{World$<$ TileData $>$@{World$<$ TileData $>$}!updateBodies@{updateBodies}}
+\index{updateBodies@{updateBodies}!World$<$ TileData $>$@{World$<$ TileData $>$}}
+\doxysubsubsection{\texorpdfstring{updateBodies()}{updateBodies()}}
+{\footnotesize\ttfamily template$<$class Tile\+Data $>$ \\
+void \mbox{\hyperlink{class_world}{World}}$<$ Tile\+Data $>$\+::update\+Bodies (\begin{DoxyParamCaption}\item[{Float}]{time\+Per\+Step,  }\item[{size\+\_\+t}]{start,  }\item[{size\+\_\+t}]{end }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{world_8hpp_source_l00440}{440}} of file \mbox{\hyperlink{world_8hpp_source}{world.\+hpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_world_a898ff9c79f932d8159d7d045f20807ad}\label{class_world_a898ff9c79f932d8159d7d045f20807ad} 
+\index{World$<$ TileData $>$@{World$<$ TileData $>$}!gravity@{gravity}}
+\index{gravity@{gravity}!World$<$ TileData $>$@{World$<$ TileData $>$}}
+\doxysubsubsection{\texorpdfstring{gravity}{gravity}}
+{\footnotesize\ttfamily template$<$class Tile\+Data $>$ \\
+vec2 \mbox{\hyperlink{class_world}{World}}$<$ Tile\+Data $>$\+::gravity = \{ 0.\+0f, 0.\+0f \}}
+
+
+
+Definition at line \mbox{\hyperlink{world_8hpp_source_l00529}{529}} of file \mbox{\hyperlink{world_8hpp_source}{world.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{body_8hpp}{body.\+hpp}}\item 
+src/\mbox{\hyperlink{world_8hpp}{world.\+hpp}}\end{DoxyCompactItemize}

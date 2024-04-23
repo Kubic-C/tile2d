@@ -1,0 +1,47 @@
+\doxysection{src/body.hpp File Reference}
+\hypertarget{body_8hpp}{}\label{body_8hpp}\index{src/body.hpp@{src/body.hpp}}
+
+
+Contains different types of rigid bodies aside from \doxylink{class_tile_body}{Tile\+Body}. See \doxylink{tile_map_8hpp}{tile\+Map.\+hpp}.  
+
+
+{\ttfamily \#include "{}math.\+hpp"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_world_body}{World\+Body}}
+\begin{DoxyCompactList}\small\item\em The abstract base class of all Rigid Bodies that defines essential methods and members to be used in t2d\+::\+World$<$$>$ \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_body}{Body}}
+\begin{DoxyCompactList}\small\item\em Extends the functionality of \doxylink{class_world_body}{World\+Body} to allow for things such as angular velocity. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_bullet_body}{Bullet\+Body}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class {\bfseries Body\+Type} \+: uint8\+\_\+t \{ {\bfseries Tile}
+, {\bfseries Bullet}
+, {\bfseries Invalid}
+ \}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Contains different types of rigid bodies aside from \doxylink{class_tile_body}{Tile\+Body}. See \doxylink{tile_map_8hpp}{tile\+Map.\+hpp}. 
+
+
+
+Definition in file \mbox{\hyperlink{body_8hpp_source}{body.\+hpp}}.
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{body_8hpp_a83551e115f7d3532e8bbe8bb5853d50f}\label{body_8hpp_a83551e115f7d3532e8bbe8bb5853d50f} 
+\index{body.hpp@{body.hpp}!BodyType@{BodyType}}
+\index{BodyType@{BodyType}!body.hpp@{body.hpp}}
+\doxysubsubsection{\texorpdfstring{BodyType}{BodyType}}
+{\footnotesize\ttfamily enum class Body\+Type \+: uint8\+\_\+t\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Definition at line \mbox{\hyperlink{body_8hpp_source_l00019}{19}} of file \mbox{\hyperlink{body_8hpp_source}{body.\+hpp}}.
+

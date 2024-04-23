@@ -1,0 +1,246 @@
+\doxysection{body.\+hpp}
+\hypertarget{body_8hpp_source}{}\label{body_8hpp_source}\index{src/body.hpp@{src/body.hpp}}
+\mbox{\hyperlink{body_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{math_8hpp}{math.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00011}00011\ T2D\_NAMESPACE\_BEGIN}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00013}00013\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ TileData>}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00014}00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_world}{World}};}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00019}00019\ \textcolor{keyword}{enum\ class}\ BodyType\ :\ uint8\_t\ \{}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00020}00020\ \ \ \ \ Tile,}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00021}00021\ \ \ \ \ Bullet,}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00022}00022\ \ \ \ \ Invalid}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00023}00023\ \};}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00030}\mbox{\hyperlink{class_world_body}{00030}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_world_body}{WorldBody}}\ \{}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00031}00031\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ TileData>}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00032}00032\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_world}{World}};}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00033}00033\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }ResolveMethods;}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00034}00034\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00041}\mbox{\hyperlink{class_world_body_aa7c6ffa2887d629c5874cfcf621102b2}{00041}}\ \ \ \ \ \mbox{\hyperlink{class_world_body_aa7c6ffa2887d629c5874cfcf621102b2}{WorldBody}}(uint32\_t\ \textcolor{keywordtype}{id},\ BodyType\ \mbox{\hyperlink{class_world_body_a9612e8713400d874e4146c993c451ec6}{bodyType}})\ }
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00042}00042\ \ \ \ \ \ \ \ \ :\ m\_id(\mbox{\hyperlink{class_world_body_ad8bfcd33f6b24a101288f627c94d771c}{id}}),\ m\_bodyType(\mbox{\hyperlink{class_world_body_a9612e8713400d874e4146c993c451ec6}{bodyType}})\ \{\}}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00048}\mbox{\hyperlink{class_world_body_ad8bfcd33f6b24a101288f627c94d771c}{00048}}\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{class_world_body_ad8bfcd33f6b24a101288f627c94d771c}{id}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00049}00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_id;}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00050}00050\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00056}\mbox{\hyperlink{class_world_body_a9612e8713400d874e4146c993c451ec6}{00056}}\ \ \ \ \ BodyType\ \mbox{\hyperlink{class_world_body_a9612e8713400d874e4146c993c451ec6}{bodyType}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00057}00057\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_bodyType;}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00058}00058\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00064}\mbox{\hyperlink{class_world_body_a3584d94b29f32c3ed17ff1a8c41b5f71}{00064}}\ \ \ \ \ \mbox{\hyperlink{struct_transform}{Transform}}\&\ \mbox{\hyperlink{class_world_body_a3584d94b29f32c3ed17ff1a8c41b5f71}{transform}}()\ \{}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00065}00065\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_transform;}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00066}00066\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00072}\mbox{\hyperlink{class_world_body_a423acc77e49cd702737ff669c717d5dc}{00072}}\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_transform}{Transform}}\&\ \mbox{\hyperlink{class_world_body_a423acc77e49cd702737ff669c717d5dc}{transform}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00073}00073\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_transform;}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00074}00074\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00081}\mbox{\hyperlink{class_world_body_acc7680ca8eaf43dcfdcaa3659705de72}{00081}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_world_body_acc7680ca8eaf43dcfdcaa3659705de72}{moveBy}}(\textcolor{keyword}{const}\ vec2\&\ amount)\ \{}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00082}00082\ \ \ \ \ \ \ \ \ m\_flags[NEEDS\_REINSERT]\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00083}00083\ \ \ \ \ \ \ \ \ m\_transform.pos\ +=\ amount;}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00084}00084\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00091}\mbox{\hyperlink{class_world_body_a610526dea596e47087b100bda19f46b6}{00091}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_world_body_a610526dea596e47087b100bda19f46b6}{rotateBy}}(Float\ amount)\ \{}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00092}00092\ \ \ \ \ \ \ \ \ m\_flags[NEEDS\_REINSERT]\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00093}00093\ \ \ \ \ \ \ \ \ m\_transform.rot\ +=\ amount;}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00094}00094\ \ \ \ \ \ \ \ \ m\_transform.update();}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00095}00095\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00102}\mbox{\hyperlink{class_world_body_a7ee73511ab0cfd11090fe3ea8f1bd3c6}{00102}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_world_body_a7ee73511ab0cfd11090fe3ea8f1bd3c6}{setPos}}(\textcolor{keyword}{const}\ vec2\&\ pos)\ \{}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00103}00103\ \ \ \ \ \ \ \ \ m\_flags[NEEDS\_REINSERT]\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00104}00104\ \ \ \ \ \ \ \ \ m\_transform.pos\ =\ pos;}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00105}00105\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00106}00106\ }
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00112}\mbox{\hyperlink{class_world_body_ae72ffca9d12717be1a72df9f0d393e31}{00112}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_world_body_ae72ffca9d12717be1a72df9f0d393e31}{setRot}}(Float\ rot)\ \{}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00113}00113\ \ \ \ \ \ \ \ \ m\_flags[NEEDS\_REINSERT]\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00114}00114\ \ \ \ \ \ \ \ \ m\_transform.rot\ =\ rot;}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00115}00115\ \ \ \ \ \ \ \ \ m\_transform.update();}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00116}00116\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00123}\mbox{\hyperlink{class_world_body_acaf74fff800141bd59a6fce87a8f13d2}{00123}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_world_body_acaf74fff800141bd59a6fce87a8f13d2}{integrate}}(Float\ dt)\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00125}00125\ \ \ \ \ \textcolor{keyword}{enum}\ FlagIndexes\ \{}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00126}00126\ \ \ \ \ \ \ \ \ NEEDS\_REINSERT\ =\ 0,\ \textcolor{comment}{//\ needs\ to\ be\ reinserted\ into\ the\ spatial\ tree\ or\ grid.}}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00127}00127\ \ \ \ \ \ \ \ \ IS\_STATIC\ =\ 1\ \textcolor{comment}{//\ the\ body\ is\ static}}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00128}00128\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00129}00129\ }
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00135}\mbox{\hyperlink{class_world_body_ac5e7232da3d635d40dcda401b46f868d}{00135}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_world_body_ac5e7232da3d635d40dcda401b46f868d}{isStatic}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00136}00136\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_flags[IS\_STATIC];}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00137}00137\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00138}00138\ }
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00144}\mbox{\hyperlink{class_world_body_a0af58fc876befc11369c5c312ea98e08}{00144}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_world_body_a0af58fc876befc11369c5c312ea98e08}{setStatic}}(\textcolor{keywordtype}{bool}\ static\_)\ \{}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00145}00145\ \ \ \ \ \ \ \ \ m\_flags[IS\_STATIC]\ =\ static\_;}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00146}00146\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00147}00147\ }
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00153}\mbox{\hyperlink{class_world_body_a755dd7be376bf17e6d16da0a76f74a38}{00153}}\ \ \ \ \ \textcolor{keyword}{virtual}\ vec2\ \mbox{\hyperlink{class_world_body_a755dd7be376bf17e6d16da0a76f74a38}{getWorldPoint}}(\textcolor{keyword}{const}\ vec2\&\ localPoint)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00154}00154\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_transform.getWorldPoint(localPoint);}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00155}00155\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00156}00156\ }
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00162}\mbox{\hyperlink{class_world_body_a29cc3198a2e7b72ba789db3e7656dc1e}{00162}}\ \ \ \ \ \textcolor{keyword}{virtual}\ vec2\ \mbox{\hyperlink{class_world_body_a29cc3198a2e7b72ba789db3e7656dc1e}{getLocalPoint}}(\textcolor{keyword}{const}\ vec2\&\ worldPoint)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00163}00163\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_transform.getLocalPoint(worldPoint);}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00164}00164\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00165}00165\ }
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00171}\mbox{\hyperlink{class_world_body_afc42a76d803e29da04b3e3305408baeb}{00171}}\ \ \ \ \ \textcolor{keyword}{virtual}\ vec2\ \mbox{\hyperlink{class_world_body_afc42a76d803e29da04b3e3305408baeb}{getWorldPos}}()\ \{}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00172}00172\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_transform.pos;}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00173}00173\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00174}00174\ }
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00180}\mbox{\hyperlink{class_world_body_a0ffbb51f8659fe4d9d6a65459b5b4998}{00180}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_world_body_a0ffbb51f8659fe4d9d6a65459b5b4998}{addLinearVel}}(\textcolor{keyword}{const}\ vec2\&\ vel)\ \{}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00181}00181\ \ \ \ \ \ \ \ \ m\_linearVelocity\ +=\ vel\ *\ (Float)!m\_flags[IS\_STATIC];}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00182}00182\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00183}00183\ }
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00189}\mbox{\hyperlink{class_world_body_af16eb00f017d10982c1f09397001f228}{00189}}\ \ \ \ \ Float\ \mbox{\hyperlink{class_world_body_af16eb00f017d10982c1f09397001f228}{mass}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00190}00190\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_mass;}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00191}00191\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00192}00192\ }
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00198}\mbox{\hyperlink{class_world_body_a53aa9866b3431aa0f88d5f2ba8153b37}{00198}}\ \ \ \ \ Float\ \mbox{\hyperlink{class_world_body_a53aa9866b3431aa0f88d5f2ba8153b37}{inverseMass}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00199}00199\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_inverseMass;}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00200}00200\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00201}00201\ }
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00207}\mbox{\hyperlink{class_world_body_ab67f9f903f28f2e1fbeb8f576fade18e}{00207}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{struct_a_a_b_b}{AABB<Float>}}\ \mbox{\hyperlink{class_world_body_ab67f9f903f28f2e1fbeb8f576fade18e}{getAABB}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00208}00208\ }
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00209}00209\ \ \ \ \ \textcolor{comment}{//\ get\ the\ local\ AABB\ (of\ the\ entire\ object)\ in\ the\ localSpace\ of\ spaceTransform}}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00210}00210\ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{struct_a_a_b_b}{AABB<Float>}}\ \mbox{\hyperlink{class_world_body_ab67f9f903f28f2e1fbeb8f576fade18e}{getAABB}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_transform}{Transform}}\&\ spaceTransform,\ \textcolor{keyword}{const}\ vec2\&\ localOffset\ =\ \{\ Float(0.5f),\ Float(0.5f)\ \})\ \textcolor{keyword}{const}\ \{}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00211}00211\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_world_body_ab67f9f903f28f2e1fbeb8f576fade18e}{getAABB}}(\mbox{\hyperlink{class_world_body_ab67f9f903f28f2e1fbeb8f576fade18e}{getAABB}}(),\ spaceTransform,\ localOffset);}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00212}00212\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00213}00213\ }
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00214}00214\ \ \ \ \ \textcolor{comment}{//\ get\ the\ some\ local\ AABB\ in\ the\ localSpace\ of\ spaceTransform}}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00215}00215\ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{struct_a_a_b_b}{AABB<Float>}}\ \mbox{\hyperlink{class_world_body_ab67f9f903f28f2e1fbeb8f576fade18e}{getAABB}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_a_a_b_b}{AABB<Float>}}\&\ localAABB,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_transform}{Transform}}\&\ spaceTransform,\ \textcolor{keyword}{const}\ vec2\&\ localOffset\ =\ \{\ Float(0.5f),\ Float(0.5f)\ \})\ \textcolor{keyword}{const}\ \{}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00216}00216\ \ \ \ \ \ \ \ \ vec2\ relPos\ =\ spaceTransform.getLocalPoint(\mbox{\hyperlink{class_world_body_a755dd7be376bf17e6d16da0a76f74a38}{getWorldPoint}}(localAABB.midpoint()),\ localOffset);}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00217}00217\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{struct_a_a_b_b}{AABB<Float>}}(relPos,\ localAABB.width()\ *\ 0.5f,\ localAABB.height()\ *\ 0.5f).rotate(spaceTransform.sincos\ -\/\ m\_transform.sincos);}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00218}00218\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00219}00219\ }
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00220}00220\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00221}00221\ \ \ \ \ \mbox{\hyperlink{struct_transform}{Transform}}\ m\_transform;}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00222}00222\ \ \ \ \ Float\ m\_mass\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00223}00223\ \ \ \ \ Float\ m\_inverseMass\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00224}00224\ \ \ \ \ vec2\ m\_linearVelocity\ =\ \{\ 0.0f,\ 0.0f\ \};}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00225}00225\ }
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00226}00226\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00227}00227\ \ \ \ \ std::bitset<4>\ m\_flags;}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00228}00228\ \ \ \ \ BodyType\ m\_bodyType\ =\ BodyType::Invalid;}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00229}00229\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00230}00230\ \ \ \ \ uint32\_t\ m\_id\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00231}00231\ \};}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00232}00232\ }
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00238}\mbox{\hyperlink{class_body}{00238}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_body}{Body}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_world_body}{WorldBody}}\ \{}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00239}00239\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{struct_impulse_method}{ImpulseMethod}};}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00240}00240\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ TileData>}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00241}00241\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_world}{World}};}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00242}00242\ }
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00243}00243\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00250}\mbox{\hyperlink{class_body_a2b5cdef4dd5a14ce61e3eedb3e2d8eda}{00250}}\ \ \ \ \ \mbox{\hyperlink{class_body_a2b5cdef4dd5a14ce61e3eedb3e2d8eda}{Body}}(uint32\_t\ \textcolor{keywordtype}{id},\ BodyType\ type)}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00251}00251\ \ \ \ \ \ \ \ \ :\ \mbox{\hyperlink{class_world_body}{WorldBody}}(\mbox{\hyperlink{class_world_body_ad8bfcd33f6b24a101288f627c94d771c}{id}},\ type)\ \{\}}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00252}00252\ }
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00253}\mbox{\hyperlink{class_body_a270cd04f4547a3fbf3bf9b4c3f81ffc3}{00253}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_body_a270cd04f4547a3fbf3bf9b4c3f81ffc3}{integrate}}(Float\ dt)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00254}00254\ \ \ \ \ \ \ \ \ assert(isValid());}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00255}00255\ }
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00256}00256\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Using\ the\ semi\ implicit\ euler\ method}}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00257}00257\ }
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00258}00258\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ A(v)\ =\ force\ /\ mass}}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00259}00259\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ V\ =\ v\ +\ A(v)\ *\ dt}}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00260}00260\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ P\ =\ p\ +\ V\ *\ dt;}}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00261}00261\ \ \ \ \ \ \ \ \ m\_linearVelocity\ =\ m\_linearVelocity\ +\ m\_force\ *\ m\_inverseMass\ *\ dt;}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00262}00262\ \ \ \ \ \ \ \ \ vec2\ newPos\ =\ m\_transform.pos\ +\ m\_linearVelocity\ *\ dt;}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00263}00263\ \ \ \ \ \ \ \ \ m\_force\ =\ \{\ 0.0f,\ 0.0f\ \};}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00264}00264\ }
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00265}00265\ \ \ \ \ \ \ \ \ m\_angularVelocity\ =\ m\_angularVelocity\ +\ m\_torque\ *\ m\_inverseI\ *\ dt;}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00266}00266\ \ \ \ \ \ \ \ \ Float\ rot\ =\ m\_transform.rot\ +\ m\_angularVelocity\ *\ dt;}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00267}00267\ \ \ \ \ \ \ \ \ m\_torque\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00268}00268\ }
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00269}00269\ \ \ \ \ \ \ \ \ m\_transform.update();}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00270}00270\ }
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00271}00271\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!nearlyEqual(newPos,\ m\_transform.pos,\ 0.1f)\ ||\ !nearlyEqual(rot,\ m\_transform.rot,\ 0.05f))}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00272}00272\ \ \ \ \ \ \ \ \ \ \ \ \ m\_flags[NEEDS\_REINSERT]\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00273}00273\ }
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00274}00274\ \ \ \ \ \ \ \ \ m\_transform.pos\ =\ newPos;}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00275}00275\ \ \ \ \ \ \ \ \ m\_transform.rot\ =\ rot;}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00276}00276\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00277}00277\ }
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00278}\mbox{\hyperlink{class_body_ac78463471be7349c8535626bc37a3f0a}{00278}}\ \ \ \ \ \textcolor{keyword}{virtual}\ vec2\ \mbox{\hyperlink{class_body_ac78463471be7349c8535626bc37a3f0a}{getWorldPoint}}(\textcolor{keyword}{const}\ vec2\&\ localPoint)\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00279}00279\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_transform.getWorldPoint(localPoint,\ m\_com);}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00280}00280\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00281}00281\ }
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00282}\mbox{\hyperlink{class_body_a0fd5490f54e9040f9bddf482025d590e}{00282}}\ \ \ \ \ \textcolor{keyword}{virtual}\ vec2\ \mbox{\hyperlink{class_body_a0fd5490f54e9040f9bddf482025d590e}{getLocalPoint}}(\textcolor{keyword}{const}\ vec2\&\ worldPoint)\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00283}00283\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_transform.getLocalPoint(worldPoint,\ m\_com);}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00284}00284\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00285}00285\ }
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00286}\mbox{\hyperlink{class_body_a7c9147fcfbe4122c5bbfc625906483ca}{00286}}\ \ \ \ \ \textcolor{keyword}{virtual}\ vec2\ \mbox{\hyperlink{class_body_a7c9147fcfbe4122c5bbfc625906483ca}{getWorldPos}}()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00287}00287\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_transform.pos\ +\ m\_com;}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00288}00288\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00289}00289\ }
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00290}\mbox{\hyperlink{class_body_ad7f4263054dbd0a561f54234bd52423c}{00290}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_body_ad7f4263054dbd0a561f54234bd52423c}{setStatic}}(\textcolor{keywordtype}{bool}\ static\_)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00291}00291\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_world_body_a0af58fc876befc11369c5c312ea98e08}{WorldBody::setStatic}}(static\_);}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00292}00292\ }
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00293}00293\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (static\_)\ \{}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00294}00294\ \ \ \ \ \ \ \ \ \ \ \ \ m\_inverseI\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00295}00295\ \ \ \ \ \ \ \ \ \ \ \ \ m\_inverseMass\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00296}00296\ \ \ \ \ \ \ \ \ \ \ \ \ m\_linearVelocity\ =\ vec2(0);}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00297}00297\ \ \ \ \ \ \ \ \ \ \ \ \ m\_angularVelocity\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00298}00298\ \ \ \ \ \ \ \ \ \ \ \ \ m\_com\ =\ \{\ 0,\ 0\ \};}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00299}00299\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00300}00300\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00301}00301\ \ \ \ \ \ \ \ \ \ \ \ \ m\_inverseI\ =\ (Float)1\ /\ m\_I;}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00302}00302\ \ \ \ \ \ \ \ \ \ \ \ \ m\_inverseMass\ =\ (Float)1\ /\ m\_mass;}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00303}00303\ \ \ \ \ \ \ \ \ \ \ \ \ m\_com\ =\ m\_unweightedCom\ *\ m\_inverseMass;}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00304}00304\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00305}00305\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00306}00306\ }
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00312}\mbox{\hyperlink{class_body_a92bd2f3dc06c2e0223f3074a989ad679}{00312}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_body_a92bd2f3dc06c2e0223f3074a989ad679}{addAngularVel}}(\textcolor{keyword}{const}\ Float\&\ vel)\ \{}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00313}00313\ \ \ \ \ \ \ \ \ m\_angularVelocity\ =\ vel\ *\ (Float)!m\_flags[IS\_STATIC];}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00314}00314\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00315}00315\ }
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00321}\mbox{\hyperlink{class_body_a116434c618371aa6e5d1745da2cce98e}{00321}}\ \ \ \ \ \textcolor{keyword}{const}\ vec2\&\ \mbox{\hyperlink{class_body_a116434c618371aa6e5d1745da2cce98e}{com}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00322}00322\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_com;}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00323}00323\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00324}00324\ }
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00330}\mbox{\hyperlink{class_body_a12f56605b16c0e30c92009f52bccd7b8}{00330}}\ \ \ \ \ \textcolor{keyword}{const}\ vec2\&\ \mbox{\hyperlink{class_body_a12f56605b16c0e30c92009f52bccd7b8}{centroid}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00331}00331\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_centroid;}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00332}00332\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00333}00333\ }
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00339}\mbox{\hyperlink{class_body_af67bf66395c24bbc84387ac96e7d1731}{00339}}\ \ \ \ \ Float\ \mbox{\hyperlink{class_body_af67bf66395c24bbc84387ac96e7d1731}{rotationalInertia}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00340}00340\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_I;}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00341}00341\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00342}00342\ }
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00343}00343\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00344}00344\ \ \ \ \ Float\ m\_inverseI\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00345}00345\ }
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00346}00346\ \ \ \ \ vec2\ m\_centroid\ =\ \{\ 0.0f,\ 0.0f\ \};}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00347}00347\ \ \ \ \ vec2\ m\_com\ =\ \{\ 0.0f,\ 0.0f\ \};}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00348}00348\ \ \ \ \ Float\ m\_I\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00349}00349\ \ \ \ \ vec2\ m\_unweightedCom\ =\ \{\ 0.0f,\ 0.0f\ \};}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00350}00350\ \ \ \ \ vec2\ m\_unweightedCentroid\ =\ \{\ 0.0f,\ 0.0f\ \};}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00351}00351\ }
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00352}00352\ \ \ \ \ vec2\ m\_force\ =\ \{\ 0.0f,\ 0.0f\ \};}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00353}00353\ \ \ \ \ Float\ m\_angularVelocity\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00354}00354\ \ \ \ \ Float\ m\_torque\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00355}00355\ \};}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00356}00356\ }
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00357}\mbox{\hyperlink{class_bullet_body}{00357}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_bullet_body}{BulletBody}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_world_body}{WorldBody}}\ \{}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00358}00358\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00359}00359\ \ \ \ \ \mbox{\hyperlink{class_bullet_body}{BulletBody}}(uint32\_t\ \textcolor{keywordtype}{id},\ Float\ radius)}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00360}00360\ \ \ \ \ \ \ \ \ :\ \mbox{\hyperlink{class_world_body_aa7c6ffa2887d629c5874cfcf621102b2}{WorldBody}}(\textcolor{keywordtype}{id},\ BodyType::Bullet),\ m\_radius(radius)\ \{\}}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00361}00361\ }
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00362}\mbox{\hyperlink{class_bullet_body_aa58f625e8b4f79ce7853944fa8a42a20}{00362}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_bullet_body_aa58f625e8b4f79ce7853944fa8a42a20}{integrate}}(Float\ dt)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00363}00363\ \ \ \ \ \ \ \ \ m\_transform.pos\ =\ m\_transform.pos\ +\ m\_linearVelocity\ *\ dt;}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00364}00364\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00365}00365\ }
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00366}\mbox{\hyperlink{class_bullet_body_a9c5b14312e17f59983576f0b491c63b7}{00366}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{struct_a_a_b_b}{AABB<Float>}}\ \mbox{\hyperlink{class_bullet_body_a9c5b14312e17f59983576f0b491c63b7}{getAABB}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00367}00367\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Float\ m\_aabbRadius\ =\ m\_radius\ *\ sqrt<Float>(2.0f);}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00368}00368\ }
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00369}00369\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{struct_a_a_b_b}{AABB<Float>}}(m\_transform.pos,\ m\_aabbRadius,\ m\_aabbRadius);}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00370}00370\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00371}00371\ }
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00372}00372\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00373}00373\ \ \ \ \ Float\ m\_radius;}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00374}00374\ \ \ \ \ Float\ m\_mass\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00375}00375\ \};}
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00376}00376\ }
+\DoxyCodeLine{\Hypertarget{body_8hpp_source_l00377}00377\ T2D\_NAMESPACE\_END}
+
+\end{DoxyCode}

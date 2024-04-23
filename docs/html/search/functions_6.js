@@ -1,0 +1,28 @@
+var searchData=
+[
+  ['getaabb_0',['getAABB',['../class_world_body.html#ab67f9f903f28f2e1fbeb8f576fade18e',1,'WorldBody::getAABB()'],['../class_bullet_body.html#a9c5b14312e17f59983576f0b491c63b7',1,'BulletBody::getAABB()'],['../class_tile_body.html#a26291c6fe62e7c8f13e53a16a81131b2',1,'TileBody::getAABB() const override']]],
+  ['getchunkaabb_1',['getChunkAABB',['../class_tile_body.html#a47ac763ef4260f208960f6be48df3f35',1,'TileBody']]],
+  ['getchunkcoords_2',['getChunkCoords',['../class_tile_body.html#a71a70382a34c35d561b5aef9f48d77b5',1,'TileBody::getChunkCoords(const vec2 &amp;localCoords) const'],['../class_tile_body.html#a5779e7b392239db3288b54961022e7ad',1,'TileBody::getChunkCoords(const glm::i32vec2 &amp;tileCoords) const']]],
+  ['getexecutiontimeavg_3',['getExecutionTimeAvg',['../class_world.html#af3b13bb422c651769473a422932f2026',1,'World']]],
+  ['getlocalpoint_4',['getLocalPoint',['../class_world_body.html#a29cc3198a2e7b72ba789db3e7656dc1e',1,'WorldBody::getLocalPoint()'],['../class_body.html#a0fd5490f54e9040f9bddf482025d590e',1,'Body::getLocalPoint()']]],
+  ['getmass_5',['getMass',['../struct_physics_tile_properties.html#a0a4c4439134c389f6ad5a1bc2349070f',1,'PhysicsTileProperties']]],
+  ['getmomentofinertia_6',['getMomentOfInertia',['../struct_physics_tile_properties.html#ab3eee6389a59d4908881bf9c83dbfc4e',1,'PhysicsTileProperties']]],
+  ['getphysicstileproperties_7',['getPhysicsTileProperties',['../class_tile_map.html#a567967002804b83b1b149a665697a0f8',1,'TileMap']]],
+  ['getrealtiledimensions_8',['getRealTileDimensions',['../class_tile_map.html#a2f7f86a847b7b5d568d791297a5a512d',1,'TileMap']]],
+  ['gettilecoords_9',['getTileCoords',['../class_tile_body.html#a546649d8531ba848e8ed82487632197b',1,'TileBody']]],
+  ['gettiledimensions_10',['getTileDimensions',['../class_tile_map.html#a8fc25712d01e77ce3775a4fac07cb255',1,'TileMap']]],
+  ['gettilelocalaabb_11',['getTileLocalAABB',['../class_tile_body.html#ac63d7c7ce27a468a6c2b8134b1639c99',1,'TileBody']]],
+  ['gettilelocalpoint_12',['getTileLocalPoint',['../class_tile_body.html#a1415cc4dc2d56409918583c47d482d57',1,'TileBody']]],
+  ['gettileproperties_13',['getTileProperties',['../class_tile_map.html#a73c14b07a7edf39fe6a38f58598422eb',1,'TileMap']]],
+  ['gettileworldaabb_14',['getTileWorldAABB',['../class_tile_body.html#a3813fbf2732253a26e3c75acfaec5173',1,'TileBody']]],
+  ['gettileworldobb_15',['getTileWorldOBB',['../class_tile_body.html#abea29e0e2bdf5f69ecba57ae65f8a2cc',1,'TileBody']]],
+  ['gettileworldobboffset_16',['getTileWorldOBBOffset',['../class_tile_body.html#aa77e1313dd985bbab4f3cafecde4498b',1,'TileBody']]],
+  ['gettileworldobboffsetvertices_17',['getTileWorldOBBOffsetVertices',['../class_tile_body.html#a9d7bac1c209de7415831c3ebcd90a4f3',1,'TileBody']]],
+  ['gettileworldpoint_18',['getTileWorldPoint',['../class_tile_body.html#a68f24defda615aa2979738d2a3498c25',1,'TileBody']]],
+  ['getworldpoint_19',['getWorldPoint',['../class_world_body.html#a755dd7be376bf17e6d16da0a76f74a38',1,'WorldBody::getWorldPoint()'],['../class_body.html#ac78463471be7349c8535626bc37a3f0a',1,'Body::getWorldPoint()']]],
+  ['getworldpos_20',['getWorldPos',['../class_world_body.html#afc42a76d803e29da04b3e3305408baeb',1,'WorldBody::getWorldPos()'],['../class_body.html#a7c9147fcfbe4122c5bbfc625906483ca',1,'Body::getWorldPos()']]],
+  ['gravity_21',['gravity',['../class_world.html#a5fabfd21bb85f39d481fef02a3f050cc',1,'World']]],
+  ['grid_22',['Grid',['../class_grid.html#aee35a8d035abbdc09adc041ea97aae63',1,'Grid']]],
+  ['grid_23',['grid',['../class_world.html#a3a621e0170c24f5e981f89db12b3e905',1,'World']]],
+  ['gridmap_24',['gridMap',['../class_grid.html#a68514c6434ad9bc13101d52c83fe6be5',1,'Grid']]]
+];
