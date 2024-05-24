@@ -299,8 +299,8 @@ public:
 	/**
 	 * @brief Do not call directly, to construct a TileBody use createTileMap()
 	 */
-	TileBody(TileMap<TileType>& tileMap, uint32_t id)
-		: Body(id, BodyType::Tile), m_tileMap(tileMap) {
+	TileBody(Transform& transform, TileMap<TileType>& tileMap, uint32_t id)
+		: Body(transform, id, BodyType::Tile), m_tileMap(tileMap) {
 		clear();
 
 		tileMap.setTileBody(this);
@@ -830,9 +830,9 @@ TileBody<TileType>& TileMap<TileType>::body() {
 
 template<class TileType, class TileMapAllocator, class PhysicsWorld>
 struct CreateTileMap {
-	std::pair<TileMap<TileType>*, WorldBody*> operator()(TileMapAllocator& tileMapAllocator, PhysicsWorld& physicsWorld) {
+	std::pair<TileMap<TileType>*, TileBody<TileType>*> operator()(Transform& srcTransform, TileMapAllocator& tileMapAllocator, PhysicsWorld& physicsWorld) {
 		TileMap<TileType>* tileMap = tileMapAllocator.construct<_CreateTileMap>(_CreateTileMap());
-		WorldBody* tileBody = physicsWorld.createTileBody(*tileMap);
+		TileBody<TileType>* tileBody = (TileBody<TileType>*)physicsWorld.createTileBody(srcTransform, *tileMap);
 
 		return { tileMap, tileBody };
 	}
@@ -841,14 +841,15 @@ struct CreateTileMap {
 /**
  * @brief Creates a tile map and a tile body using @p tileMapAllocator for the tileMap and the @p physicsWorld for the tile body
  * 
+ * @param srcTransform A transform of some external object. Will be manipulated as the simulation runs
  * @param tileMapAllocator An allocator used to create the tile map, MUST have a construct<>() method defined
  * @param physicsWorld A physicsWorld used to create the tile body, MUST be t2d::World<>
  * 
  * @return A pair pointing towards the tile map and tile body. Check if nullptr.
  */
 template<class TileType, class TileMapAllocator, class PhysicsWorld>
-std::pair<TileMap<TileType>*, WorldBody*> createTileMap(TileMapAllocator& tileMapAllocator, PhysicsWorld& physicsWorld) {
-	return CreateTileMap<TileType, TileMapAllocator, PhysicsWorld>()(tileMapAllocator, physicsWorld);
+std::pair<TileMap<TileType>*, TileBody<TileType>*> createTileMap(Transform& srcTransform, TileMapAllocator& tileMapAllocator, PhysicsWorld& physicsWorld) {
+	return CreateTileMap<TileType, TileMapAllocator, PhysicsWorld>()(srcTransform, tileMapAllocator, physicsWorld);
 }
 
 T2D_NAMESPACE_END

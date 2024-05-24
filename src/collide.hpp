@@ -67,7 +67,7 @@ namespace debug {
 		std::vector<std::array<vec2, 4>> chunkAABBs;
 	};
 
-	std::vector<CollideInfo> collideInfos;
+	inline std::vector<CollideInfo> collideInfos;
 }
 
 /**

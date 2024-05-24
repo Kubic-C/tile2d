@@ -149,6 +149,10 @@ If the latter were to be used, it would be both a more boiler plate and bug pron
 #include <glm/gtx/norm.hpp>
 #include <glm/gtx/vector_angle.hpp>
 
+#ifdef WIN32
+#define BOOST_MSVC 1
+#endif
+
 #include <boost/unordered/unordered_flat_map.hpp>
 #include <boost/unordered/unordered_flat_set.hpp>
 
@@ -217,7 +221,7 @@ bool isNaN(const T& v) {
 }
 
 template<>
-bool isNaN<vec2>(const vec2& v) {
+inline bool isNaN<vec2>(const vec2& v) {
 	return glm::isnan(v.x) || glm::isnan(v.y);
 }
 

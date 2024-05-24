@@ -246,11 +246,11 @@ public:
 	/**
 	 * @brief Do not use. See createTileMap()
 	 */
-	WorldBody* createTileBody(TileMapT& tileMap) {
+	WorldBody* createTileBody(Transform& srcTransform, TileMapT& tileMap) {
 		uint32_t newId = m_bodies.insert();
 
 		BodyElement& bodyElement = m_bodies[newId];
-		bodyElement.body = m_tileBodyPool.template construct<TileMapT&, uint32_t>(tileMap, newId);
+		bodyElement.body = m_tileBodyPool.template construct<Transform&, TileMapT&, uint32_t>(srcTransform, tileMap, newId);
 		if (!bodyElement.body)
 			return nullptr;
 
@@ -264,18 +264,19 @@ public:
 	/**
 	 * @brief NOT YET IMPLEMENTED. Creates a bullet body.
 	 * 
+	 * @param srcTransform A transform of some external object. Will be manipulated as the simulation runs
 	 * @param radius The radius of the bullet
 	 * @param initialLinearVelocity The initial linear velocity of the body
 	 * 
 	 * @return The new bullet body
 	 */
-	WorldBody* createBulletBody(Float radius, const vec2& initialLinearVelocity) {
+	WorldBody* createBulletBody(Transform& srcTransform, Float radius, const vec2& initialLinearVelocity) {
 		return nullptr; // to be implemented
 
 		uint32_t newId = m_bodies.insert();
 
 		BodyElement& bodyElement = m_bodies[newId];
-		bodyElement.body = m_bulletBodyPool.template construct<uint32_t, Float>(newId, radius);
+		bodyElement.body = m_bulletBodyPool.template construct<uint32_t, Float>(srcTransform, newId, radius);
 		if (!bodyElement.body)
 			return nullptr;
 

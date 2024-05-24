@@ -38,8 +38,8 @@ public:
 	 * @param id The id assigned by physics world
 	 * @param bodyType The type of body, see enum BodyType. Does not define whether or not the body is static, see setStatic()
 	 */
-	WorldBody(uint32_t id, BodyType bodyType) 
-		: m_id(id), m_bodyType(bodyType) {}
+	WorldBody(Transform& transform, uint32_t id, BodyType bodyType) 
+		: m_transform(transform), m_id(id), m_bodyType(bodyType) {}
 
 	/**
 	 * @brief Returns the id assigned to this body the physics world
@@ -225,7 +225,7 @@ public:
 	}
 
 protected:
-	Transform m_transform;
+	Transform& m_transform;
 	Float m_mass = 0.0f;
 	Float m_inverseMass = 0;
 	vec2 m_linearVelocity = { 0.0f, 0.0f };
@@ -254,8 +254,8 @@ public:
 	 * @param id The id assigned by physics world
 	 * @param bodyType The type of body, see enum BodyType. Does not define whether or not the body is static, see setStatic()
 	 */
-	Body(uint32_t id, BodyType type)
-		: WorldBody(id, type) {}
+	Body(Transform& transform, uint32_t id, BodyType type)
+		: WorldBody(transform, id, type) {}
 
 	virtual void integrate(Float dt) override {
 		// Using the semi implicit euler method
@@ -361,8 +361,8 @@ protected:
 
 class BulletBody : public WorldBody {
 public:
-	BulletBody(uint32_t id, Float radius)
-		: WorldBody(id, BodyType::Bullet), m_radius(radius) {}
+	BulletBody(Transform& transform, uint32_t id, Float radius)
+		: WorldBody(transform, id, BodyType::Bullet), m_radius(radius) {}
 
 	virtual void integrate(Float dt) override {
 		m_transform.pos = m_transform.pos + m_linearVelocity * dt;

@@ -10,7 +10,7 @@ target_link_directories(tile2d PUBLIC "${Boost_LIBRARY_DIRS}")
 target_link_libraries(tile2d PUBLIC Boost::thread)
 
 target_include_directories(tile2d PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/../")
-target_link_libraries(tile2d PUBLIC glm)
+target_link_libraries(tile2d PUBLIC glm::glm-header-only)
 
 if(WIN32)
 	target_compile_options(tile2d PUBLIC "/std:c++17")

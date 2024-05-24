@@ -143,6 +143,9 @@ struct Transform {
 	Transform()
 		: pos(0.0f, 0.0f), rot(0.0f) {}
 
+    Transform(float x, float y, float rot)
+		: pos(x, y), rot(rot) {}
+
 	Transform(const vec2& pos, Float rot)
 		: pos(pos), rot(rot) {}
 
@@ -175,7 +178,7 @@ struct Transform {
 	SinCos sincos;
 };
 
-Float cross(const vec2& a, const vec2& b) {
+inline Float cross(const vec2& a, const vec2& b) {
 	// a.x * b.y - b.x * a.y
 	return (a.x * b.y) - (a.y * b.x);
 }
@@ -195,7 +198,7 @@ inline vec2 reverse(const vec2& vec) {
 // 0 on the line
 // >0 on one side
 // <0 on the other side
-Float sideOf(const vec2& p, const vec2& a, const vec2& b) {
+inline Float sideOf(const vec2& p, const vec2& a, const vec2& b) {
 	return cross(a - b, p) + cross(b, a);
 }
 
