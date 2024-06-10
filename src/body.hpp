@@ -10,7 +10,9 @@
 
 T2D_NAMESPACE_BEGIN
 
-template<class TileData>
+struct CollisionManifold;
+
+template<class Access, class TileData>
 class World;
 
 /**
@@ -22,24 +24,32 @@ enum class BodyType : uint8_t {
 	Invalid
 };
 
+enum FlagIndexes {
+	NEEDS_REINSERT = 0, // needs to be reinserted into the spatial tree or grid.
+	IS_STATIC = 1 // the body is static
+};
+
 /**
  * @class WorldBody
  * 
  * @brief The abstract base class of all Rigid Bodies that defines essential methods and members to be used in t2d::World<>
  */
+template<typename Access>
 class WorldBody {
-	template<class TileData>
+	template<class Access, class TileData>
 	friend class World;
 	friend class ResolveMethods;
 public:
+	using CollisionCallback = boost::function<void(WorldBody* self, WorldBody* other, CollisionManifold* manifold)>;
+
 	/**
 	 * @brief constructs a new WorldBody
 	 * 
 	 * @param id The id assigned by physics world
 	 * @param bodyType The type of body, see enum BodyType. Does not define whether or not the body is static, see setStatic()
 	 */
-	WorldBody(Transform& transform, uint32_t id, BodyType bodyType) 
-		: m_transform(transform), m_id(id), m_bodyType(bodyType) {}
+	WorldBody(const Access& access, uint32_t id, BodyType bodyType) 
+		: m_transform(access), m_id(id), m_bodyType(bodyType) {}
 
 	/**
 	 * @brief Returns the id assigned to this body the physics world
@@ -62,7 +72,7 @@ public:
 	 * @return The REFERENCE tranfsorm of this body
 	 */
 	Transform& transform() {
-		return m_transform;
+		return *m_transform;
 	}
 
 	/**
@@ -70,7 +80,7 @@ public:
 	 * @return The CONST REFERENCE tranfsorm of this body
 	 */
 	const Transform& transform() const {
-		return m_transform;
+		return *m_transform;
 	}
 
 	/**
@@ -80,7 +90,7 @@ public:
 	 */
 	void moveBy(const vec2& amount) {
 		m_flags[NEEDS_REINSERT] = true;
-		m_transform.pos += amount;
+		m_transform->pos += amount;
 	}
 
 	/**
@@ -90,8 +100,8 @@ public:
 	 */
 	void rotateBy(Float amount) {
 		m_flags[NEEDS_REINSERT] = true;
-		m_transform.rot += amount;
-		m_transform.update();
+		m_transform->rot += amount;
+		m_transform->update();
 	}
 
 	/**
@@ -101,7 +111,7 @@ public:
 	 */
 	void setPos(const vec2& pos) {
 		m_flags[NEEDS_REINSERT] = true;
-		m_transform.pos = pos;
+		m_transform->pos = pos;
 	}
 
 	/**
@@ -111,8 +121,8 @@ public:
 	 */
 	void setRot(Float rot) {
 		m_flags[NEEDS_REINSERT] = true;
-		m_transform.rot = rot;
-		m_transform.update();
+		m_transform->rot = rot;
+		m_transform->update();
 	}
 
 	/**
@@ -121,11 +131,6 @@ public:
 	 * @param dt The amount to integrate by; delta time
 	 */
 	virtual void integrate(Float dt) = 0;
-
-	enum FlagIndexes {
-		NEEDS_REINSERT = 0, // needs to be reinserted into the spatial tree or grid.
-		IS_STATIC = 1 // the body is static
-	};
 
 	/**
 	 * @brief Returns if the body is static, meaning it cannot be moved by forces or other bodies
@@ -151,7 +156,7 @@ public:
 	 * @param localPoint Position in the local space of this body
 	 */
 	virtual vec2 getWorldPoint(const vec2& localPoint) const {
-		return m_transform.getWorldPoint(localPoint);
+		return m_transform->getWorldPoint(localPoint);
 	}
 
 	/**
@@ -160,7 +165,7 @@ public:
 	 * @param worldPoint Position in world pos
 	 */
 	virtual vec2 getLocalPoint(const vec2& worldPoint) const {
-		return m_transform.getLocalPoint(worldPoint);
+		return m_transform->getLocalPoint(worldPoint);
 	}
 
 	/**
@@ -169,7 +174,7 @@ public:
 	 * @return the world position of this body
 	 */
 	virtual vec2 getWorldPos() {
-		return m_transform.pos;
+		return m_transform->pos;
 	}
 
 	/**
@@ -221,16 +226,64 @@ public:
 	// get the some local AABB in the localSpace of spaceTransform
 	inline virtual AABB<Float> getAABB(const AABB<Float>& localAABB, const Transform& spaceTransform, const vec2& localOffset = { Float(0.0f), Float(0.0f) }) const {
 		vec2 relPos = spaceTransform.getLocalPoint(getWorldPoint(localAABB.midpoint()), localOffset);
-		return AABB<Float>(relPos, localAABB.width() * 0.5f, localAABB.height() * 0.5f).rotate(spaceTransform.sincos - m_transform.sincos);
+		return AABB<Float>(relPos, localAABB.width() * 0.5f, localAABB.height() * 0.5f).rotate(spaceTransform.sincos - m_transform->sincos);
+	}
+
+	/**
+	 * @brief Sets the Collision group of this body.
+	 * Bodies with the same bits set in their collision group mask, will not collide.
+	 *
+	 * @param mask The new Collision group mask of body
+	 */
+	void setCollisionGroup(uint32_t mask) {
+		m_collideGroup = mask;
+	}
+
+	/**
+	 * @brief OR's with the current Collision group of this body.
+	 * Bodies with the same bits set in their collision group mask, will not collide.
+	 *
+	 * @param mask The new Collision group mask of body to perform an OR ( | ) operation with
+	 */
+	void orCollisionGroup(uint32_t orMask) {
+		m_collideGroup |= orMask;
+	}
+
+	/**
+	 * @brief Returns the collision group of this body
+	 * Bodies with the same bits set in their collision group mask, will not collide.
+	 *
+	 * @returns The collision group
+	 */
+	uint32_t collisionGroup() const {
+		return m_collideGroup;
+	}
+
+	/**
+	 * @brief Sets the collision callback for this body
+	 */
+	void setCollisionCallback(CollisionCallback&& callback) {
+		m_collisionCallback = callback;
+	}
+
+	/**
+	 * @brief Returns the collision callback for this body
+	 * 
+	 * @returns the collision callback for this body
+	 */
+	const CollisionCallback& collisionCallback() {
+		return m_collisionCallback;
 	}
 
 protected:
-	Transform& m_transform;
+	Access m_transform;
 	Float m_mass = 0.0f;
 	Float m_inverseMass = 0;
 	vec2 m_linearVelocity = { 0.0f, 0.0f };
+	CollisionCallback m_collisionCallback;
 
 protected:
+	uint32_t m_collideGroup = 0;
 	std::bitset<4> m_flags;
 	BodyType m_bodyType = BodyType::Invalid;
 private:
@@ -242,9 +295,10 @@ private:
  * 
  * @brief Extends the functionality of WorldBody to allow for things such as angular velocity
  */
-class Body : public WorldBody {
+template<typename Access>
+class Body : public WorldBody<Access> {
 	friend class ImpulseMethod;
-	template<class TileData>
+	template<class Access, class TileData>
 	friend class World;
 
 public:
@@ -254,8 +308,8 @@ public:
 	 * @param id The id assigned by physics world
 	 * @param bodyType The type of body, see enum BodyType. Does not define whether or not the body is static, see setStatic()
 	 */
-	Body(Transform& transform, uint32_t id, BodyType type)
-		: WorldBody(transform, id, type) {}
+	Body(const Access& access, uint32_t id, BodyType type)
+		: WorldBody<Access>(access, id, type) {}
 
 	virtual void integrate(Float dt) override {
 		// Using the semi implicit euler method
@@ -263,49 +317,49 @@ public:
 		// A(v) = force / mass
 		// V = v + A(v) * dt
 		// P = p + V * dt;
-		m_linearVelocity = m_linearVelocity + m_force * m_inverseMass * dt;
-		vec2 newPos = m_transform.pos + m_linearVelocity * dt;
-		m_force = { 0.0f, 0.0f };
+		this->m_linearVelocity = this->m_linearVelocity + m_force * this->m_inverseMass * dt;
+		vec2 newPos = this->m_transform->pos + this->m_linearVelocity * dt;
+		this->m_force = { 0.0f, 0.0f };
 
-		m_angularVelocity = m_angularVelocity + m_torque * m_inverseI * dt;
-		Float rot = m_transform.rot + m_angularVelocity * dt;
-		m_torque = 0.0f;
+		this->m_angularVelocity = this->m_angularVelocity + this->m_torque * this->m_inverseI * dt;
+		Float rot = this->m_transform->rot + this->m_angularVelocity * dt;
+		this->m_torque = 0.0f;
 
-		m_transform.update();
+		this->m_transform->update();
 
-		if(!nearlyEqual(newPos, m_transform.pos, 0.1f) || !nearlyEqual(rot, m_transform.rot, 0.05f))
-			m_flags[NEEDS_REINSERT] = true;
+		if(!nearlyEqual(newPos, this->m_transform->pos, 0.1f) || !nearlyEqual(rot, this->m_transform->rot, 0.05f))
+			this->m_flags[NEEDS_REINSERT] = true;
 
-		m_transform.pos = newPos;
-		m_transform.rot = rot;
+		this->m_transform->pos = newPos;
+		this->m_transform->rot = rot;
 	}
 
 	virtual vec2 getWorldPoint(const vec2& localPoint) const override {
-		return m_transform.getWorldPoint(localPoint, m_com);
+		return this->m_transform->getWorldPoint(localPoint, m_com);
 	}
 
 	virtual vec2 getLocalPoint(const vec2& worldPoint) const override {
-		return m_transform.getLocalPoint(worldPoint, m_com);
+		return this->m_transform->getLocalPoint(worldPoint, m_com);
 	}
 
 	virtual vec2 getWorldPos() override {
-		return m_transform.pos + m_com;
+		return this->m_transform->pos + m_com;
 	}
 
 	virtual void setStatic(bool static_) override {
-		WorldBody::setStatic(static_);
+		WorldBody<Access>::setStatic(static_);
 
 		if (static_) {
-			m_inverseI = 0;
-			m_inverseMass = 0;
-			m_linearVelocity = vec2(0);
-			m_angularVelocity = 0;
-			m_com = { 0, 0 };
+			this->m_inverseI = 0;
+			this->m_inverseMass = 0;
+			this->m_linearVelocity = vec2(0);
+			this->m_angularVelocity = 0;
+			this->m_com = { 0, 0 };
 		}
 		else {
-			m_inverseI = (Float)1 / m_I;
-			m_inverseMass = (Float)1 / m_mass;
-			m_com = m_unweightedCom * m_inverseMass;
+			this->m_inverseI = (Float)1 / this->m_I;
+			this->m_inverseMass = (Float)1 / this->m_mass;
+			this->m_com = this->m_unweightedCom * this->m_inverseMass;
 		}
 	}
 
@@ -315,7 +369,7 @@ public:
 	 * @param vel The amount of angular velocity to apply
 	 */
 	void addAngularVel(const Float& vel) {
-		m_angularVelocity = vel * (Float)!m_flags[IS_STATIC];
+		this->m_angularVelocity = vel * (Float)!this->m_flags[IS_STATIC];
 	}
 
 	/**
@@ -324,7 +378,7 @@ public:
 	 * @return The center of mass of this body
 	 */
 	const vec2& com() const {
-		return m_com;
+		return this->m_com;
 	}
 
 	/**
@@ -333,7 +387,7 @@ public:
 	 * @return The centroid of this body
 	 */
 	const vec2& centroid() const {
-		return m_centroid;
+		return this->m_centroid;
 	}
 
 	/**
@@ -342,7 +396,7 @@ public:
 	 * @return The rotational inertia scalar of this body
 	 */
 	Float rotationalInertia() const {
-		return m_I;
+		return this->m_I;
 	}
 
 protected:
@@ -359,19 +413,20 @@ protected:
 	Float m_torque = 0.0f;
 };
 
-class BulletBody : public WorldBody {
+template<typename Access>
+class BulletBody : public WorldBody<Access> {
 public:
-	BulletBody(Transform& transform, uint32_t id, Float radius)
-		: WorldBody(transform, id, BodyType::Bullet), m_radius(radius) {}
+	BulletBody(const Access& access, uint32_t id, Float radius)
+		: WorldBody<Access>(access, id, BodyType::Bullet), m_radius(radius) {}
 
 	virtual void integrate(Float dt) override {
-		m_transform.pos = m_transform.pos + m_linearVelocity * dt;
+		this->m_transform->pos = this->m_transform->pos + this->m_linearVelocity * dt;
 	}
 
 	virtual AABB<Float> getAABB() const {
-		const Float m_aabbRadius = m_radius * sqrt<Float>(2.0f);
+		const Float m_aabbRadius = this->m_radius * sqrt<Float>(2.0f);
 
-		return AABB<Float>(m_transform.pos, m_aabbRadius, m_aabbRadius);
+		return AABB<Float>(this->m_transform->pos, m_aabbRadius, m_aabbRadius);
 	}
 
 private:

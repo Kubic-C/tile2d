@@ -136,30 +136,30 @@ $(function() { codefold.init(0); });
 <div class="foldopen" id="foldopen00081" data-start="{" data-end="}">
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="class_world_body.html#acc7680ca8eaf43dcfdcaa3659705de72">   81</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_world_body.html#acc7680ca8eaf43dcfdcaa3659705de72">moveBy</a>(<span class="keyword">const</span> vec2&amp; amount) {</div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        m_flags[NEEDS_REINSERT] = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        m_transform.pos += amount;</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        m_transform->pos += amount;</div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    }</div>
 </div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
 <div class="foldopen" id="foldopen00091" data-start="{" data-end="}">
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="class_world_body.html#a610526dea596e47087b100bda19f46b6">   91</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_world_body.html#a610526dea596e47087b100bda19f46b6">rotateBy</a>(Float amount) {</div>
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        m_flags[NEEDS_REINSERT] = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        m_transform.rot += amount;</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        m_transform.update();</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        m_transform->rot += amount;</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        m_transform->update();</div>
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    }</div>
 </div>
 <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
 <div class="foldopen" id="foldopen00102" data-start="{" data-end="}">
 <div class="line"><a id="l00102" name="l00102"></a><span class="lineno"><a class="line" href="class_world_body.html#a7ee73511ab0cfd11090fe3ea8f1bd3c6">  102</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_world_body.html#a7ee73511ab0cfd11090fe3ea8f1bd3c6">setPos</a>(<span class="keyword">const</span> vec2&amp; pos) {</div>
 <div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        m_flags[NEEDS_REINSERT] = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        m_transform.pos = pos;</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        m_transform->pos = pos;</div>
 <div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    }</div>
 </div>
 <div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
 <div class="foldopen" id="foldopen00112" data-start="{" data-end="}">
 <div class="line"><a id="l00112" name="l00112"></a><span class="lineno"><a class="line" href="class_world_body.html#ae72ffca9d12717be1a72df9f0d393e31">  112</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_world_body.html#ae72ffca9d12717be1a72df9f0d393e31">setRot</a>(Float rot) {</div>
 <div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        m_flags[NEEDS_REINSERT] = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        m_transform.rot = rot;</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>        m_transform.update();</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        m_transform->rot = rot;</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>        m_transform->update();</div>
 <div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    }</div>
 </div>
 <div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
@@ -184,19 +184,19 @@ $(function() { codefold.init(0); });
 <div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span> </div>
 <div class="foldopen" id="foldopen00153" data-start="{" data-end="}">
 <div class="line"><a id="l00153" name="l00153"></a><span class="lineno"><a class="line" href="class_world_body.html#a755dd7be376bf17e6d16da0a76f74a38">  153</a></span>    <span class="keyword">virtual</span> vec2 <a class="code hl_function" href="class_world_body.html#a755dd7be376bf17e6d16da0a76f74a38">getWorldPoint</a>(<span class="keyword">const</span> vec2&amp; localPoint)<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>        <span class="keywordflow">return</span> m_transform.getWorldPoint(localPoint);</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>        <span class="keywordflow">return</span> m_transform->getWorldPoint(localPoint);</div>
 <div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    }</div>
 </div>
 <div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span> </div>
 <div class="foldopen" id="foldopen00162" data-start="{" data-end="}">
 <div class="line"><a id="l00162" name="l00162"></a><span class="lineno"><a class="line" href="class_world_body.html#a29cc3198a2e7b72ba789db3e7656dc1e">  162</a></span>    <span class="keyword">virtual</span> vec2 <a class="code hl_function" href="class_world_body.html#a29cc3198a2e7b72ba789db3e7656dc1e">getLocalPoint</a>(<span class="keyword">const</span> vec2&amp; worldPoint)<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>        <span class="keywordflow">return</span> m_transform.getLocalPoint(worldPoint);</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>        <span class="keywordflow">return</span> m_transform->getLocalPoint(worldPoint);</div>
 <div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>    }</div>
 </div>
 <div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span> </div>
 <div class="foldopen" id="foldopen00171" data-start="{" data-end="}">
 <div class="line"><a id="l00171" name="l00171"></a><span class="lineno"><a class="line" href="class_world_body.html#afc42a76d803e29da04b3e3305408baeb">  171</a></span>    <span class="keyword">virtual</span> vec2 <a class="code hl_function" href="class_world_body.html#afc42a76d803e29da04b3e3305408baeb">getWorldPos</a>() {</div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>        <span class="keywordflow">return</span> m_transform.pos;</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>        <span class="keywordflow">return</span> m_transform->pos;</div>
 <div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>    }</div>
 </div>
 <div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span> </div>
@@ -228,7 +228,7 @@ $(function() { codefold.init(0); });
 <div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>    <span class="comment">// get the some local AABB in the localSpace of spaceTransform</span></div>
 <div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>    <span class="keyword">inline</span> <a class="code hl_struct" href="struct_a_a_b_b.html">AABB&lt;Float&gt;</a> <a class="code hl_function" href="class_world_body.html#ab67f9f903f28f2e1fbeb8f576fade18e">getAABB</a>(<span class="keyword">const</span> <a class="code hl_struct" href="struct_a_a_b_b.html">AABB&lt;Float&gt;</a>&amp; localAABB, <span class="keyword">const</span> <a class="code hl_struct" href="struct_transform.html">Transform</a>&amp; spaceTransform, <span class="keyword">const</span> vec2&amp; localOffset = { Float(0.5f), Float(0.5f) }) <span class="keyword">const</span> {</div>
 <div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>        vec2 relPos = spaceTransform.getLocalPoint(<a class="code hl_function" href="class_world_body.html#a755dd7be376bf17e6d16da0a76f74a38">getWorldPoint</a>(localAABB.midpoint()), localOffset);</div>
-<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>        <span class="keywordflow">return</span> <a class="code hl_struct" href="struct_a_a_b_b.html">AABB&lt;Float&gt;</a>(relPos, localAABB.width() * 0.5f, localAABB.height() * 0.5f).rotate(spaceTransform.sincos - m_transform.sincos);</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>        <span class="keywordflow">return</span> <a class="code hl_struct" href="struct_a_a_b_b.html">AABB&lt;Float&gt;</a>(relPos, localAABB.width() * 0.5f, localAABB.height() * 0.5f).rotate(spaceTransform.sincos - m_transform->sincos);</div>
 <div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>    }</div>
 <div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span> </div>
 <div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span><span class="keyword">protected</span>:</div>
@@ -267,38 +267,38 @@ $(function() { codefold.init(0); });
 <div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>        <span class="comment">// V = v + A(v) * dt</span></div>
 <div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>        <span class="comment">// P = p + V * dt;</span></div>
 <div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>        m_linearVelocity = m_linearVelocity + m_force * m_inverseMass * dt;</div>
-<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>        vec2 newPos = m_transform.pos + m_linearVelocity * dt;</div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>        vec2 newPos = m_transform->pos + m_linearVelocity * dt;</div>
 <div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>        m_force = { 0.0f, 0.0f };</div>
 <div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span> </div>
 <div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>        m_angularVelocity = m_angularVelocity + m_torque * m_inverseI * dt;</div>
-<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>        Float rot = m_transform.rot + m_angularVelocity * dt;</div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>        Float rot = m_transform->rot + m_angularVelocity * dt;</div>
 <div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>        m_torque = 0.0f;</div>
 <div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span> </div>
-<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>        m_transform.update();</div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>        m_transform->update();</div>
 <div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span> </div>
-<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>        <span class="keywordflow">if</span>(!nearlyEqual(newPos, m_transform.pos, 0.1f) || !nearlyEqual(rot, m_transform.rot, 0.05f))</div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>        <span class="keywordflow">if</span>(!nearlyEqual(newPos, m_transform->pos, 0.1f) || !nearlyEqual(rot, m_transform->rot, 0.05f))</div>
 <div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>            m_flags[NEEDS_REINSERT] = <span class="keyword">true</span>;</div>
 <div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span> </div>
-<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>        m_transform.pos = newPos;</div>
-<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>        m_transform.rot = rot;</div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>        m_transform->pos = newPos;</div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>        m_transform->rot = rot;</div>
 <div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>    }</div>
 </div>
 <div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span> </div>
 <div class="foldopen" id="foldopen00278" data-start="{" data-end="}">
 <div class="line"><a id="l00278" name="l00278"></a><span class="lineno"><a class="line" href="class_body.html#ac78463471be7349c8535626bc37a3f0a">  278</a></span>    <span class="keyword">virtual</span> vec2 <a class="code hl_function" href="class_body.html#ac78463471be7349c8535626bc37a3f0a">getWorldPoint</a>(<span class="keyword">const</span> vec2&amp; localPoint)<span class="keyword"> const override </span>{</div>
-<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>        <span class="keywordflow">return</span> m_transform.getWorldPoint(localPoint, m_com);</div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>        <span class="keywordflow">return</span> m_transform->getWorldPoint(localPoint, m_com);</div>
 <div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>    }</div>
 </div>
 <div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span> </div>
 <div class="foldopen" id="foldopen00282" data-start="{" data-end="}">
 <div class="line"><a id="l00282" name="l00282"></a><span class="lineno"><a class="line" href="class_body.html#a0fd5490f54e9040f9bddf482025d590e">  282</a></span>    <span class="keyword">virtual</span> vec2 <a class="code hl_function" href="class_body.html#a0fd5490f54e9040f9bddf482025d590e">getLocalPoint</a>(<span class="keyword">const</span> vec2&amp; worldPoint)<span class="keyword"> const override </span>{</div>
-<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>        <span class="keywordflow">return</span> m_transform.getLocalPoint(worldPoint, m_com);</div>
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>        <span class="keywordflow">return</span> m_transform->getLocalPoint(worldPoint, m_com);</div>
 <div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>    }</div>
 </div>
 <div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span> </div>
 <div class="foldopen" id="foldopen00286" data-start="{" data-end="}">
 <div class="line"><a id="l00286" name="l00286"></a><span class="lineno"><a class="line" href="class_body.html#a7c9147fcfbe4122c5bbfc625906483ca">  286</a></span>    <span class="keyword">virtual</span> vec2 <a class="code hl_function" href="class_body.html#a7c9147fcfbe4122c5bbfc625906483ca">getWorldPos</a>()<span class="keyword"> override </span>{</div>
-<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>        <span class="keywordflow">return</span> m_transform.pos + m_com;</div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>        <span class="keywordflow">return</span> m_transform->pos + m_com;</div>
 <div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>    }</div>
 </div>
 <div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span> </div>
@@ -368,7 +368,7 @@ $(function() { codefold.init(0); });
 <div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span> </div>
 <div class="foldopen" id="foldopen00362" data-start="{" data-end="}">
 <div class="line"><a id="l00362" name="l00362"></a><span class="lineno"><a class="line" href="class_bullet_body.html#aa58f625e8b4f79ce7853944fa8a42a20">  362</a></span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_bullet_body.html#aa58f625e8b4f79ce7853944fa8a42a20">integrate</a>(Float dt)<span class="keyword"> override </span>{</div>
-<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span>        m_transform.pos = m_transform.pos + m_linearVelocity * dt;</div>
+<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span>        m_transform->pos = m_transform->pos + m_linearVelocity * dt;</div>
 <div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span>    }</div>
 </div>
 <div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span> </div>
@@ -376,7 +376,7 @@ $(function() { codefold.init(0); });
 <div class="line"><a id="l00366" name="l00366"></a><span class="lineno"><a class="line" href="class_bullet_body.html#a9c5b14312e17f59983576f0b491c63b7">  366</a></span>    <span class="keyword">virtual</span> <a class="code hl_struct" href="struct_a_a_b_b.html">AABB&lt;Float&gt;</a> <a class="code hl_function" href="class_bullet_body.html#a9c5b14312e17f59983576f0b491c63b7">getAABB</a>()<span class="keyword"> const </span>{</div>
 <div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span>        <span class="keyword">const</span> Float m_aabbRadius = m_radius * sqrt&lt;Float&gt;(2.0f);</div>
 <div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span> </div>
-<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span>        <span class="keywordflow">return</span> <a class="code hl_struct" href="struct_a_a_b_b.html">AABB&lt;Float&gt;</a>(m_transform.pos, m_aabbRadius, m_aabbRadius);</div>
+<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span>        <span class="keywordflow">return</span> <a class="code hl_struct" href="struct_a_a_b_b.html">AABB&lt;Float&gt;</a>(m_transform->pos, m_aabbRadius, m_aabbRadius);</div>
 <div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span>    }</div>
 </div>
 <div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span> </div>

@@ -231,12 +231,12 @@ inline void computeBoxManifold(const Container& points1, const Container& points
  * 
  * @return If true, the collision between the tile of tilePos1 of body1 and the tile of tilePos2 of body2 is occuring. 
  */
-template<class TileData>
+template<class Access, class TileData>
 bool detectNarrowCollision(
-	const TileBody<TileData>& body1, 
+	const TileBody<Access, TileData>& body1,
 	const glm::i32vec2& tilePos1, 
 	const vec2& body1Offset, 
-	const TileBody<TileData>& body2, 
+	const TileBody<Access, TileData>& body2,
 	const glm::i32vec2& tilePos2, 
 	const vec2& body2Offset, 
 	CollisionManifold& manifold) {
@@ -273,13 +273,27 @@ bool detectNarrowCollision(
  * @class TileBodyCollisionCache
  * @brief Used to speed up the collision detection between two tile bodies
  */
-template<class TileData>
+template<class Access, class TileData>
 struct TileBodyCollisionCache {
-	using SpatialIndex = typename ::t2d::TileBody<TileData>::SpatialIndex;
+	using SpatialIndex = typename ::t2d::TileBody<Access, TileData>::SpatialIndex;
 
 	std::vector<SpatialIndex> results1;
 	std::vector<SpatialIndex> results2;
 	std::vector<std::pair<AABB<Float>, AABB<Float>>> approxAreas;
+};
+
+template<typename Access>
+struct CollisionCallbackInfo {
+	union BodyInfo {
+		glm::u32vec2 tilePos;
+
+	};
+
+	WorldBody<Access>* body1;
+	WorldBody<Access>* body2;
+	CollisionManifold manifold;
+	BodyInfo info1;
+	BodyInfo info2;
 };
 
 /**
@@ -294,19 +308,46 @@ struct TileBodyCollisionCache {
  * @param[out] body1Offset A world offset to apply to body1 to resolve the collision
  * @param[out] body2Offset A world offset to apply to body2 to resolve the collision
  */
-template<class TileData>
+template<class Access, class TileData>
 void detectTileBodyCollision(
-	const TileBody<TileData>& body1, 
-	const TileBody<TileData>& body2, 
-	TileBodyCollisionCache<TileData>& cache, 
+	const TileBody<Access, TileData>& body1, 
+	const TileBody<Access, TileData>& body2, 
+	TileBodyCollisionCache<Access, TileData>& cache, 
 	std::vector<CollisionManifold>& manifolds,
 	vec2& body1Offset,
 	vec2& body2Offset) {
-	AABB<Float> approxAreaOfBody1Local = computeAABBCollisionArea(body1.getLocalAABB(), body2.Body::getAABB(body1.transform(), body1.com()));
+	const size_t magicSize = (chunkSideLength * chunkSideLength) / 2;
+
+	if (body1.tileMap().count() < magicSize &&
+		body2.tileMap().count() < magicSize) {
+
+		for (auto& tile1 : body1.tileMap()) {
+			for (auto& tile2 : body2.tileMap()) {
+				CollisionManifold manifold;
+
+				if (detectNarrowCollision(body1, tile1, body1Offset, body2, tile2, body2Offset, manifold)) {
+					Float body1Mass = body1.mass() * (Float)!body1.isStatic();
+					Float body2Mass = body2.mass() * (Float)!body2.isStatic();
+					Float totalMass = body1Mass + body2Mass;
+					Float body1Depth = (body1Mass / totalMass) * manifold.depth;
+					Float body2Depth = (body2Mass / totalMass) * manifold.depth;
+
+					body1Offset -= manifold.normal * body1Depth * Float(0.5);
+					body2Offset += manifold.normal * body2Depth * Float(0.5);
+
+					manifolds.emplace_back(manifold);
+				}
+			}
+		}
+
+		return;
+	}
+
+	AABB<Float> approxAreaOfBody1Local = computeAABBCollisionArea(body1.getLocalAABB(), body2.Body<Access>::getAABB(body1.transform(), body1.com()));
 	if (std::isnan(approxAreaOfBody1Local.min().x))
 		return;
 
-	AABB<Float> approxAreaOfBody2Local = computeAABBCollisionArea(body2.getLocalAABB(), body1.Body::getAABB(body2.transform(), body2.com()));
+	AABB<Float> approxAreaOfBody2Local = computeAABBCollisionArea(body2.getLocalAABB(), body1.Body<Access>::getAABB(body2.transform(), body2.com()));
 	if (std::isnan(approxAreaOfBody2Local.min().x))
 		return;
 
@@ -319,11 +360,11 @@ void detectTileBodyCollision(
 
 	for (auto& chunk1 : cache.results1) {
 		for (auto& chunk2 : cache.results2) {
-			AABB<Float> approxAreaOfChunk1Local = computeAABBCollisionArea(chunk1.aabb, body2.Body::getAABB(chunk2.aabb, body1.transform(), body1.com()));
+			AABB<Float> approxAreaOfChunk1Local = computeAABBCollisionArea(chunk1.aabb, body2.Body<Access>::getAABB(chunk2.aabb, body1.transform(), body1.com()));
 			if (std::isnan(approxAreaOfChunk1Local.min().x))
 				continue;
 
-			AABB<Float> approxAreaOfChunk2Local = computeAABBCollisionArea(chunk2.aabb, body1.Body::getAABB(chunk1.aabb, body2.transform(), body2.com()));
+			AABB<Float> approxAreaOfChunk2Local = computeAABBCollisionArea(chunk2.aabb, body1.Body<Access>::getAABB(chunk1.aabb, body2.transform(), body2.com()));
 			if (std::isnan(approxAreaOfChunk2Local.min().x))
 				continue;
 
@@ -337,7 +378,6 @@ void detectTileBodyCollision(
 
 		body1.queryTiles(approxArea.first, std::back_inserter(cache.results1));
 		body2.queryTiles(approxArea.second, std::back_inserter(cache.results2));
-
 
 		for (auto& tile1 : cache.results1) {
 			for (auto& tile2 : cache.results2) {
@@ -377,7 +417,8 @@ struct ImpulseMethod {
 		vec2 friction_impulse = { 0.0f, 0.0f };
 	};
 
-	void operator()(Body& body1, Body& body2, const CollisionManifold& manifold) {
+	template<typename Access>
+	void operator()(Body<Access>& body1, Body<Access>& body2, const CollisionManifold& manifold) {
 		Impulse impulse;
 		vec2 average = manifold.points[0];
 

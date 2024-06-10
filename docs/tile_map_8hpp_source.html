@@ -317,7 +317,7 @@ $(function() { codefold.init(0); });
 <div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span> </div>
 <div class="foldopen" id="foldopen00331" data-start="{" data-end="}">
 <div class="line"><a id="l00331" name="l00331"></a><span class="lineno"><a class="line" href="class_tile_body.html#a3ad8b4210e9e1e532b0dda581bc21db2">  331</a></span>    <span class="keyword">inline</span> std::array&lt;vec2, 2&gt; <a class="code hl_function" href="class_tile_body.html#a3ad8b4210e9e1e532b0dda581bc21db2">normals</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span>        <span class="keyword">const</span> <a class="code hl_class" href="struct_sin_cos.html">SinCos</a>&amp; sincos = m_transform.sincos;</div>
+<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span>        <span class="keyword">const</span> <a class="code hl_class" href="struct_sin_cos.html">SinCos</a>&amp; sincos = m_transform->sincos;</div>
 <div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span> </div>
 <div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span>        <span class="comment">// _1_2, 2_3</span></div>
 <div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>        <span class="keywordflow">return</span> { vec2(sincos.cos, sincos.sin), vec2(-sincos.sin, sincos.cos) };</div>
@@ -349,8 +349,8 @@ $(function() { codefold.init(0); });
 <div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span> </div>
 <div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span>        tileOBB.extent = m_tileMap.getRealTileDimensions(iPos) * Float(0.5);</div>
 <div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span>        tileOBB.transform.pos = <a class="code hl_function" href="class_tile_body.html#a68f24defda615aa2979738d2a3498c25">getTileWorldPoint</a>(iPos) + worldOffset;</div>
-<div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span>        tileOBB.transform.rot = m_transform.rot;</div>
-<div class="line"><a id="l00386" name="l00386"></a><span class="lineno">  386</span>        tileOBB.transform.sincos = m_transform.sincos;</div>
+<div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span>        tileOBB.transform.rot = m_transform->rot;</div>
+<div class="line"><a id="l00386" name="l00386"></a><span class="lineno">  386</span>        tileOBB.transform.sincos = m_transform->sincos;</div>
 <div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span> </div>
 <div class="line"><a id="l00388" name="l00388"></a><span class="lineno">  388</span>        <span class="keywordflow">return</span> tileOBB;</div>
 <div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span>    }</div>
@@ -360,8 +360,8 @@ $(function() { codefold.init(0); });
 <div class="line"><a id="l00399" name="l00399"></a><span class="lineno"><a class="line" href="class_tile_body.html#a9d7bac1c209de7415831c3ebcd90a4f3">  399</a></span>    <span class="keyword">inline</span> std::array&lt;vec2, 4&gt; <a class="code hl_function" href="class_tile_body.html#a9d7bac1c209de7415831c3ebcd90a4f3">getTileWorldOBBOffsetVertices</a>(<span class="keyword">const</span> glm::i32vec2&amp; iPos, <span class="keyword">const</span> vec2&amp; worldOffset)<span class="keyword"> const </span>{</div>
 <div class="line"><a id="l00400" name="l00400"></a><span class="lineno">  400</span>        vec2 extent = m_tileMap.getRealTileDimensions(iPos) * Float(0.5);</div>
 <div class="line"><a id="l00401" name="l00401"></a><span class="lineno">  401</span>        vec2 worldPos = <a class="code hl_function" href="class_tile_body.html#a68f24defda615aa2979738d2a3498c25">getTileWorldPoint</a>(iPos) + worldOffset;</div>
-<div class="line"><a id="l00402" name="l00402"></a><span class="lineno">  402</span>        <span class="keyword">const</span> vec2 wExt = rotate({ extent.x, extent.y }, m_transform.sincos);</div>
-<div class="line"><a id="l00403" name="l00403"></a><span class="lineno">  403</span>        <span class="keyword">const</span> vec2 blExt = rotate({ extent.x, -extent.y }, m_transform.sincos);</div>
+<div class="line"><a id="l00402" name="l00402"></a><span class="lineno">  402</span>        <span class="keyword">const</span> vec2 wExt = rotate({ extent.x, extent.y }, m_transform->sincos);</div>
+<div class="line"><a id="l00403" name="l00403"></a><span class="lineno">  403</span>        <span class="keyword">const</span> vec2 blExt = rotate({ extent.x, -extent.y }, m_transform->sincos);</div>
 <div class="line"><a id="l00404" name="l00404"></a><span class="lineno">  404</span>        <span class="keyword">const</span> vec2 trExt = -blExt;</div>
 <div class="line"><a id="l00405" name="l00405"></a><span class="lineno">  405</span> </div>
 <div class="line"><a id="l00406" name="l00406"></a><span class="lineno">  406</span>        <span class="keywordflow">return</span> {</div>
@@ -377,7 +377,7 @@ $(function() { codefold.init(0); });
 <div class="line"><a id="l00421" name="l00421"></a><span class="lineno"><a class="line" href="class_tile_body.html#a3813fbf2732253a26e3c75acfaec5173">  421</a></span>    <span class="keyword">inline</span> <a class="code hl_struct" href="struct_a_a_b_b.html">AABB&lt;Float&gt;</a> <a class="code hl_function" href="class_tile_body.html#a3813fbf2732253a26e3c75acfaec5173">getTileWorldAABB</a>(<span class="keyword">const</span> glm::i32vec2&amp; iPos)<span class="keyword"> const </span>{</div>
 <div class="line"><a id="l00422" name="l00422"></a><span class="lineno">  422</span>        vec2 tileDim = m_tileMap.getRealTileDimensions(iPos);</div>
 <div class="line"><a id="l00423" name="l00423"></a><span class="lineno">  423</span> </div>
-<div class="line"><a id="l00424" name="l00424"></a><span class="lineno">  424</span>        <span class="keywordflow">return</span> <a class="code hl_struct" href="struct_a_a_b_b.html">AABB</a>(<a class="code hl_function" href="class_tile_body.html#a68f24defda615aa2979738d2a3498c25">getTileWorldPoint</a>(iPos), tileDim.x * Float(0.5), tileDim.y * Float(0.5)).rotate(m_transform.sincos);</div>
+<div class="line"><a id="l00424" name="l00424"></a><span class="lineno">  424</span>        <span class="keywordflow">return</span> <a class="code hl_struct" href="struct_a_a_b_b.html">AABB</a>(<a class="code hl_function" href="class_tile_body.html#a68f24defda615aa2979738d2a3498c25">getTileWorldPoint</a>(iPos), tileDim.x * Float(0.5), tileDim.y * Float(0.5)).rotate(m_transform->sincos);</div>
 <div class="line"><a id="l00425" name="l00425"></a><span class="lineno">  425</span>    }</div>
 </div>
 <div class="line"><a id="l00426" name="l00426"></a><span class="lineno">  426</span> </div>

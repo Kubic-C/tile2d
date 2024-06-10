@@ -155,6 +155,7 @@ If the latter were to be used, it would be both a more boiler plate and bug pron
 
 #include <boost/unordered/unordered_flat_map.hpp>
 #include <boost/unordered/unordered_flat_set.hpp>
+#include <boost/function.hpp>
 
 // Multithreading
 #include <boost/pool/object_pool.hpp>

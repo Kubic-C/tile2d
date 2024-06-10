@@ -168,6 +168,10 @@ struct Transform {
 		return localPoint;
 	}
 
+	Transform getWorldTransform(const Transform& localTransform, const glm::vec2& localOffset) const {
+		return Transform(getWorldPoint(localTransform.pos, localOffset), localTransform.rot + rot);
+	}
+
 	// updates cache of sincos
 	void update() {
 		sincos.setRot(rot);

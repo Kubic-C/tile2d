@@ -155,10 +155,10 @@ void LinkedListHeader<T, Access, Int>::pop_front() {
 		return;
 	}
 	else {
-		first = access[first].next;
+		first = m_access[first].next;
 
-		access[first].prev = invalid;
-		access[first].next = invalid;
+		m_access[first].prev = invalid;
+		m_access[first].next = invalid;
 	}
 
 	m_size--;
@@ -170,10 +170,10 @@ void LinkedListHeader<T, Access, Int>::pop_back() {
 		return;
 	}
 	else {
-		last = access[last].prev;
+		last = m_access[last].prev;
 
-		access[last].prev = invalid;
-		access[last].next = invalid;
+		m_access[last].prev = invalid;
+		m_access[last].next = invalid;
 	}
 
 	m_size--;
@@ -184,7 +184,7 @@ void LinkedListHeader<T, Access, Int>::pop_back() {
  * 
  * @brief Allows collisions between different bodies to occur. 
  */
-template<class TileData>
+template<class Access, class TileData>
 class World {
 protected:
 	struct SpatialIndex {
@@ -199,7 +199,7 @@ protected:
 		Cache() {}
 
 		std::vector<SpatialIndex> results;
-		::t2d::TileBodyCollisionCache<TileData> detectionCache;
+		::t2d::TileBodyCollisionCache<Access, TileData> detectionCache;
 
 		std::vector<std::pair<uint16_t, AABB<Float>>> shouldMove;
 		std::vector<std::pair<uint32_t, uint32_t>> couldCollide;
@@ -208,11 +208,11 @@ protected:
 public:
 	struct BodyElement : public LinkedListElement<uint32_t> {
 		uint16_t element = std::numeric_limits<uint16_t>::max();
-		WorldBody* body = nullptr;
+		WorldBody<Access>* body = nullptr;
 	};
 
-	using TileMapT = TileMap<TileData>;
-	using TileBodyT = TileBody<TileData>;
+	using TileMapT = TileMap<Access, TileData>;
+	using TileBodyT = TileBody<Access, TileData>;
 
 	using BodyList = LinkedListHeader<BodyElement, FreeList<BodyElement, uint32_t>, uint32_t>;
 public:
@@ -246,11 +246,11 @@ public:
 	/**
 	 * @brief Do not use. See createTileMap()
 	 */
-	WorldBody* createTileBody(Transform& srcTransform, TileMapT& tileMap) {
+	WorldBody<Access>* createTileBody(const Access& transformAccess, TileMapT& tileMap) {
 		uint32_t newId = m_bodies.insert();
 
 		BodyElement& bodyElement = m_bodies[newId];
-		bodyElement.body = m_tileBodyPool.template construct<Transform&, TileMapT&, uint32_t>(srcTransform, tileMap, newId);
+		bodyElement.body = m_tileBodyPool.template construct<const Access&, TileMapT&, uint32_t>(transformAccess, tileMap, newId);
 		if (!bodyElement.body)
 			return nullptr;
 
@@ -270,13 +270,13 @@ public:
 	 * 
 	 * @return The new bullet body
 	 */
-	WorldBody* createBulletBody(Transform& srcTransform, Float radius, const vec2& initialLinearVelocity) {
+	WorldBody<Access>* createBulletBody(const Access& transformAccess, Float radius, const vec2& initialLinearVelocity) {
 		return nullptr; // to be implemented
 
 		uint32_t newId = m_bodies.insert();
 
 		BodyElement& bodyElement = m_bodies[newId];
-		bodyElement.body = m_bulletBodyPool.template construct<uint32_t, Float>(srcTransform, newId, radius);
+		bodyElement.body = m_bulletBodyPool.template construct<uint32_t, Float>(transformAccess, newId, radius);
 		if (!bodyElement.body)
 			return nullptr;
 
@@ -294,14 +294,14 @@ public:
 	 * 
 	 * @param body The body to destroy
 	 */
-	void destroyBody(WorldBody* body) {
+	void destroyBody(WorldBody<Access>* body) {
 		switch (body->m_bodyType) {
 		case BodyType::Tile:
-			m_tileBodyPool.destroy(dynamic_cast<TileBody<TileData>*>(body));
+			m_tileBodyPool.destroy(dynamic_cast<TileBody<Access, TileData>*>(body));
 			break;
 
 		case BodyType::Bullet:
-			m_bulletBodyPool.destroy(dynamic_cast<BulletBody*>(body)); 
+			m_bulletBodyPool.destroy(dynamic_cast<BulletBody<Access>*>(body)); 
 			break;
 
 		default:
@@ -336,8 +336,8 @@ public:
 			std::vector<CollisionManifold> manifolds;
 			Cache& mainThreadCache = m_threadCache[boost::this_thread::get_id()];
 			for (const std::pair<uint32_t, uint32_t>& collidingPair : m_possibleCollisions) {
-				WorldBody* body = m_bodies[collidingPair.first].body;
-				WorldBody* otherBody = m_bodies[collidingPair.second].body;
+				WorldBody<Access>* body = m_bodies[collidingPair.first].body;
+				WorldBody<Access>* otherBody = m_bodies[collidingPair.second].body;
 
 				vec2 body1Offset(0.0);
 				vec2 body2Offset(0.0);
@@ -348,7 +348,7 @@ public:
 				case BodyType::Tile: {
 					switch (otherBody->m_bodyType) {
 					case BodyType::Tile:
-						detectTileBodyCollision<TileData>(dynamic_cast<TileBodyT&>(*body), dynamic_cast<TileBodyT&>(*otherBody), mainThreadCache.detectionCache, manifolds, body1Offset, body2Offset);
+						detectTileBodyCollision<Access, TileData>(dynamic_cast<TileBodyT&>(*body), dynamic_cast<TileBodyT&>(*otherBody), mainThreadCache.detectionCache, manifolds, body1Offset, body2Offset);
 						break;
 
 					default:
@@ -362,7 +362,12 @@ public:
 				}
 
 				for (CollisionManifold& manifold : manifolds) {
-					ImpulseMethod()(*(Body*)body, *(Body*)otherBody, manifold);
+					ImpulseMethod()(*(Body<Access>*)body, *(Body<Access>*)otherBody, manifold);
+
+					if (!body->collisionCallback().empty())
+						body->collisionCallback()(body, otherBody, &manifold);
+					if (!otherBody->collisionCallback().empty())
+						otherBody->collisionCallback()(otherBody, body, &manifold);
 				}
 
 				body->moveBy(body1Offset);
@@ -454,14 +459,14 @@ protected:
 			if (index < start)
 				continue;
 
-			WorldBody* body = i->body;
+			WorldBody<Access>* body = i->body;
 
 			body->addLinearVel(m_worldForces.gravity * timePerStep);
 			body->integrate(timePerStep);
 
-			if (body->m_flags[Body::NEEDS_REINSERT]) {
+			if (body->m_flags[NEEDS_REINSERT]) {
 				cache.shouldMove.emplace_back(std::pair<uint16_t, AABB<Float>>(i->element, body->getAABB()));
-				body->m_flags[Body::NEEDS_REINSERT] = false;
+				body->m_flags[NEEDS_REINSERT] = false;
 			}
 		}
 
@@ -483,12 +488,14 @@ protected:
 			if (index < start)
 				continue;
 
-			WorldBody* body = i->body;
+			WorldBody<Access>* body = i->body;
 			AABB<Float> bodyAABB = body->getAABB();
 			m_grid.queryIntersects(bodyAABB, [&](const SpatialIndex& spatialIndex) {
 				if (spatialIndex.id == body->id())
 					return;
 				if (body->isStatic() && m_bodies[spatialIndex.id].body->isStatic())
+					return;
+				if (body->collisionGroup() & m_bodies[spatialIndex.id].body->collisionGroup())
 					return;
 
 				cache.couldCollide.push_back(std::pair(body->id(), spatialIndex.id));
@@ -502,12 +509,12 @@ protected:
 		jobsDone++;
 	}
 
-	void insertIntoTree(WorldBody* body) {
+	void insertIntoTree(WorldBody<Access>* body) {
 		BodyElement& bodyElement = m_bodies[body->id()];
 		bodyElement.element = m_grid.insert(body->getAABB(), SpatialIndex{ body->id() });
 	}
 
-	void eraseFromTree(WorldBody* body) {
+	void eraseFromTree(WorldBody<Access>* body) {
 		BodyElement& bodyElement = m_bodies[body->id()];
 		m_grid.erase(bodyElement.element);
 	}
@@ -518,7 +525,7 @@ private:
 	BodyList m_bodyList;
 	FreeList<BodyElement, uint32_t> m_bodies;
 	boost::object_pool<TileBodyT> m_tileBodyPool;
-	boost::object_pool<BulletBody> m_bulletBodyPool;
+	boost::object_pool<BulletBody<Access>> m_bulletBodyPool;
 
 	boost::mutex m_gridLock;
 	Grid<SpatialIndex> m_grid;
