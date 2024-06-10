@@ -1,3 +1,5 @@
+Notice: I am currently no longer working on this project for the time being.
+
 # tile2d
 
 tile2d, an improved version of its predecessor [kin2d](https://github.com/Kubic-C/kin2d), is a physics engine built specifically around tiles.
